@@ -1,0 +1,399 @@
+/* ============================================
+   IGSB-Analyst Custom Styles
+   Complements Tailwind CSS utilities
+   ============================================ */
+
+/* ---- Base / Reset ---- */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ---- Typography ---- */
+.font-mono-financial {
+  font-family: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+
+/* ---- Financial Statement Tables ---- */
+.stmt-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+}
+
+.stmt-table th {
+  text-align: right;
+  padding: 0.5rem 0.75rem;
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #64748b;
+  border-bottom: 2px solid #e2e8f0;
+  white-space: nowrap;
+}
+
+.stmt-table th:first-child {
+  text-align: left;
+}
+
+.stmt-table td {
+  padding: 0.375rem 0.75rem;
+  text-align: right;
+  border-bottom: 1px solid #f1f5f9;
+  font-family: 'JetBrains Mono', monospace;
+  font-variant-numeric: tabular-nums;
+  font-size: 0.8125rem;
+}
+
+.stmt-table td:first-child {
+  text-align: left;
+  font-family: 'Inter', sans-serif;
+  color: #334155;
+}
+
+.stmt-table tr:hover {
+  background-color: #f8fafc;
+}
+
+.stmt-table .indent-1 td:first-child {
+  padding-left: 1.5rem;
+}
+
+.stmt-table .indent-2 td:first-child {
+  padding-left: 2.5rem;
+}
+
+.stmt-table .subtotal td {
+  font-weight: 600;
+  border-bottom: 1px solid #cbd5e1;
+  border-top: 1px solid #cbd5e1;
+}
+
+.stmt-table .total td {
+  font-weight: 700;
+  border-bottom: 3px double #334155;
+  border-top: 2px solid #334155;
+}
+
+.stmt-table .section-header td {
+  font-weight: 700;
+  padding-top: 1rem;
+  color: #0f172a;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+/* Negative values in red */
+.stmt-table .negative {
+  color: #dc2626;
+}
+
+.stmt-table .positive {
+  color: #059669;
+}
+
+/* ---- KPI Cards ---- */
+.kpi-card {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.kpi-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+/* ---- Sidebar ---- */
+.sidebar-section {
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+}
+
+.sidebar-section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+/* ---- Upload Drop Zone ---- */
+.drop-zone {
+  border: 2px dashed #cbd5e1;
+  border-radius: 0.5rem;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+  cursor: pointer;
+}
+
+.drop-zone:hover,
+.drop-zone-active {
+  border-color: #3b82f6;
+  background-color: #eff6ff;
+}
+
+/* ---- Tab Navigation ---- */
+.tab-active {
+  color: #2563eb;
+  border-bottom: 2px solid #2563eb;
+  font-weight: 600;
+}
+
+.tab-inactive {
+  color: #64748b;
+  border-bottom: 2px solid transparent;
+}
+
+.tab-inactive:hover {
+  color: #334155;
+  border-bottom-color: #cbd5e1;
+}
+
+/* ---- Toast Notifications ---- */
+.toast {
+  animation: toast-enter 0.3s ease-out;
+  max-width: 24rem;
+}
+
+@keyframes toast-enter {
+  from {
+    opacity: 0;
+    transform: translateY(1rem) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes toast-exit {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-0.5rem) scale(0.95);
+  }
+}
+
+.toast-exit {
+  animation: toast-exit 0.2s ease-in forwards;
+}
+
+/* ---- Loading States ---- */
+.skeleton {
+  background: linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 50%, #f1f5f9 75%);
+  background-size: 200% 100%;
+  animation: skeleton-pulse 1.5s ease-in-out infinite;
+  border-radius: 0.25rem;
+}
+
+@keyframes skeleton-pulse {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.spinner {
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 2px solid #e2e8f0;
+  border-top-color: #3b82f6;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ---- Streaming Text Animation ---- */
+.streaming-cursor::after {
+  content: '\25CA';
+  color: #3b82f6;
+  animation: blink 0.8s step-end infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+/* ---- Metric Cards ---- */
+.metric-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.metric-card:last-child {
+  border-bottom: none;
+}
+
+.metric-label {
+  font-size: 0.8125rem;
+  color: #64748b;
+}
+
+.metric-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: #0f172a;
+}
+
+/* ---- Trend Indicators ---- */
+.trend-up { color: #059669; }
+.trend-down { color: #dc2626; }
+.trend-stable { color: #64748b; }
+
+/* ---- Sentiment Badges ---- */
+.sentiment-positive {
+  background-color: #ecfdf5;
+  color: #047857;
+}
+
+.sentiment-negative {
+  background-color: #fef2f2;
+  color: #b91c1c;
+}
+
+.sentiment-neutral {
+  background-color: #f8fafc;
+  color: #475569;
+}
+
+.sentiment-mixed {
+  background-color: #fffbeb;
+  color: #b45309;
+}
+
+/* ---- Source Tags ---- */
+.source-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.125rem 0.5rem;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  border-radius: 9999px;
+  border: 1px solid;
+}
+
+.source-tag-sec {
+  background-color: #eff6ff;
+  border-color: #bfdbfe;
+  color: #1d4ed8;
+}
+
+.source-tag-upload {
+  background-color: #f0fdf4;
+  border-color: #bbf7d0;
+  color: #15803d;
+}
+
+.source-tag-analyst {
+  background-color: #fefce8;
+  border-color: #fde68a;
+  color: #a16207;
+}
+
+.source-tag-computed {
+  background-color: #f8fafc;
+  border-color: #e2e8f0;
+  color: #475569;
+}
+
+/* ---- Confidence Indicators ---- */
+.confidence-high {
+  color: #059669;
+}
+
+.confidence-medium {
+  color: #d97706;
+}
+
+.confidence-low {
+  color: #dc2626;
+}
+
+/* ---- Scrollbar ---- */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #cbd5e1;
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: #94a3b8;
+}
+
+/* Firefox */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+}
+
+/* ---- Modal ---- */
+.modal-overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
+}
+
+/* ---- Print Styles ---- */
+@media print {
+  header, footer, aside, .no-print {
+    display: none !important;
+  }
+
+  main {
+    margin: 0 !important;
+    padding: 1rem !important;
+  }
+
+  .stmt-table td, .stmt-table th {
+    padding: 0.25rem 0.5rem;
+  }
+
+  .kpi-card {
+    box-shadow: none;
+    border: 1px solid #e2e8f0;
+  }
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 1024px) {
+  aside {
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: 30;
+  }
+
+  aside.sidebar-open {
+    transform: translateX(0);
+  }
+
+  main {
+    margin-left: 0 !important;
+  }
+}

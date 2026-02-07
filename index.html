@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="IGSB Analyst - Financial Analysis Platform">
+  <meta name="theme-color" content="#2563eb">
+  <title>IGSB Analyst</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+            mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <!-- Google Fonts: Inter + JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body class="h-full bg-slate-50 text-slate-900 antialiased">
+
+  <!-- ========================================== -->
+  <!-- HEADER                                     -->
+  <!-- ========================================== -->
+  <header class="fixed top-0 left-0 right-0 z-40 bg-white border-b border-slate-200 shadow-sm">
+    <div class="flex items-center justify-between h-14 px-4">
+
+      <!-- Left: Logo / Title -->
+      <div class="flex items-center gap-3 min-w-[240px]">
+        <div class="flex items-center justify-center w-8 h-8 bg-blue-600 rounded-lg">
+          <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 13h2v8H3zM9 9h2v12H9zM15 5h2v16h-2zM21 1h2v20h-2z"/>
+          </svg>
+        </div>
+        <h1 class="text-lg font-bold tracking-tight text-slate-900">
+          IGSB <span class="text-blue-600">Analyst</span>
+        </h1>
+        <span class="hidden sm:inline-flex items-center px-2 py-0.5 text-[10px] font-semibold bg-slate-100 text-slate-500 rounded-full uppercase tracking-wider">
+          Beta
+        </span>
+      </div>
+
+      <!-- Center: Ticker Search -->
+      <div class="flex-1 max-w-lg mx-4">
+        <div class="relative flex items-center">
+          <svg class="absolute left-3 w-4 h-4 text-slate-400 pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+          </svg>
+          <input
+            id="ticker-input"
+            type="text"
+            placeholder="Enter company ticker (e.g. AAPL, MSFT, GOOG)..."
+            class="w-full h-9 pl-10 pr-24 text-sm bg-slate-50 border border-slate-200 rounded-lg
+                   placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500
+                   transition-colors font-mono uppercase"
+            autocomplete="off"
+            spellcheck="false"
+          >
+          <button
+            id="ticker-search-btn"
+            class="absolute right-1 h-7 px-4 text-xs font-semibold text-white bg-blue-600 rounded-md
+                   hover:bg-blue-700 active:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1
+                   transition-colors"
+          >
+            Search
+          </button>
+        </div>
+      </div>
+
+      <!-- Right: Actions -->
+      <div class="flex items-center gap-2 min-w-[160px] justify-end">
+        <button
+          id="settings-btn"
+          class="flex items-center justify-center w-9 h-9 text-slate-500 hover:text-slate-700 hover:bg-slate-100
+                 rounded-lg transition-colors"
+          title="Settings"
+        >
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.325.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 011.37.49l1.296 2.247a1.125 1.125 0 01-.26 1.431l-1.003.827c-.293.241-.438.613-.43.992a7.723 7.723 0 010 .255c-.008.378.137.75.43.991l1.004.827c.424.35.534.955.26 1.43l-1.298 2.247a1.125 1.125 0 01-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.47 6.47 0 01-.22.128c-.331.183-.581.495-.644.869l-.213 1.281c-.09.543-.56.941-1.11.941h-2.594c-.55 0-1.019-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 01-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 01-1.369-.49l-1.297-2.247a1.125 1.125 0 01.26-1.431l1.004-.827c.292-.24.437-.613.43-.991a6.932 6.932 0 010-.255c.007-.38-.138-.751-.43-.992l-1.004-.827a1.125 1.125 0 01-.26-1.43l1.297-2.247a1.125 1.125 0 011.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.086.22-.128.332-.183.582-.495.644-.869l.214-1.28z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+          </svg>
+        </button>
+        <button
+          id="header-export-btn"
+          class="flex items-center gap-1.5 h-9 px-3 text-sm font-medium text-slate-700 bg-white
+                 border border-slate-200 rounded-lg hover:bg-slate-50 hover:border-slate-300
+                 active:bg-slate-100 transition-colors"
+        >
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+          </svg>
+          Export
+        </button>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- ========================================== -->
+  <!-- MAIN LAYOUT: Sidebar + Content             -->
+  <!-- ========================================== -->
+  <div class="flex pt-14 h-full">
+
+    <!-- ======================================== -->
+    <!-- SIDEBAR                                  -->
+    <!-- ======================================== -->
+    <aside id="sidebar" class="fixed top-14 left-0 bottom-0 w-[280px] bg-white border-r border-slate-200 overflow-y-auto z-30">
+      <div class="flex flex-col gap-0 p-0">
+
+        <!-- Upload Section -->
+        <section class="p-4 border-b border-slate-100">
+          <h2 class="flex items-center gap-2 text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
+            </svg>
+            Upload Documents
+          </h2>
+
+          <!-- Drop Zone -->
+          <div
+            id="upload-zone"
+            class="flex flex-col items-center justify-center gap-2 p-4 border-2 border-dashed border-slate-300
+                   rounded-lg bg-slate-50 cursor-pointer hover:border-blue-400 hover:bg-blue-50/50 transition-colors"
+          >
+            <svg class="w-8 h-8 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m6.75 12l-3-3m0 0l-3 3m3-3v6m-1.5-15H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"/>
+            </svg>
+            <p class="text-xs font-medium text-slate-500">Drop files here or click to browse</p>
+            <div class="flex items-center gap-1.5 mt-1">
+              <span class="inline-flex items-center px-1.5 py-0.5 text-[10px] font-semibold bg-red-50 text-red-600 rounded">PDF</span>
+              <span class="inline-flex items-center px-1.5 py-0.5 text-[10px] font-semibold bg-emerald-50 text-emerald-600 rounded">XLSX</span>
+              <span class="inline-flex items-center px-1.5 py-0.5 text-[10px] font-semibold bg-slate-100 text-slate-600 rounded">TXT</span>
+              <span class="inline-flex items-center px-1.5 py-0.5 text-[10px] font-semibold bg-amber-50 text-amber-600 rounded">CSV</span>
+            </div>
+            <input type="file" class="hidden" id="file-input" multiple accept=".pdf,.xlsx,.xls,.txt,.csv">
+          </div>
+
+          <!-- File List -->
+          <div id="file-list" class="mt-3 space-y-1.5">
+            <!-- Populated by JS. Example structure:
+            <div class="flex items-center gap-2 p-2 text-xs bg-slate-50 rounded-md group">
+              <span class="px-1.5 py-0.5 font-semibold bg-red-50 text-red-600 rounded text-[10px]">PDF</span>
+              <span class="flex-1 truncate text-slate-700">annual-report-2024.pdf</span>
+              <button class="text-slate-400 hover:text-red-500 opacity-0 group-hover:opacity-100 transition-opacity">x</button>
+            </div>
+            -->
+          </div>
+        </section>
+
+        <!-- EDGAR Section -->
+        <section class="p-4 border-b border-slate-100">
+          <h2 class="flex items-center gap-2 text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418"/>
+            </svg>
+            SEC EDGAR
+          </h2>
+
+          <div class="space-y-2.5">
+            <div>
+              <label class="block text-[11px] font-medium text-slate-500 mb-1">Company Ticker</label>
+              <input
+                id="edgar-ticker"
+                type="text"
+                placeholder="e.g. AAPL"
+                class="w-full h-8 px-2.5 text-xs font-mono uppercase bg-slate-50 border border-slate-200 rounded-md
+                       placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+              >
+            </div>
+            <div>
+              <label class="block text-[11px] font-medium text-slate-500 mb-1">Filing Type</label>
+              <select
+                id="edgar-filing-type"
+                class="w-full h-8 px-2.5 text-xs bg-slate-50 border border-slate-200 rounded-md text-slate-700
+                       focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+              >
+                <option value="10-K">10-K (Annual Report)</option>
+                <option value="10-Q">10-Q (Quarterly Report)</option>
+                <option value="8-K">8-K (Current Report)</option>
+                <option value="DEF14A">DEF 14A (Proxy Statement)</option>
+                <option value="S-1">S-1 (Registration)</option>
+              </select>
+            </div>
+            <button
+              id="edgar-fetch-btn"
+              class="w-full h-8 text-xs font-semibold text-blue-600 bg-blue-50 border border-blue-200 rounded-md
+                     hover:bg-blue-100 active:bg-blue-200 transition-colors"
+            >
+              Fetch Filing
+            </button>
+          </div>
+        </section>
+
+        <!-- Data Sources Section -->
+        <section class="p-4 border-b border-slate-100">
+          <h2 class="flex items-center gap-2 text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125"/>
+            </svg>
+            Data Sources
+          </h2>
+          <div id="source-list" class="space-y-1.5">
+            <!-- Empty state -->
+            <p class="text-xs text-slate-400 italic py-2 text-center">No data sources loaded</p>
+            <!-- Populated by JS. Example structure:
+            <div class="flex items-center gap-2 p-2 bg-slate-50 rounded-md text-xs">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 flex-shrink-0"></span>
+              <svg class="w-3.5 h-3.5 text-slate-400 flex-shrink-0">...</svg>
+              <span class="flex-1 truncate text-slate-700">10-K FY2024</span>
+              <span class="px-1.5 py-0.5 text-[10px] font-medium bg-emerald-50 text-emerald-600 rounded">Ready</span>
+            </div>
+            -->
+          </div>
+        </section>
+
+        <!-- Analyst Notes Section -->
+        <section class="p-4 border-b border-slate-100">
+          <h2 class="flex items-center gap-2 text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"/>
+            </svg>
+            Analyst Notes
+          </h2>
+          <textarea
+            id="analyst-notes"
+            rows="5"
+            placeholder="Add context, hypotheses, or specific areas to investigate..."
+            class="w-full px-3 py-2 text-xs bg-slate-50 border border-slate-200 rounded-md resize-none
+                   placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+          ></textarea>
+        </section>
+
+        <!-- Action Buttons -->
+        <section class="p-4">
+          <div class="space-y-2">
+            <button
+              id="run-analysis-btn"
+              class="w-full h-10 text-sm font-semibold text-white bg-blue-600 rounded-lg
+                     hover:bg-blue-700 active:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
+                     transition-colors flex items-center justify-center gap-2"
+            >
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 010 1.972l-11.54 6.347a1.125 1.125 0 01-1.667-.986V5.653z"/>
+              </svg>
+              Run Analysis
+            </button>
+            <button
+              id="export-report-btn"
+              class="w-full h-9 text-sm font-medium text-slate-700 bg-white border border-slate-200 rounded-lg
+                     hover:bg-slate-50 hover:border-slate-300 active:bg-slate-100
+                     transition-colors flex items-center justify-center gap-2"
+            >
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"/>
+              </svg>
+              Export Report
+            </button>
+          </div>
+        </section>
+
+      </div>
+    </aside>
+
+
+    <!-- ======================================== -->
+    <!-- MAIN CONTENT                             -->
+    <!-- ======================================== -->
+    <main id="main-content" class="ml-[280px] flex-1 min-h-screen pb-16">
+
+      <!-- Empty State (shown when no data loaded) -->
+      <div id="empty-state" class="flex flex-col items-center justify-center min-h-[calc(100vh-8rem)] px-8">
+        <div class="flex flex-col items-center max-w-md text-center">
+          <div class="flex items-center justify-center w-20 h-20 bg-slate-100 rounded-2xl mb-6">
+            <svg class="w-10 h-10 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5M9 11.25v1.5M12 9v3.75m3-6v6"/>
+            </svg>
+          </div>
+          <h2 class="text-xl font-semibold text-slate-700 mb-2">No Analysis Loaded</h2>
+          <p class="text-sm text-slate-500 leading-relaxed mb-6">
+            Enter a company ticker or upload financial documents to begin your analysis.
+            Supported formats include SEC filings, annual reports, and financial spreadsheets.
+          </p>
+          <div class="flex items-center gap-3">
+            <div class="flex items-center gap-2 px-3 py-2 bg-slate-50 rounded-lg border border-slate-200">
+              <svg class="w-4 h-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+              </svg>
+              <span class="text-xs text-slate-500">Search ticker above</span>
+            </div>
+            <span class="text-xs text-slate-400">or</span>
+            <div class="flex items-center gap-2 px-3 py-2 bg-slate-50 rounded-lg border border-slate-200">
+              <svg class="w-4 h-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
+              </svg>
+              <span class="text-xs text-slate-500">Upload documents</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Analysis Content (hidden by default, shown when data loads) -->
+      <div id="analysis-content" class="hidden">
+
+        <!-- Company Header Bar -->
+        <div class="bg-white border-b border-slate-200 px-6 py-4">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-4">
+              <div>
+                <div class="flex items-center gap-2">
+                  <h2 id="company-name" class="text-xl font-bold text-slate-900">Apple Inc.</h2>
+                  <span id="company-ticker-badge" class="px-2 py-0.5 text-xs font-bold font-mono bg-slate-100 text-slate-600 rounded">AAPL</span>
+                </div>
+                <p id="company-meta" class="text-xs text-slate-500 mt-0.5">Technology | NASDAQ | FY2024 | Last updated: Jan 15, 2025</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-2">
+              <span id="analysis-status" class="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium bg-emerald-50 text-emerald-700 rounded-full">
+                <span class="w-1.5 h-1.5 bg-emerald-500 rounded-full"></span>
+                Analysis Complete
+              </span>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- KPI Cards Row -->
+        <section id="kpi-grid" class="px-6 py-5">
+          <div class="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4">
+
+            <!-- KPI Card: Revenue -->
+            <div class="bg-white rounded-lg border border-slate-200 shadow-sm p-4">
+              <p class="text-xs font-medium text-slate-500 mb-1">Revenue</p>
+              <p class="text-2xl font-bold text-slate-900 font-mono tabular-nums">$394.3B</p>
+              <div class="flex items-center gap-1.5 mt-2">
+                <span class="inline-flex items-center px-1.5 py-0.5 text-[11px] font-semibold bg-emerald-50 text-emerald-700 rounded-full">
+                  <svg class="w-3 h-3 mr-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"/></svg>
+                  +2.1%
+                </span>
+                <span class="text-[10px] text-slate-400">YoY</span>
+              </div>
+            </div>
+
+            <!-- KPI Card: Gross Margin -->
+            <div class="bg-white rounded-lg border border-slate-200 shadow-sm p-4">
+              <p class="text-xs font-medium text-slate-500 mb-1">Gross Margin</p>
+              <p class="text-2xl font-bold text-slate-900 font-mono tabular-nums">46.2%</p>
+              <div class="flex items-center gap-1.5 mt-2">
+                <span class="inline-flex items-center px-1.5 py-0.5 text-[11px] font-semibold bg-emerald-50 text-emerald-700 rounded-full">
+                  <svg class="w-3 h-3 mr-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"/></svg>
+                  +1.8pp
+                </span>
+                <span class="text-[10px] text-slate-400">YoY</span>
+              </div>
+            </div>
+
+            <!-- KPI Card: Net Income -->
+            <div class="bg-white rounded-lg border border-slate-200 shadow-sm p-4">
+              <p class="text-xs font-medium text-slate-500 mb-1">Net Income</p>
+              <p class="text-2xl font-bold text-slate-900 font-mono tabular-nums">$93.7B</p>
+              <div class="flex items-center gap-1.5 mt-2">
+                <span class="inline-flex items-center px-1.5 py-0.5 text-[11px] font-semibold bg-red-50 text-red-700 rounded-full">
+                  <svg class="w-3 h-3 mr-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 4.5l-15 15m0 0h11.25m-11.25 0V8.25"/></svg>
+                  -3.4%
+                </span>
+                <span class="text-[10px] text-slate-400">YoY</span>
+              </div>
+            </div>
+
+            <!-- KPI Card: EPS -->
+            <div class="bg-white rounded-lg border border-slate-200 shadow-sm p-4">
+              <p class="text-xs font-medium text-slate-500 mb-1">EPS (Diluted)</p>
+              <p class="text-2xl font-bold text-slate-900 font-mono tabular-nums">$6.13</p>
+              <div class="flex items-center gap-1.5 mt-2">
+                <span class="inline-flex items-center px-1.5 py-0.5 text-[11px] font-semibold bg-emerald-50 text-emerald-700 rounded-full">
+                  <svg class="w-3 h-3 mr-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"/></svg>
+                  +0.7%
+                </span>
+                <span class="text-[10px] text-slate-400">YoY</span>
+              </div>
+            </div>
+
+            <!-- KPI Card: Free Cash Flow -->
+            <div class="bg-white rounded-lg border border-slate-200 shadow-sm p-4">
+              <p class="text-xs font-medium text-slate-500 mb-1">Free Cash Flow</p>
+              <p class="text-2xl font-bold text-slate-900 font-mono tabular-nums">$111.4B</p>
+              <div class="flex items-center gap-1.5 mt-2">
+                <span class="inline-flex items-center px-1.5 py-0.5 text-[11px] font-semibold bg-emerald-50 text-emerald-700 rounded-full">
+                  <svg class="w-3 h-3 mr-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"/></svg>
+                  +7.2%
+                </span>
+                <span class="text-[10px] text-slate-400">YoY</span>
+              </div>
+            </div>
+
+            <!-- KPI Card: Debt/Equity -->
+            <div class="bg-white rounded-lg border border-slate-200 shadow-sm p-4">
+              <p class="text-xs font-medium text-slate-500 mb-1">Debt / Equity</p>
+              <p class="text-2xl font-bold text-slate-900 font-mono tabular-nums">1.46x</p>
+              <div class="flex items-center gap-1.5 mt-2">
+                <span class="inline-flex items-center px-1.5 py-0.5 text-[11px] font-semibold bg-amber-50 text-amber-700 rounded-full">
+                  <svg class="w-3 h-3 mr-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"/></svg>
+                  Monitor
+                </span>
+                <span class="text-[10px] text-slate-400">High</span>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+
+        <!-- Financial Statements Section -->
+        <section id="statements-panel" class="px-6 pb-5">
+          <div class="bg-white rounded-lg border border-slate-200 shadow-sm">
+
+            <!-- Tab Bar -->
+            <div class="flex items-center border-b border-slate-200 px-4">
+              <button
+                onclick="switchStatementTab('income')"
+                id="tab-income"
+                class="tab-active px-4 py-3 text-sm font-medium transition-colors whitespace-nowrap"
+              >
+                Income Statement
+              </button>
+              <button
+                onclick="switchStatementTab('balance')"
+                id="tab-balance"
+                class="tab-inactive px-4 py-3 text-sm font-medium transition-colors whitespace-nowrap"
+              >
+                Balance Sheet
+              </button>
+              <button
+                onclick="switchStatementTab('cashflow')"
+                id="tab-cashflow"
+                class="tab-inactive px-4 py-3 text-sm font-medium transition-colors whitespace-nowrap"
+              >
+                Cash Flow
+              </button>
+              <div class="flex-1"></div>
+              <span class="text-[11px] text-slate-400 font-mono">USD in millions</span>
+            </div>
+
+            <!-- Income Statement Table -->
+            <div id="stmt-income" class="overflow-x-auto">
+              <table class="stmt-table w-full text-sm">
+                <thead>
+                  <tr class="border-b border-slate-200 bg-slate-50/50">
+                    <th class="text-left py-2.5 px-4 text-xs font-semibold text-slate-600 w-[40%]">Line Item</th>
+                    <th class="text-right py-2.5 px-4 text-xs font-semibold text-slate-600 font-mono">FY2024</th>
+                    <th class="text-right py-2.5 px-4 text-xs font-semibold text-slate-600 font-mono">FY2023</th>
+                    <th class="text-right py-2.5 px-4 text-xs font-semibold text-slate-600 font-mono">FY2022</th>
+                    <th class="text-right py-2.5 px-4 text-xs font-semibold text-slate-600 font-mono">Change %</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100">
+                  <tr class="hover:bg-slate-50/50">
+                    <td class="py-2 px-4 text-slate-900 font-medium">Net Revenue</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-slate-900">394,328</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-slate-600">383,285</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-slate-600">394,328</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-emerald-600 font-medium">+2.9%</td>
+                  </tr>
+                  <tr class="indent-1 hover:bg-slate-50/50">
+                    <td class="py-2 px-4 text-slate-700">Products</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-slate-700">298,085</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-slate-500">287,994</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-slate-500">316,199</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-emerald-600">+3.5%</td>
+                  </tr>
+                  <tr class="indent-1 hover:bg-slate-50/50">
+                    <td class="py-2 px-4 text-slate-700">Services</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-slate-700">96,243</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-slate-500">85,200</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-slate-500">78,129</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-emerald-600">+13.0%</td>
+                  </tr>
+                  <tr class="hover:bg-slate-50/50">
+                    <td class="py-2 px-4 text-slate-900">Cost of Revenue</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-slate-900">212,035</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-slate-600">214,137</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-slate-600">223,546</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-emerald-600">-1.0%</td>
+                  </tr>
+                  <tr class="subtotal hover:bg-slate-50/50">
+                    <td class="py-2 px-4 text-slate-900 font-semibold">Gross Profit</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-slate-900 font-semibold">182,293</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-slate-600 font-semibold">169,148</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-slate-600 font-semibold">170,782</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-emerald-600 font-semibold">+7.8%</td>
+                  </tr>
+                  <tr class="hover:bg-slate-50/50">
+                    <td class="py-2 px-4 text-slate-700">Research &amp; Development</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-slate-700">29,915</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-slate-500">29,915</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-slate-500">26,251</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-slate-500">0.0%</td>
+                  </tr>
+                  <tr class="hover:bg-slate-50/50">
+                    <td class="py-2 px-4 text-slate-700">Selling, General &amp; Admin</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-slate-700">24,932</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-slate-500">24,932</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-slate-500">25,094</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-slate-500">0.0%</td>
+                  </tr>
+                  <tr class="subtotal hover:bg-slate-50/50">
+                    <td class="py-2 px-4 text-slate-900 font-semibold">Operating Income</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-slate-900 font-semibold">127,446</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-slate-600 font-semibold">114,301</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-slate-600 font-semibold">119,437</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-emerald-600 font-semibold">+11.5%</td>
+                  </tr>
+                  <tr class="hover:bg-slate-50/50">
+                    <td class="py-2 px-4 text-slate-700">Other Income / (Expense)</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-slate-700">(382)</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-slate-500">(565)</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-slate-500">(334)</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-emerald-600">+32.4%</td>
+                  </tr>
+                  <tr class="hover:bg-slate-50/50">
+                    <td class="py-2 px-4 text-slate-700">Income Tax Expense</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-slate-700">29,749</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-slate-500">16,741</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-slate-500">19,300</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-red-600">+77.7%</td>
+                  </tr>
+                  <tr class="total">
+                    <td class="py-2.5 px-4 text-slate-900 font-bold">Net Income</td>
+                    <td class="py-2.5 px-4 font-mono tabular-nums text-slate-900 font-bold">93,736</td>
+                    <td class="py-2.5 px-4 font-mono tabular-nums text-slate-700 font-bold">96,995</td>
+                    <td class="py-2.5 px-4 font-mono tabular-nums text-slate-700 font-bold">99,803</td>
+                    <td class="py-2.5 px-4 font-mono tabular-nums text-red-600 font-bold">-3.4%</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Balance Sheet Table -->
+            <div id="stmt-balance" class="overflow-x-auto hidden">
+              <table class="stmt-table w-full text-sm">
+                <thead>
+                  <tr class="border-b border-slate-200 bg-slate-50/50">
+                    <th class="text-left py-2.5 px-4 text-xs font-semibold text-slate-600 w-[40%]">Line Item</th>
+                    <th class="text-right py-2.5 px-4 text-xs font-semibold text-slate-600 font-mono">FY2024</th>
+                    <th class="text-right py-2.5 px-4 text-xs font-semibold text-slate-600 font-mono">FY2023</th>
+                    <th class="text-right py-2.5 px-4 text-xs font-semibold text-slate-600 font-mono">Change</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100">
+                  <tr class="hover:bg-slate-50/50">
+                    <td class="py-2 px-4 text-slate-900 font-medium">Cash &amp; Cash Equivalents</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-slate-900">29,943</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-slate-600">29,965</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-red-600">-0.1%</td>
+                  </tr>
+                  <tr class="hover:bg-slate-50/50">
+                    <td class="py-2 px-4 text-slate-700">Short-Term Investments</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-slate-700">35,228</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-slate-500">31,590</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-emerald-600">+11.5%</td>
+                  </tr>
+                  <tr class="hover:bg-slate-50/50">
+                    <td class="py-2 px-4 text-slate-700">Accounts Receivable</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-slate-700">66,243</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-slate-500">60,932</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-emerald-600">+8.7%</td>
+                  </tr>
+                  <tr class="hover:bg-slate-50/50">
+                    <td class="py-2 px-4 text-slate-700">Inventories</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-slate-700">7,286</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-slate-500">6,331</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-emerald-600">+15.1%</td>
+                  </tr>
+                  <tr class="subtotal hover:bg-slate-50/50">
+                    <td class="py-2 px-4 text-slate-900 font-semibold">Total Current Assets</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-slate-900 font-semibold">152,987</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-slate-600 font-semibold">143,566</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-emerald-600 font-semibold">+6.6%</td>
+                  </tr>
+                  <tr class="hover:bg-slate-50/50">
+                    <td class="py-2 px-4 text-slate-700">Property, Plant &amp; Equipment</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-slate-700">44,521</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-slate-500">43,715</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-emerald-600">+1.8%</td>
+                  </tr>
+                  <tr class="hover:bg-slate-50/50">
+                    <td class="py-2 px-4 text-slate-700">Goodwill &amp; Intangibles</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-slate-700">---</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-slate-500">---</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-slate-400">---</td>
+                  </tr>
+                  <tr class="total">
+                    <td class="py-2.5 px-4 text-slate-900 font-bold">Total Assets</td>
+                    <td class="py-2.5 px-4 font-mono tabular-nums text-slate-900 font-bold">352,583</td>
+                    <td class="py-2.5 px-4 font-mono tabular-nums text-slate-700 font-bold">352,755</td>
+                    <td class="py-2.5 px-4 font-mono tabular-nums text-red-600 font-bold">-0.0%</td>
+                  </tr>
+                  <tr class="hover:bg-slate-50/50">
+                    <td class="py-2 px-4 text-slate-700 pt-4">Accounts Payable</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-slate-700 pt-4">68,960</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-slate-500 pt-4">62,611</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-red-600 pt-4">+10.1%</td>
+                  </tr>
+                  <tr class="subtotal hover:bg-slate-50/50">
+                    <td class="py-2 px-4 text-slate-900 font-semibold">Total Current Liabilities</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-slate-900 font-semibold">176,392</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-slate-600 font-semibold">145,308</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-red-600 font-semibold">+21.4%</td>
+                  </tr>
+                  <tr class="hover:bg-slate-50/50">
+                    <td class="py-2 px-4 text-slate-700">Long-Term Debt</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-slate-700">96,807</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-slate-500">106,572</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-emerald-600">-9.2%</td>
+                  </tr>
+                  <tr class="total">
+                    <td class="py-2.5 px-4 text-slate-900 font-bold">Total Liabilities</td>
+                    <td class="py-2.5 px-4 font-mono tabular-nums text-slate-900 font-bold">290,437</td>
+                    <td class="py-2.5 px-4 font-mono tabular-nums text-slate-700 font-bold">290,020</td>
+                    <td class="py-2.5 px-4 font-mono tabular-nums text-red-600 font-bold">+0.1%</td>
+                  </tr>
+                  <tr class="total">
+                    <td class="py-2.5 px-4 text-slate-900 font-bold">Stockholders' Equity</td>
+                    <td class="py-2.5 px-4 font-mono tabular-nums text-slate-900 font-bold">62,146</td>
+                    <td class="py-2.5 px-4 font-mono tabular-nums text-slate-700 font-bold">62,735</td>
+                    <td class="py-2.5 px-4 font-mono tabular-nums text-red-600 font-bold">-0.9%</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Cash Flow Table -->
+            <div id="stmt-cashflow" class="overflow-x-auto hidden">
+              <table class="stmt-table w-full text-sm">
+                <thead>
+                  <tr class="border-b border-slate-200 bg-slate-50/50">
+                    <th class="text-left py-2.5 px-4 text-xs font-semibold text-slate-600 w-[40%]">Line Item</th>
+                    <th class="text-right py-2.5 px-4 text-xs font-semibold text-slate-600 font-mono">FY2024</th>
+                    <th class="text-right py-2.5 px-4 text-xs font-semibold text-slate-600 font-mono">FY2023</th>
+                    <th class="text-right py-2.5 px-4 text-xs font-semibold text-slate-600 font-mono">Change</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100">
+                  <tr class="hover:bg-slate-50/50">
+                    <td class="py-2 px-4 text-slate-900 font-medium">Net Income</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-slate-900">93,736</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-slate-600">96,995</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-red-600">-3.4%</td>
+                  </tr>
+                  <tr class="indent-1 hover:bg-slate-50/50">
+                    <td class="py-2 px-4 text-slate-700">Depreciation &amp; Amortization</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-slate-700">11,519</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-slate-500">11,519</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-slate-500">0.0%</td>
+                  </tr>
+                  <tr class="indent-1 hover:bg-slate-50/50">
+                    <td class="py-2 px-4 text-slate-700">Stock-Based Compensation</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-slate-700">11,688</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-slate-500">10,833</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-emerald-600">+7.9%</td>
+                  </tr>
+                  <tr class="indent-1 hover:bg-slate-50/50">
+                    <td class="py-2 px-4 text-slate-700">Changes in Working Capital</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-slate-700">(2,945)</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-slate-500">(6,577)</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-emerald-600">+55.2%</td>
+                  </tr>
+                  <tr class="subtotal hover:bg-slate-50/50">
+                    <td class="py-2 px-4 text-slate-900 font-semibold">Cash from Operations</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-slate-900 font-semibold">118,254</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-slate-600 font-semibold">110,543</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-emerald-600 font-semibold">+7.0%</td>
+                  </tr>
+                  <tr class="hover:bg-slate-50/50">
+                    <td class="py-2 px-4 text-slate-700">Capital Expenditures</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-slate-700">(10,959)</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-slate-500">(11,066)</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-emerald-600">+1.0%</td>
+                  </tr>
+                  <tr class="subtotal hover:bg-slate-50/50">
+                    <td class="py-2 px-4 text-slate-900 font-semibold">Cash from Investing</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-slate-900 font-semibold">(3,263)</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-slate-600 font-semibold">(3,105)</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-red-600 font-semibold">-5.1%</td>
+                  </tr>
+                  <tr class="hover:bg-slate-50/50">
+                    <td class="py-2 px-4 text-slate-700">Share Repurchases</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-slate-700">(94,949)</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-slate-500">(77,550)</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-red-600">-22.4%</td>
+                  </tr>
+                  <tr class="hover:bg-slate-50/50">
+                    <td class="py-2 px-4 text-slate-700">Dividends Paid</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-slate-700">(15,234)</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-slate-500">(15,025)</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-red-600">-1.4%</td>
+                  </tr>
+                  <tr class="subtotal hover:bg-slate-50/50">
+                    <td class="py-2 px-4 text-slate-900 font-semibold">Cash from Financing</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-slate-900 font-semibold">(115,002)</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-slate-600 font-semibold">(108,488)</td>
+                    <td class="py-2 px-4 font-mono tabular-nums text-red-600 font-semibold">-6.0%</td>
+                  </tr>
+                  <tr class="total">
+                    <td class="py-2.5 px-4 text-slate-900 font-bold">Free Cash Flow</td>
+                    <td class="py-2.5 px-4 font-mono tabular-nums text-slate-900 font-bold">111,440</td>
+                    <td class="py-2.5 px-4 font-mono tabular-nums text-slate-700 font-bold">99,477</td>
+                    <td class="py-2.5 px-4 font-mono tabular-nums text-emerald-600 font-bold">+12.0%</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+          </div>
+        </section>
+
+
+        <!-- Analysis & Narrative Section -->
+        <section id="narrative-panel" class="px-6 pb-5">
+          <div class="bg-white rounded-lg border border-slate-200 shadow-sm">
+
+            <div class="flex items-center justify-between px-5 py-3 border-b border-slate-200">
+              <div class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z"/>
+                </svg>
+                <h3 class="text-sm font-semibold text-slate-900">AI Analysis &amp; Narrative</h3>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="inline-flex items-center gap-1 px-2 py-0.5 text-[11px] font-semibold bg-emerald-50 text-emerald-700 rounded-full">
+                  <span class="w-1.5 h-1.5 bg-emerald-500 rounded-full"></span>
+                  Bullish
+                </span>
+                <span class="inline-flex items-center gap-1 px-2 py-0.5 text-[11px] font-semibold bg-amber-50 text-amber-700 rounded-full">
+                  Caution: Leverage
+                </span>
+              </div>
+            </div>
+
+            <div class="p-5 space-y-4">
+              <div class="prose prose-sm max-w-none">
+                <p class="text-sm text-slate-700 leading-relaxed">
+                  <strong>Executive Summary:</strong> Apple Inc. demonstrates continued resilience in FY2024, with total revenue growing
+                  2.9% year-over-year to $394.3 billion. The Services segment remains the standout performer, expanding 13.0% and now
+                  representing 24.4% of total revenue -- a structural shift toward higher-margin, recurring revenue streams that is
+                  transforming the company's earnings profile.
+                </p>
+                <p class="text-sm text-slate-700 leading-relaxed">
+                  <strong>Profitability Analysis:</strong> Gross margins expanded 180 basis points to 46.2%, driven primarily by the
+                  favorable revenue mix shift toward Services (which carry ~70% gross margins vs. ~36% for Products). Operating income
+                  surged 11.5% to $127.4 billion, demonstrating strong operating leverage. However, a significant increase in income tax
+                  expense (+77.7%) weighed on bottom-line results, with net income declining 3.4% to $93.7 billion.
+                </p>
+                <p class="text-sm text-slate-700 leading-relaxed">
+                  <strong>Cash Generation &amp; Capital Returns:</strong> Free cash flow expanded robustly to $111.4 billion (+12.0%),
+                  underscoring the company's exceptional cash generation capabilities. Management continues to aggressively return capital
+                  to shareholders, with $94.9 billion in share repurchases and $15.2 billion in dividends during the period. The
+                  commitment to shareholder returns remains a defining feature of Apple's capital allocation strategy.
+                </p>
+                <p class="text-sm text-slate-600 leading-relaxed italic">
+                  <strong>Key Risk:</strong> The debt-to-equity ratio of 1.46x warrants monitoring. While Apple's cash generation
+                  comfortably services its debt obligations, the elevated leverage relative to historical norms introduces incremental
+                  balance sheet risk in a rising rate environment.
+                </p>
+              </div>
+
+              <!-- Confidence / Source Tags -->
+              <div class="flex items-center gap-2 pt-2 border-t border-slate-100">
+                <span class="text-[11px] text-slate-400">Sources:</span>
+                <span class="inline-flex items-center px-2 py-0.5 text-[10px] font-medium bg-slate-100 text-slate-600 rounded">10-K FY2024</span>
+                <span class="inline-flex items-center px-2 py-0.5 text-[10px] font-medium bg-slate-100 text-slate-600 rounded">Income Statement</span>
+                <span class="inline-flex items-center px-2 py-0.5 text-[10px] font-medium bg-slate-100 text-slate-600 rounded">Cash Flow Statement</span>
+                <div class="flex-1"></div>
+                <span class="text-[10px] text-slate-400">Confidence: High</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- Derived Metrics & Ratios Section -->
+        <section id="metrics-panel" class="px-6 pb-6">
+          <div class="space-y-4">
+
+            <h3 class="text-sm font-semibold text-slate-900 flex items-center gap-2">
+              <svg class="w-4 h-4 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 14.25v2.25m3-4.5v4.5m3-6.75v6.75m3-9v9M6 20.25h12A2.25 2.25 0 0020.25 18V6A2.25 2.25 0 0018 3.75H6A2.25 2.25 0 003.75 6v12A2.25 2.25 0 006 20.25z"/>
+              </svg>
+              Derived Metrics &amp; Ratios
+            </h3>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
+
+              <!-- Profitability Ratios -->
+              <div class="bg-white rounded-lg border border-slate-200 shadow-sm">
+                <div class="px-4 py-2.5 border-b border-slate-100">
+                  <h4 class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Profitability</h4>
+                </div>
+                <div class="divide-y divide-slate-50">
+                  <div class="flex items-center justify-between px-4 py-2.5">
+                    <span class="text-xs text-slate-600">Gross Margin</span>
+                    <span class="text-xs font-semibold font-mono tabular-nums text-slate-900">46.2%</span>
+                  </div>
+                  <div class="flex items-center justify-between px-4 py-2.5">
+                    <span class="text-xs text-slate-600">Operating Margin</span>
+                    <span class="text-xs font-semibold font-mono tabular-nums text-slate-900">32.3%</span>
+                  </div>
+                  <div class="flex items-center justify-between px-4 py-2.5">
+                    <span class="text-xs text-slate-600">Net Margin</span>
+                    <span class="text-xs font-semibold font-mono tabular-nums text-slate-900">23.8%</span>
+                  </div>
+                  <div class="flex items-center justify-between px-4 py-2.5">
+                    <span class="text-xs text-slate-600">ROE</span>
+                    <span class="text-xs font-semibold font-mono tabular-nums text-emerald-600">150.8%</span>
+                  </div>
+                  <div class="flex items-center justify-between px-4 py-2.5">
+                    <span class="text-xs text-slate-600">ROA</span>
+                    <span class="text-xs font-semibold font-mono tabular-nums text-slate-900">26.6%</span>
+                  </div>
+                  <div class="flex items-center justify-between px-4 py-2.5">
+                    <span class="text-xs text-slate-600">ROIC</span>
+                    <span class="text-xs font-semibold font-mono tabular-nums text-emerald-600">58.3%</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Liquidity Ratios -->
+              <div class="bg-white rounded-lg border border-slate-200 shadow-sm">
+                <div class="px-4 py-2.5 border-b border-slate-100">
+                  <h4 class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Liquidity</h4>
+                </div>
+                <div class="divide-y divide-slate-50">
+                  <div class="flex items-center justify-between px-4 py-2.5">
+                    <span class="text-xs text-slate-600">Current Ratio</span>
+                    <span class="text-xs font-semibold font-mono tabular-nums text-amber-600">0.87x</span>
+                  </div>
+                  <div class="flex items-center justify-between px-4 py-2.5">
+                    <span class="text-xs text-slate-600">Quick Ratio</span>
+                    <span class="text-xs font-semibold font-mono tabular-nums text-amber-600">0.83x</span>
+                  </div>
+                  <div class="flex items-center justify-between px-4 py-2.5">
+                    <span class="text-xs text-slate-600">Cash Ratio</span>
+                    <span class="text-xs font-semibold font-mono tabular-nums text-slate-900">0.17x</span>
+                  </div>
+                  <div class="flex items-center justify-between px-4 py-2.5">
+                    <span class="text-xs text-slate-600">Working Capital</span>
+                    <span class="text-xs font-semibold font-mono tabular-nums text-red-600">($23.4B)</span>
+                  </div>
+                  <div class="flex items-center justify-between px-4 py-2.5">
+                    <span class="text-xs text-slate-600">Days Sales O/S</span>
+                    <span class="text-xs font-semibold font-mono tabular-nums text-slate-900">61.3</span>
+                  </div>
+                  <div class="flex items-center justify-between px-4 py-2.5">
+                    <span class="text-xs text-slate-600">Days Payable O/S</span>
+                    <span class="text-xs font-semibold font-mono tabular-nums text-emerald-600">118.7</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Leverage Ratios -->
+              <div class="bg-white rounded-lg border border-slate-200 shadow-sm">
+                <div class="px-4 py-2.5 border-b border-slate-100">
+                  <h4 class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Leverage</h4>
+                </div>
+                <div class="divide-y divide-slate-50">
+                  <div class="flex items-center justify-between px-4 py-2.5">
+                    <span class="text-xs text-slate-600">Debt / Equity</span>
+                    <span class="text-xs font-semibold font-mono tabular-nums text-amber-600">1.46x</span>
+                  </div>
+                  <div class="flex items-center justify-between px-4 py-2.5">
+                    <span class="text-xs text-slate-600">Debt / EBITDA</span>
+                    <span class="text-xs font-semibold font-mono tabular-nums text-slate-900">0.70x</span>
+                  </div>
+                  <div class="flex items-center justify-between px-4 py-2.5">
+                    <span class="text-xs text-slate-600">Interest Coverage</span>
+                    <span class="text-xs font-semibold font-mono tabular-nums text-emerald-600">29.1x</span>
+                  </div>
+                  <div class="flex items-center justify-between px-4 py-2.5">
+                    <span class="text-xs text-slate-600">Equity Multiplier</span>
+                    <span class="text-xs font-semibold font-mono tabular-nums text-slate-900">5.67x</span>
+                  </div>
+                  <div class="flex items-center justify-between px-4 py-2.5">
+                    <span class="text-xs text-slate-600">Net Debt</span>
+                    <span class="text-xs font-semibold font-mono tabular-nums text-slate-900">$66.9B</span>
+                  </div>
+                  <div class="flex items-center justify-between px-4 py-2.5">
+                    <span class="text-xs text-slate-600">Net Debt / FCF</span>
+                    <span class="text-xs font-semibold font-mono tabular-nums text-emerald-600">0.60x</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Efficiency / Valuation Ratios -->
+              <div class="bg-white rounded-lg border border-slate-200 shadow-sm">
+                <div class="px-4 py-2.5 border-b border-slate-100">
+                  <h4 class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Efficiency</h4>
+                </div>
+                <div class="divide-y divide-slate-50">
+                  <div class="flex items-center justify-between px-4 py-2.5">
+                    <span class="text-xs text-slate-600">Asset Turnover</span>
+                    <span class="text-xs font-semibold font-mono tabular-nums text-slate-900">1.12x</span>
+                  </div>
+                  <div class="flex items-center justify-between px-4 py-2.5">
+                    <span class="text-xs text-slate-600">Inventory Turnover</span>
+                    <span class="text-xs font-semibold font-mono tabular-nums text-emerald-600">29.1x</span>
+                  </div>
+                  <div class="flex items-center justify-between px-4 py-2.5">
+                    <span class="text-xs text-slate-600">Receivables Turnover</span>
+                    <span class="text-xs font-semibold font-mono tabular-nums text-slate-900">6.0x</span>
+                  </div>
+                  <div class="flex items-center justify-between px-4 py-2.5">
+                    <span class="text-xs text-slate-600">FCF Yield</span>
+                    <span class="text-xs font-semibold font-mono tabular-nums text-slate-900">3.2%</span>
+                  </div>
+                  <div class="flex items-center justify-between px-4 py-2.5">
+                    <span class="text-xs text-slate-600">Revenue / Employee</span>
+                    <span class="text-xs font-semibold font-mono tabular-nums text-emerald-600">$2.4M</span>
+                  </div>
+                  <div class="flex items-center justify-between px-4 py-2.5">
+                    <span class="text-xs text-slate-600">SBC % of Revenue</span>
+                    <span class="text-xs font-semibold font-mono tabular-nums text-slate-900">3.0%</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+      </div><!-- /analysis-content -->
+    </main>
+
+  </div><!-- /flex layout -->
+
+
+  <!-- ========================================== -->
+  <!-- FOOTER                                     -->
+  <!-- ========================================== -->
+  <footer class="fixed bottom-0 left-[280px] right-0 z-20 bg-white border-t border-slate-200">
+    <div class="flex items-center justify-between h-8 px-6 text-[11px] text-slate-400">
+      <div class="flex items-center gap-4">
+        <span id="footer-source-count" class="flex items-center gap-1">
+          <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375"/>
+          </svg>
+          0 sources loaded
+        </span>
+        <span class="text-slate-300">|</span>
+        <span id="footer-quality" class="flex items-center gap-1">
+          <span class="w-1.5 h-1.5 rounded-full bg-slate-300"></span>
+          Data quality: N/A
+        </span>
+      </div>
+      <div class="flex items-center gap-4">
+        <span>IGSB Analyst v0.1.0</span>
+        <span class="text-slate-300">|</span>
+        <span id="footer-timestamp">--</span>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ========================================== -->
+  <!-- TOAST CONTAINER                            -->
+  <!-- ========================================== -->
+  <div
+    id="toast-container"
+    class="fixed bottom-12 right-4 z-50 flex flex-col gap-2 pointer-events-none"
+    aria-live="polite"
+  >
+    <!-- Toasts are injected here by JS. Example structure:
+    <div class="toast-enter pointer-events-auto flex items-start gap-3 max-w-sm px-4 py-3 bg-white border border-slate-200 rounded-lg shadow-lg">
+      <svg class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5">...</svg>
+      <div>
+        <p class="text-sm font-medium text-slate-900">Analysis Complete</p>
+        <p class="text-xs text-slate-500 mt-0.5">All financial statements have been processed.</p>
+      </div>
+      <button class="text-slate-400 hover:text-slate-600 ml-2">x</button>
+    </div>
+    -->
+  </div>
+
+
+  <!-- ========================================== -->
+  <!-- MODAL OVERLAY                              -->
+  <!-- ========================================== -->
+  <div
+    id="modal-overlay"
+    class="hidden fixed inset-0 z-[100] flex items-center justify-center bg-black/50 backdrop-blur-sm"
+  >
+    <div
+      id="modal-content"
+      class="bg-white rounded-xl shadow-2xl border border-slate-200 w-full max-w-lg mx-4 overflow-hidden"
+    >
+      <!-- Modal Header -->
+      <div class="flex items-center justify-between px-5 py-4 border-b border-slate-200">
+        <h3 id="modal-title" class="text-base font-semibold text-slate-900">Settings</h3>
+        <button
+          id="modal-close-btn"
+          onclick="document.getElementById('modal-overlay').classList.add('hidden')"
+          class="flex items-center justify-center w-8 h-8 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-lg transition-colors"
+        >
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Modal Body -->
+      <div id="modal-body" class="p-5 space-y-4">
+
+        <div>
+          <label class="block text-sm font-medium text-slate-700 mb-1.5">API Endpoint</label>
+          <input
+            type="text"
+            value="http://localhost:8000"
+            class="w-full h-9 px-3 text-sm font-mono bg-slate-50 border border-slate-200 rounded-lg
+                   focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+          >
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-slate-700 mb-1.5">Analysis Model</label>
+          <select class="w-full h-9 px-3 text-sm bg-slate-50 border border-slate-200 rounded-lg text-slate-700
+                         focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors">
+            <option>Claude 3.5 Sonnet</option>
+            <option>Claude 3 Opus</option>
+            <option>GPT-4o</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-slate-700 mb-1.5">Output Format</label>
+          <div class="flex items-center gap-3">
+            <label class="flex items-center gap-2 text-sm text-slate-600 cursor-pointer">
+              <input type="radio" name="output-format" value="html" checked class="text-blue-600 focus:ring-blue-500">
+              HTML Report
+            </label>
+            <label class="flex items-center gap-2 text-sm text-slate-600 cursor-pointer">
+              <input type="radio" name="output-format" value="pdf" class="text-blue-600 focus:ring-blue-500">
+              PDF
+            </label>
+            <label class="flex items-center gap-2 text-sm text-slate-600 cursor-pointer">
+              <input type="radio" name="output-format" value="json" class="text-blue-600 focus:ring-blue-500">
+              JSON
+            </label>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="flex items-center justify-end gap-2 px-5 py-3 border-t border-slate-100 bg-slate-50/50">
+        <button
+          onclick="document.getElementById('modal-overlay').classList.add('hidden')"
+          class="h-9 px-4 text-sm font-medium text-slate-700 bg-white border border-slate-200 rounded-lg
+                 hover:bg-slate-50 transition-colors"
+        >
+          Cancel
+        </button>
+        <button
+          onclick="document.getElementById('modal-overlay').classList.add('hidden')"
+          class="h-9 px-4 text-sm font-semibold text-white bg-blue-600 rounded-lg
+                 hover:bg-blue-700 transition-colors"
+        >
+          Save Settings
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ========================================== -->
+  <!-- INLINE SCRIPTS: Tab switching + wiring     -->
+  <!-- ========================================== -->
+  <script>
+    // Financial statement tab switching
+    function switchStatementTab(tab) {
+      const tabs = ['income', 'balance', 'cashflow'];
+      tabs.forEach(function(t) {
+        const tabBtn = document.getElementById('tab-' + t);
+        const panel = document.getElementById('stmt-' + t);
+        if (t === tab) {
+          tabBtn.className = 'tab-active px-4 py-3 text-sm font-medium transition-colors whitespace-nowrap';
+          panel.classList.remove('hidden');
+        } else {
+          tabBtn.className = 'tab-inactive px-4 py-3 text-sm font-medium transition-colors whitespace-nowrap';
+          panel.classList.add('hidden');
+        }
+      });
+    }
+
+    // Settings modal toggle
+    document.getElementById('settings-btn').addEventListener('click', function() {
+      document.getElementById('modal-overlay').classList.remove('hidden');
+    });
+
+    // Close modal on overlay click
+    document.getElementById('modal-overlay').addEventListener('click', function(e) {
+      if (e.target === this) {
+        this.classList.add('hidden');
+      }
+    });
+
+    // Close modal on Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        document.getElementById('modal-overlay').classList.add('hidden');
+      }
+    });
+
+    // Upload zone click -> file input
+    document.getElementById('upload-zone').addEventListener('click', function() {
+      document.getElementById('file-input').click();
+    });
+
+    // Drag and drop visual feedback
+    var dropZone = document.getElementById('upload-zone');
+    ['dragenter', 'dragover'].forEach(function(evt) {
+      dropZone.addEventListener(evt, function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        dropZone.classList.add('drop-zone-active');
+      });
+    });
+    ['dragleave', 'drop'].forEach(function(evt) {
+      dropZone.addEventListener(evt, function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        dropZone.classList.remove('drop-zone-active');
+      });
+    });
+
+    // Sync header ticker input with EDGAR ticker
+    document.getElementById('ticker-input').addEventListener('input', function() {
+      document.getElementById('edgar-ticker').value = this.value.toUpperCase();
+    });
+    document.getElementById('edgar-ticker').addEventListener('input', function() {
+      document.getElementById('ticker-input').value = this.value.toUpperCase();
+    });
+
+    // Update footer timestamp
+    function updateTimestamp() {
+      var now = new Date();
+      var ts = now.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+               + ' ' + now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+      document.getElementById('footer-timestamp').textContent = ts;
+    }
+    updateTimestamp();
+    setInterval(updateTimestamp, 60000);
+  </script>
+
+
+  <!-- ========================================== -->
+  <!-- MODULE SCRIPTS (placeholders for JS files) -->
+  <!-- ========================================== -->
+  <script type="module" src="js/app.js"></script>
+  <script type="module" src="js/upload.js"></script>
+  <script type="module" src="js/edgar.js"></script>
+  <script type="module" src="js/analysis.js"></script>
+  <script type="module" src="js/renderer.js"></script>
+  <script type="module" src="js/export.js"></script>
+
+</body>
+</html>
