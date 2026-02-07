@@ -1,0 +1,160 @@
+/**
+ * IGSB-Analyst — Main Application Controller
+ * Entry point that initializes all modules.
+ */
+
+import { initUpload, uploadedDocuments, getParsedData } from './upload.js';
+
+// App state
+const state = {
+  ticker: null,
+  edgarData: null,
+  analysisResult: null,
+  isAnalyzing: false,
+};
+
+/**
+ * Initialize the application
+ */
+function init() {
+  initUpload();
+  wireTickerSearch();
+  wireAnalysisButton();
+  wireExportButton();
+
+  console.log('[IGSB-Analyst] Initialized');
+}
+
+/**
+ * Wire up ticker search from header and EDGAR sidebar
+ */
+function wireTickerSearch() {
+  const searchBtn = document.getElementById('ticker-search-btn');
+  const tickerInput = document.getElementById('ticker-input');
+  const edgarFetchBtn = document.getElementById('edgar-fetch-btn');
+
+  if (searchBtn && tickerInput) {
+    searchBtn.addEventListener('click', () => {
+      const ticker = tickerInput.value.trim().toUpperCase();
+      if (ticker) handleTickerSearch(ticker);
+    });
+
+    tickerInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        const ticker = tickerInput.value.trim().toUpperCase();
+        if (ticker) handleTickerSearch(ticker);
+      }
+    });
+  }
+
+  if (edgarFetchBtn) {
+    edgarFetchBtn.addEventListener('click', () => {
+      const ticker = document.getElementById('edgar-ticker')?.value.trim().toUpperCase();
+      if (ticker) handleTickerSearch(ticker);
+    });
+  }
+}
+
+/**
+ * Handle ticker search — will be fully implemented with EDGAR module (PR #4)
+ */
+async function handleTickerSearch(ticker) {
+  state.ticker = ticker;
+  console.log(`[IGSB-Analyst] Searching for ticker: ${ticker}`);
+  // TODO: PR #4 — call edgar.js to fetch company data
+}
+
+/**
+ * Wire up the Run Analysis button
+ */
+function wireAnalysisButton() {
+  const btn = document.getElementById('run-analysis-btn');
+  if (btn) {
+    btn.addEventListener('click', handleRunAnalysis);
+  }
+}
+
+/**
+ * Handle analysis run — will be fully implemented in PR #5
+ */
+async function handleRunAnalysis() {
+  if (state.isAnalyzing) return;
+
+  const parsedDocs = getParsedData();
+  const hasData = parsedDocs.length > 0 || state.edgarData;
+
+  if (!hasData) {
+    showToast('Upload documents or search a ticker first', 'warning');
+    return;
+  }
+
+  console.log('[IGSB-Analyst] Running analysis...', {
+    documents: parsedDocs.length,
+    ticker: state.ticker,
+  });
+  // TODO: PR #5 — call analysis.js
+}
+
+/**
+ * Wire up export button — will be fully implemented in PR #8
+ */
+function wireExportButton() {
+  const btn = document.getElementById('export-btn');
+  if (btn) {
+    btn.addEventListener('click', () => {
+      if (!state.analysisResult) {
+        showToast('Run an analysis first before exporting', 'warning');
+        return;
+      }
+      // TODO: PR #8 — call export.js
+    });
+  }
+}
+
+/**
+ * Show/hide the empty state vs analysis content
+ */
+export function showAnalysisContent() {
+  document.getElementById('empty-state')?.classList.add('hidden');
+  document.getElementById('analysis-content')?.classList.remove('hidden');
+}
+
+export function showEmptyState() {
+  document.getElementById('empty-state')?.classList.remove('hidden');
+  document.getElementById('analysis-content')?.classList.add('hidden');
+}
+
+/**
+ * Toast helper (delegates to upload.js toast or creates simple one)
+ */
+function showToast(message, type = 'info') {
+  const container = document.getElementById('toast-container');
+  if (!container) return;
+
+  const colors = {
+    success: 'bg-emerald-50 border-emerald-200 text-emerald-800',
+    error: 'bg-red-50 border-red-200 text-red-800',
+    warning: 'bg-amber-50 border-amber-200 text-amber-800',
+    info: 'bg-blue-50 border-blue-200 text-blue-800',
+  };
+
+  const toast = document.createElement('div');
+  toast.className = `toast ${colors[type] || colors.info} border rounded-lg px-4 py-3 shadow-md text-sm font-medium`;
+  toast.textContent = message;
+  container.appendChild(toast);
+
+  setTimeout(() => {
+    toast.classList.add('toast-exit');
+    toast.addEventListener('animationend', () => toast.remove());
+  }, 4000);
+}
+
+// Export state for other modules
+export { state };
+
+// Initialize when DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  init();
+}
