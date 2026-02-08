@@ -91,3 +91,39 @@ project-alpha/
 - Branch naming: `pr-N-short-description` (e.g., `pr-1-project-plan`)
 - Commit messages: conventional commits style
 - One PR per feature slice
+
+## Learnings & Build Notes
+
+This project was built in a single Claude Code session across 8 PR-sized increments using parallel subagents for speed. Here's what we learned:
+
+### What Worked Well
+- **Parallel subagent strategy:** Launching 2-3 file-writing agents simultaneously per PR cut wall-clock time significantly. Each agent writes independent files, then a single integration pass fixes imports and cross-references.
+- **PR-sized increments:** Each commit delivers a visible slice of functionality. This makes debugging easier — if something breaks, you know which slice caused it.
+- **Static SPA + FastAPI:** No build step on the frontend means instant iteration. Tailwind CDN + vanilla JS eliminates toolchain complexity entirely.
+- **Pre-generated analysis as fallback:** When API credits aren't available, cached AnalysisJSON files in `data/` let the full UI work without a live Claude API call. Claude Code itself can generate the analysis.
+- **edgartools library:** Excellent for structured SEC data. The `EntityFacts` API gives you income statement, balance sheet, and cash flow as pandas DataFrames directly.
+
+### Gotchas & Fixes
+- **Python 3.9 vs 3.10+ type syntax:** Pydantic evaluates model field annotations at runtime, so `str | None` fails on Python 3.9 even with `from __future__ import annotations`. Fix: use `Optional[str]` from `typing` in all Pydantic models.
+- **edgartools + hishel version conflict:** edgartools 4.6.x requires hishel >= 0.1.3, but hishel 1.1.x breaks with `module 'hishel' has no attribute 'FileStorage'`. Fix: pin `hishel>=0.1.3,<1.0`.
+- **edgartools API evolution:** The `facts.get("us-gaap", concept_name)` pattern from older docs doesn't work in v4.6. Use `facts.income_statement()`, `facts.balance_sheet()`, `facts.cash_flow()` which return `FinancialStatement` objects with `.data` DataFrames.
+- **Inline styles vs external CSS:** When subagents write HTML, they tend to inline `<style>` blocks. Always do an integration pass to replace with `<link rel="stylesheet">` pointing to the external CSS file.
+- **CSS class name mismatch:** HTML agents may use `tab-active`/`tab-inactive` while CSS agents write `.tab-btn.active`. Check class names match across files.
+- **Module script loading:** Use a single `<script type="module" src="js/app.js">` entry point that imports all other modules. Don't load modules as separate script tags.
+- **CDN library loading patterns:** pdf.js loads as an ES module (`type="module"`), SheetJS loads as a global script (`window.XLSX`). They need different `<script>` tag patterns.
+
+### Running Locally
+```bash
+# Backend (from backend/ directory)
+pip install -r requirements.txt
+export ANTHROPIC_API_KEY=sk-ant-...  # optional, needed for live Claude analysis
+cd backend && uvicorn main:app --reload --port 8000
+
+# Frontend (from project root)
+python -m http.server 3000
+
+# Open http://localhost:3000, search "APPF" for AppFolio demo
+```
+
+### Cached Analysis (No API Key Needed)
+Pre-generated analysis files live in `data/{TICKER}-analysis.json`. The app auto-loads these when you search a ticker. To generate more, you can use Claude Code to analyze EDGAR data and write the JSON manually — no API credits required.
