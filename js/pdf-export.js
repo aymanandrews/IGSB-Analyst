@@ -680,6 +680,343 @@ function buildInvestmentMemo(data) {
   return content;
 }
 
+function buildValuationSection(data) {
+  const headlines = data.headline_metrics || [];
+  const dm = data.derived_metrics || {};
+  const narrative = data.narrative || {};
+
+  const valuationMetrics = headlines.filter(m =>
+    ['P/E Ratio', 'EV / Revenue', 'EV / EBITDA', 'Market Cap', 'Enterprise Value', 'Stock Price'].includes(m.label)
+  );
+
+  if (!valuationMetrics.length && !dm.profitability && !dm.efficiency) return [];
+
+  const content = [
+    { text: 'Valuation & Metrics', style: 'sectionHeader', pageBreak: 'before' },
+  ];
+
+  // Valuation multiples
+  if (valuationMetrics.length) {
+    content.push({
+      table: {
+        headerRows: 0,
+        widths: valuationMetrics.map(() => '*'),
+        body: [
+          valuationMetrics.map(m => ({
+            text: [
+              { text: m.label + '\n', fontSize: 7, color: COLORS.textMuted },
+              { text: m.formatted || '—', fontSize: 11, bold: true, color: COLORS.textPrimary },
+            ],
+            alignment: 'center',
+            margin: [4, 6, 4, 6],
+          })),
+        ],
+      },
+      layout: {
+        hLineWidth: () => 0.5, vLineWidth: () => 0.5,
+        hLineColor: () => COLORS.border, vLineColor: () => COLORS.border,
+        paddingLeft: () => 4, paddingRight: () => 4, paddingTop: () => 4, paddingBottom: () => 4,
+      },
+      margin: [0, 0, 0, 12],
+    });
+  }
+
+  // Profitability + Efficiency metrics tables
+  const categories = [
+    ['Profitability', dm.profitability],
+    ['Efficiency & Returns', dm.efficiency],
+  ];
+
+  for (const [catName, metrics] of categories) {
+    if (!metrics) continue;
+    const rows = [
+      [
+        { text: catName, style: 'tableHeaderCell', alignment: 'left' },
+        { text: 'Value', style: 'tableHeaderCell', alignment: 'right' },
+        { text: 'Trend', style: 'tableHeaderCell', alignment: 'right' },
+      ],
+    ];
+
+    for (const [key, m] of Object.entries(metrics)) {
+      if (!m) continue;
+      const label = key.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+      let valStr;
+      if (key.includes('margin') || key.includes('roe') || key.includes('roa') || key.includes('roic') || key.includes('yield')) {
+        valStr = fmtPercent(m.value);
+      } else if (key.includes('capital') || key.includes('debt') || key.includes('net_debt')) {
+        valStr = fmtCurrency(m.value);
+      } else {
+        valStr = typeof m.value === 'number' ? m.value.toFixed(2) : String(m.value);
+      }
+      const trendColor = m.trend === 'up' ? COLORS.positive : m.trend === 'down' ? COLORS.negative : COLORS.textMuted;
+      rows.push([
+        { text: label, fontSize: 8, color: COLORS.textSecondary },
+        { text: valStr, fontSize: 8, bold: true, color: COLORS.textPrimary, alignment: 'right' },
+        { text: m.trend === 'up' ? 'Up' : m.trend === 'down' ? 'Down' : 'Stable', fontSize: 8, color: trendColor, alignment: 'right' },
+      ]);
+    }
+
+    content.push({
+      table: {
+        headerRows: 1,
+        widths: ['*', 80, 50],
+        body: rows,
+        dontBreakRows: true,
+      },
+      layout: {
+        hLineWidth: (i) => i === 0 ? 0 : i === 1 ? 1 : 0.25,
+        vLineWidth: () => 0,
+        hLineColor: (i) => i === 1 ? COLORS.textSecondary : COLORS.borderSubtle,
+        paddingLeft: () => 4, paddingRight: () => 4, paddingTop: () => 3, paddingBottom: () => 3,
+        fillColor: (i) => i === 0 ? null : i % 2 === 0 ? '#fafbfc' : null,
+      },
+      margin: [0, 0, 0, 12],
+    });
+  }
+
+  // Valuation-related narrative
+  if (narrative.sections) {
+    const relevant = narrative.sections.filter(s =>
+      /profit|cash|capital|balance|valuation|margin/i.test(s.title)
+    );
+    for (const section of relevant) {
+      const sentColor = section.sentiment === 'positive' ? COLORS.positive
+        : section.sentiment === 'negative' ? COLORS.negative
+        : section.sentiment === 'mixed' ? '#d97706' : COLORS.textMuted;
+      content.push(
+        {
+          columns: [
+            { text: section.title, style: 'subsectionHeader', width: '*' },
+            { text: (section.sentiment || '').toUpperCase(), fontSize: 7, color: sentColor, bold: true, alignment: 'right', margin: [0, 14, 0, 0], width: 'auto' },
+          ],
+        },
+        { text: section.content, fontSize: 9, color: COLORS.textSecondary, lineHeight: 1.5, margin: [0, 0, 0, 8] },
+      );
+    }
+  }
+
+  return content;
+}
+
+function buildCompetitorsSection(data) {
+  const narrative = data.narrative || {};
+  const company = data.company || {};
+
+  const competitiveNarr = narrative.sections?.filter(s =>
+    /compet|market|position|risk|growth|revenue/i.test(s.title)
+  ) || [];
+
+  if (!competitiveNarr.length && !narrative.risks?.length) return [];
+
+  const content = [
+    { text: 'Competitive Landscape', style: 'sectionHeader', pageBreak: 'before' },
+    { text: `Industry: ${company.industry || 'N/A'}`, fontSize: 9, color: COLORS.textMuted, margin: [0, 0, 0, 12] },
+  ];
+
+  for (const section of competitiveNarr) {
+    const sentColor = section.sentiment === 'positive' ? COLORS.positive
+      : section.sentiment === 'negative' ? COLORS.negative
+      : section.sentiment === 'mixed' ? '#d97706' : COLORS.textMuted;
+    content.push(
+      {
+        columns: [
+          { text: section.title, style: 'subsectionHeader', width: '*' },
+          { text: (section.sentiment || '').toUpperCase(), fontSize: 7, color: sentColor, bold: true, alignment: 'right', margin: [0, 14, 0, 0], width: 'auto' },
+        ],
+      },
+      { text: section.content, fontSize: 9, color: COLORS.textSecondary, lineHeight: 1.5, margin: [0, 0, 0, 8] },
+    );
+  }
+
+  if (narrative.risks?.length) {
+    content.push(
+      { text: 'Competitive Risk Factors', style: 'subsectionHeader' },
+      {
+        ul: narrative.risks.map(r => ({ text: r, fontSize: 9, color: COLORS.textSecondary, margin: [0, 2, 0, 2] })),
+        margin: [8, 0, 0, 12],
+      },
+    );
+  }
+
+  return content;
+}
+
+function buildManagementSection(data) {
+  const company = data.company || {};
+  const narrative = data.narrative || {};
+  const dm = data.derived_metrics || {};
+  const liquidity = dm.liquidity || {};
+  const leverage = dm.leverage || {};
+
+  const content = [
+    { text: 'Management & Company Overview', style: 'sectionHeader', pageBreak: 'before' },
+  ];
+
+  // Company details table
+  const detailRows = [
+    ['Name', company.name || 'N/A'],
+    ['Ticker / Exchange', `${company.ticker || 'N/A'} / ${company.exchange || 'N/A'}`],
+    ['Sector / Industry', `${company.sector || 'N/A'} / ${company.industry || 'N/A'}`],
+    ['Fiscal Year End', company.fiscal_year_end || 'N/A'],
+    ['Market Cap', company.market_cap ? fmtCurrency(company.market_cap) : 'N/A'],
+    ['Shares Outstanding', company.shares_outstanding ? fmtNumber(company.shares_outstanding) : 'N/A'],
+    ['Current Ratio', liquidity.current_ratio?.value != null ? liquidity.current_ratio.value.toFixed(2) + 'x' : 'N/A'],
+    ['Debt to Equity', leverage.debt_to_equity?.value != null ? leverage.debt_to_equity.value.toFixed(2) + 'x' : 'N/A'],
+  ];
+
+  content.push({
+    table: {
+      headerRows: 0,
+      widths: [120, '*'],
+      body: detailRows.map(([label, val]) => [
+        { text: label, fontSize: 8, color: COLORS.textMuted, bold: true },
+        { text: val, fontSize: 8, color: COLORS.textPrimary },
+      ]),
+    },
+    layout: {
+      hLineWidth: (i) => i === 0 ? 0 : 0.25,
+      vLineWidth: () => 0,
+      hLineColor: () => COLORS.borderSubtle,
+      paddingLeft: () => 4, paddingRight: () => 4, paddingTop: () => 3, paddingBottom: () => 3,
+      fillColor: (i) => i % 2 === 0 ? '#fafbfc' : null,
+    },
+    margin: [0, 0, 0, 16],
+  });
+
+  // Outlook
+  if (narrative.outlook) {
+    content.push(
+      { text: 'Forward Outlook', style: 'subsectionHeader' },
+      { text: narrative.outlook, fontSize: 9, color: COLORS.textSecondary, lineHeight: 1.5, margin: [0, 0, 0, 12] },
+    );
+  }
+
+  return content;
+}
+
+function buildIRSection(data) {
+  const sources = data.sources || [];
+  const dq = data.data_quality || {};
+  const meta = data.metadata || {};
+  const company = data.company || {};
+
+  const content = [
+    { text: 'Investor Relations & Data Sources', style: 'sectionHeader', pageBreak: 'before' },
+  ];
+
+  // SEC filings
+  const secSources = sources.filter(s => s.type === 'sec_filing');
+  if (secSources.length) {
+    content.push({ text: 'SEC Filings', style: 'subsectionHeader' });
+    for (const s of secSources) {
+      content.push({
+        text: [
+          { text: s.label || '', fontSize: 9, bold: true, color: COLORS.textPrimary },
+          s.date ? { text: `  (${s.date})`, fontSize: 8, color: COLORS.textMuted } : null,
+          s.url ? { text: `  ${s.url}`, fontSize: 7, color: COLORS.primary, link: s.url } : null,
+        ].filter(Boolean),
+        margin: [0, 2, 0, 2],
+      });
+    }
+    content.push({ text: '\n' });
+  }
+
+  // All sources
+  if (sources.length) {
+    content.push({ text: 'All Data Sources', style: 'subsectionHeader' });
+    const srcRows = [
+      [
+        { text: 'ID', style: 'tableHeaderCell' },
+        { text: 'Source', style: 'tableHeaderCell' },
+        { text: 'Type', style: 'tableHeaderCell' },
+        { text: 'Reliability', style: 'tableHeaderCell', alignment: 'right' },
+      ],
+    ];
+    for (const s of sources) {
+      srcRows.push([
+        { text: s.id || '', fontSize: 7, color: COLORS.primary, bold: true },
+        { text: s.label || '', fontSize: 8, color: COLORS.textSecondary },
+        { text: s.type?.replace(/_/g, ' ') || '', fontSize: 7, color: COLORS.textMuted },
+        { text: s.reliability || '', fontSize: 7, color: COLORS.textMuted, alignment: 'right' },
+      ]);
+    }
+    content.push({
+      table: {
+        headerRows: 1,
+        widths: [25, '*', 70, 50],
+        body: srcRows,
+        dontBreakRows: true,
+      },
+      layout: {
+        hLineWidth: (i) => i === 0 ? 0 : i === 1 ? 1 : 0.25,
+        vLineWidth: () => 0,
+        hLineColor: (i) => i === 1 ? COLORS.textSecondary : COLORS.borderSubtle,
+        paddingLeft: () => 4, paddingRight: () => 4, paddingTop: () => 2, paddingBottom: () => 2,
+      },
+      margin: [0, 0, 0, 12],
+    });
+  }
+
+  // Data quality
+  if (dq.overall_confidence || dq.completeness != null) {
+    content.push(
+      { text: 'Data Quality', style: 'subsectionHeader' },
+      {
+        text: [
+          { text: 'Confidence: ', fontSize: 9, bold: true, color: COLORS.textMuted },
+          { text: (dq.overall_confidence || 'N/A').toUpperCase(), fontSize: 9, color: COLORS.textPrimary, bold: true },
+          { text: '   Completeness: ', fontSize: 9, bold: true, color: COLORS.textMuted },
+          { text: dq.completeness != null ? `${(dq.completeness * 100).toFixed(0)}%` : 'N/A', fontSize: 9, color: COLORS.textPrimary, bold: true },
+        ],
+        margin: [0, 0, 0, 8],
+      },
+    );
+  }
+
+  if (dq.warnings?.length) {
+    content.push(
+      { text: 'Warnings', fontSize: 9, bold: true, color: '#d97706', margin: [0, 4, 0, 4] },
+      { ul: dq.warnings.map(w => ({ text: w, fontSize: 8, color: COLORS.textSecondary, margin: [0, 1, 0, 1] })), margin: [8, 0, 0, 8] },
+    );
+  }
+
+  if (dq.missing_data?.length) {
+    content.push(
+      { text: 'Missing Data', fontSize: 9, bold: true, color: COLORS.textMuted, margin: [0, 4, 0, 4] },
+      { ul: dq.missing_data.map(m => ({ text: m, fontSize: 8, color: COLORS.textMuted, margin: [0, 1, 0, 1] })), margin: [8, 0, 0, 8] },
+    );
+  }
+
+  // Analysis metadata
+  if (meta.analysis_id || meta.timestamp || meta.model) {
+    content.push({ text: 'Analysis Metadata', style: 'subsectionHeader' });
+    const metaRows = [
+      ['Analysis ID', meta.analysis_id || 'N/A'],
+      ['Timestamp', meta.timestamp ? new Date(meta.timestamp).toLocaleDateString() : 'N/A'],
+      ['Model', meta.model || 'N/A'],
+      ['Schema Version', meta.prompt_version || 'N/A'],
+    ];
+    content.push({
+      table: {
+        headerRows: 0,
+        widths: [100, '*'],
+        body: metaRows.map(([label, val]) => [
+          { text: label, fontSize: 8, color: COLORS.textMuted, bold: true },
+          { text: val, fontSize: 8, color: COLORS.textPrimary },
+        ]),
+      },
+      layout: {
+        hLineWidth: () => 0.25, vLineWidth: () => 0,
+        hLineColor: () => COLORS.borderSubtle,
+        paddingLeft: () => 4, paddingRight: () => 4, paddingTop: () => 3, paddingBottom: () => 3,
+      },
+      margin: [0, 0, 0, 12],
+    });
+  }
+
+  return content;
+}
+
 function buildSourcesAndDisclaimer(data) {
   const sources = data.sources || [];
   const dq = data.data_quality || {};
@@ -808,6 +1145,10 @@ export function generatePDF(analysisResult, ticker = 'analysis') {
       ...buildStatementTable('Cash Flow Statement', stmts.cash_flow_statement),
       ...buildDerivedMetrics(analysisResult),
       ...buildNarrative(analysisResult),
+      ...buildValuationSection(analysisResult),
+      ...buildCompetitorsSection(analysisResult),
+      ...buildManagementSection(analysisResult),
+      ...buildIRSection(analysisResult),
       ...buildSourcesAndDisclaimer(analysisResult),
     ],
 
