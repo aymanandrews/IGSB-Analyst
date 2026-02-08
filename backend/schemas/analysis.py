@@ -1,6 +1,8 @@
 """AnalysisJSON Pydantic Models — Structured output from Claude financial analysis."""
 from __future__ import annotations
 
+from typing import Dict, List, Optional
+
 from pydantic import BaseModel
 
 
@@ -10,30 +12,30 @@ class AnalysisMetadata(BaseModel):
     model: str
     prompt_version: str = "1.0"
     analysis_type: str = "full"  # full | quick | comparative
-    input_tokens: int | None = None
-    output_tokens: int | None = None
+    input_tokens: Optional[int] = None
+    output_tokens: Optional[int] = None
 
 
 class CompanyInfo(BaseModel):
     name: str
     ticker: str
-    cik: str | None = None
-    sector: str | None = None
-    industry: str | None = None
-    fiscal_year_end: str | None = None
+    cik: Optional[str] = None
+    sector: Optional[str] = None
+    industry: Optional[str] = None
+    fiscal_year_end: Optional[str] = None
 
 
 class LineItem(BaseModel):
     label: str
     concept: str = ""
-    values: dict[str, float | None] = {}
+    values: Dict[str, Optional[float]] = {}
     unit: str = "USD"
     source: str = "10-K"
 
 
 class StatementData(BaseModel):
-    periods: list[str] = []
-    line_items: list[LineItem] = []
+    periods: List[str] = []
+    line_items: List[LineItem] = []
 
 
 class FinancialStatements(BaseModel):
@@ -43,23 +45,23 @@ class FinancialStatements(BaseModel):
 
 
 class MetricValue(BaseModel):
-    value: float | None = None
+    value: Optional[float] = None
     period: str = ""
     trend: str = "stable"  # up | down | stable
 
 
 class DerivedMetrics(BaseModel):
-    profitability: dict[str, MetricValue] = {}
-    liquidity: dict[str, MetricValue] = {}
-    leverage: dict[str, MetricValue] = {}
-    efficiency: dict[str, MetricValue] = {}
+    profitability: Dict[str, MetricValue] = {}
+    liquidity: Dict[str, MetricValue] = {}
+    leverage: Dict[str, MetricValue] = {}
+    efficiency: Dict[str, MetricValue] = {}
 
 
 class KPI(BaseModel):
     label: str
-    value: float | None = None
+    value: Optional[float] = None
     formatted: str = ""
-    change: float | None = None
+    change: Optional[float] = None
     change_formatted: str = ""
     trend: str = "stable"  # up | down | stable
     period: str = ""
@@ -70,13 +72,13 @@ class NarrativeSection(BaseModel):
     title: str
     content: str
     sentiment: str = "neutral"  # positive | negative | neutral | mixed
-    source_refs: list[int] = []
+    source_refs: List[int] = []
 
 
 class Narrative(BaseModel):
     summary: str = ""
-    sections: list[NarrativeSection] = []
-    risks: list[str] = []
+    sections: List[NarrativeSection] = []
+    risks: List[str] = []
     outlook: str = ""
 
 
@@ -84,26 +86,26 @@ class Source(BaseModel):
     id: int
     type: str  # sec_filing | uploaded_document | analyst_input | computed
     label: str
-    url: str | None = None
-    filename: str | None = None
-    date: str | None = None
+    url: Optional[str] = None
+    filename: Optional[str] = None
+    date: Optional[str] = None
     reliability: str = "medium"  # high | medium | low
 
 
 class DataQuality(BaseModel):
     overall_confidence: str = "medium"  # high | medium | low
     completeness: float = 0.0
-    warnings: list[str] = []
-    missing_data: list[str] = []
+    warnings: List[str] = []
+    missing_data: List[str] = []
 
 
 class AnalysisJSON(BaseModel):
     """Top-level AnalysisJSON schema."""
-    metadata: AnalysisMetadata | None = None
+    metadata: Optional[AnalysisMetadata] = None
     company: CompanyInfo
     financial_statements: FinancialStatements = FinancialStatements()
     derived_metrics: DerivedMetrics = DerivedMetrics()
-    kpis: list[KPI] = []
+    kpis: List[KPI] = []
     narrative: Narrative = Narrative()
-    sources: list[Source] = []
+    sources: List[Source] = []
     data_quality: DataQuality = DataQuality()

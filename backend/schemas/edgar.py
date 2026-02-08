@@ -1,6 +1,8 @@
 """EDGAR Pydantic Response Models"""
 from __future__ import annotations
 
+from typing import Dict, List, Optional
+
 from pydantic import BaseModel
 
 
@@ -8,10 +10,10 @@ class CompanyInfoResponse(BaseModel):
     name: str
     ticker: str
     cik: str
-    sic: str | None = None
-    sic_description: str | None = None
-    fiscal_year_end: str | None = None
-    state: str | None = None
+    sic: Optional[str] = None
+    sic_description: Optional[str] = None
+    fiscal_year_end: Optional[str] = None
+    state: Optional[str] = None
 
 
 class FilingEntry(BaseModel):
@@ -19,26 +21,26 @@ class FilingEntry(BaseModel):
     form: str
     filed_date: str
     period: str
-    url: str | None = None
+    url: Optional[str] = None
 
 
 class FilingsResponse(BaseModel):
     ticker: str
     form_type: str
-    filings: list[FilingEntry]
+    filings: List[FilingEntry]
 
 
 class LineItem(BaseModel):
     label: str
     concept: str
-    values: dict[str, float | None]
+    values: Dict[str, Optional[float]]
     unit: str = "USD"
     source: str = "10-K"
 
 
 class StatementData(BaseModel):
-    periods: list[str]
-    line_items: list[LineItem]
+    periods: List[str]
+    line_items: List[LineItem]
 
 
 class FinancialStatements(BaseModel):

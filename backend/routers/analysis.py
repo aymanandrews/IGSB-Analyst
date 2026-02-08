@@ -1,6 +1,8 @@
 """Analysis API Routes — Claude AI financial analysis with SSE streaming."""
 from __future__ import annotations
 
+from typing import Dict, List, Optional
+
 from fastapi import APIRouter, HTTPException
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
@@ -11,10 +13,10 @@ router = APIRouter()
 
 
 class AnalysisRequest(BaseModel):
-    company_info: dict | None = None
-    financial_statements: dict | None = None
-    uploaded_documents: list[dict] | None = None
-    analyst_notes: str | None = None
+    company_info: Optional[Dict] = None
+    financial_statements: Optional[Dict] = None
+    uploaded_documents: Optional[List[Dict]] = None
+    analyst_notes: Optional[str] = None
     model: str = "claude-sonnet-4-5-20250929"
 
 
