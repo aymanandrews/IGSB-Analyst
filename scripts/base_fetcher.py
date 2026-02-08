@@ -5,7 +5,7 @@ import hashlib
 import json
 import time
 from pathlib import Path
-from typing import Any
+from typing import Any, Dict, Optional
 
 import requests
 
@@ -45,7 +45,7 @@ class BaseFetcher:
         raw = "|".join(str(a) for a in args)
         return hashlib.md5(raw.encode()).hexdigest()
 
-    def _get_cached(self, key: str, max_age_hours: int = 24) -> dict[str, Any] | None:
+    def _get_cached(self, key: str, max_age_hours: int = 24) -> Optional[Dict[str, Any]]:
         """Return cached result if fresh enough, else None."""
         cache_file = self.cache_dir / f"{key}.json"
         if not cache_file.exists():
@@ -58,7 +58,7 @@ class BaseFetcher:
         except (json.JSONDecodeError, OSError):
             return None
 
-    def _set_cached(self, key: str, data: dict[str, Any]) -> None:
+    def _set_cached(self, key: str, data: Dict[str, Any]) -> None:
         """Write data to cache."""
         cache_file = self.cache_dir / f"{key}.json"
         cache_file.write_text(json.dumps(data, indent=2, default=str))
@@ -66,8 +66,8 @@ class BaseFetcher:
     def fetch_with_retry(
         self,
         url: str,
-        params: dict[str, Any] | None = None,
-        headers: dict[str, str] | None = None,
+        params: Optional[Dict[str, Any]] = None,
+        headers: Optional[Dict[str, str]] = None,
         max_retries: int = 3,
         backoff: float = 1.0,
     ) -> requests.Response:
@@ -89,11 +89,11 @@ class BaseFetcher:
     def fetch_json(
         self,
         url: str,
-        params: dict[str, Any] | None = None,
-        headers: dict[str, str] | None = None,
-        cache_key: str | None = None,
+        params: Optional[Dict[str, Any]] = None,
+        headers: Optional[Dict[str, str]] = None,
+        cache_key: Optional[str] = None,
         cache_hours: int = 24,
-    ) -> dict[str, Any]:
+    ) -> Dict[str, Any]:
         """Fetch JSON with optional caching."""
         if cache_key:
             cached = self._get_cached(cache_key, cache_hours)
