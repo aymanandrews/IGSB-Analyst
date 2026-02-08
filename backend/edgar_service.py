@@ -8,7 +8,7 @@ from edgar import Company, set_identity
 
 
 # SEC requires a User-Agent header
-set_identity("IGSB-Analyst admin@example.com")
+set_identity("IGSB-Analyst/2.0 admin@example.com")
 
 
 def get_company_info(ticker: str) -> dict[str, Any]:

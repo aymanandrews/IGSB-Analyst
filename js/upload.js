@@ -1,6 +1,6 @@
 /**
  * upload.js — File Upload Handler & Client-Side Document Parser
- * IGSB-Analyst Financial Analysis Platform
+ * Investment Group of Santa Barbara — Financial Analysis Platform
  *
  * Handles drag-and-drop / file-input uploads, parses PDF (via pdf.js),
  * Excel/CSV (via SheetJS), and plain text files client-side.

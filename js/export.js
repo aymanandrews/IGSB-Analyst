@@ -1,5 +1,5 @@
 /**
- * IGSB-Analyst — Export & Session Management Module
+ * Investment Group of Santa Barbara — Export & Session Management Module
  * Handles JSON/PDF export and localStorage persistence.
  */
 

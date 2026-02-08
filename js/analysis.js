@@ -1,5 +1,5 @@
 /**
- * IGSB-Analyst — Analysis Orchestration Module
+ * Investment Group of Santa Barbara — Analysis Orchestration Module
  * Sends data to Claude via backend, handles SSE streaming, validates response.
  */
 

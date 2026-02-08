@@ -1,5 +1,5 @@
 /**
- * IGSB-Analyst — Main Application Controller
+ * Investment Group of Santa Barbara — Main Application Controller
  * Entry point that initializes all modules.
  */
 
@@ -228,7 +228,7 @@ async function handleRunAnalysis() {
  */
 function wireExportButton() {
   // Header export button — defaults to JSON
-  const btn = document.getElementById('export-btn');
+  const btn = document.getElementById('header-export-btn');
   if (btn) {
     btn.addEventListener('click', () => {
       if (!state.analysisResult) {
