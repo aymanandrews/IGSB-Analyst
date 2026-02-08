@@ -80,21 +80,40 @@ function wireTickerSearch() {
 
 /**
  * Try loading a pre-generated analysis from data/companies/{TICKER}/ directory.
- * Reads the manifest to find the default filing, then loads that JSON.
+ * If filingType + period are provided, looks for a matching filing in the manifest.
+ * Otherwise falls back to the default filing.
  */
-async function loadCachedAnalysis(ticker) {
+async function loadCachedAnalysis(ticker, filingType, period) {
   const t = ticker.toUpperCase();
   try {
     const manifestRes = await fetch(`data/companies/${t}/manifest.json`);
     if (!manifestRes.ok) return null;
     const manifest = await manifestRes.json();
-    if (!manifest.default_filing) return null;
-    const fileRes = await fetch(`data/companies/${t}/${manifest.default_filing}`);
+
+    let fileName = manifest.default_filing;
+
+    // If specific filing type + period requested, find matching filing
+    if (filingType && period && manifest.filings && manifest.filings.length > 0) {
+      const match = manifest.filings.find(f => f.type === filingType && f.period === period);
+      if (match) fileName = match.file;
+    }
+
+    if (!fileName) return null;
+    const fileRes = await fetch(`data/companies/${t}/${fileName}`);
     if (!fileRes.ok) return null;
     return await fileRes.json();
   } catch {
     return null;
   }
+}
+
+/**
+ * Read the current filing type and period from sidebar selectors.
+ */
+function getSelectedFiling() {
+  const filingType = document.getElementById('edgar-filing-type')?.value || '10-K';
+  const period = document.getElementById('edgar-period')?.value || null;
+  return { filingType, period };
 }
 
 /**
@@ -120,14 +139,15 @@ async function handleTickerSearch(ticker) {
     console.warn('[IGSB-Analyst] EDGAR fetch failed, trying cached data:', err.message);
   }
 
-  // Try loading cached analysis
-  const cached = await loadCachedAnalysis(ticker);
+  // Try loading cached analysis with selected filing type + period
+  const { filingType, period } = getSelectedFiling();
+  const cached = await loadCachedAnalysis(ticker, filingType, period);
   if (cached) {
     state.analysisResult = cached;
     renderAnalysis(cached);
     saveSession(state);
     showAnalysisContent();
-    showToast(`Loaded pre-generated analysis for ${ticker}`, 'success');
+    showToast(`Loaded ${filingType} ${period || ''} analysis for ${ticker}`, 'success');
   }
 }
 
@@ -165,7 +185,8 @@ async function handleRunAnalysis() {
 
   // Try cached analysis file first
   if (state.ticker) {
-    const cached = await loadCachedAnalysis(state.ticker);
+    const { filingType, period } = getSelectedFiling();
+    const cached = await loadCachedAnalysis(state.ticker, filingType, period);
     if (cached) {
       state.analysisResult = cached;
       renderAnalysis(cached);
