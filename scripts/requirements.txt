@@ -1,0 +1,18 @@
+# IGSB-Analyst Data Pipeline Dependencies
+# Install: pip install -r scripts/requirements.txt
+
+# Data Sources
+edgartools>=4.6,<5.0
+yfinance>=0.2.36
+requests>=2.31
+
+# Data Processing
+pandas>=2.0
+openpyxl>=3.1
+numpy>=1.24
+
+# Configuration
+python-dotenv>=1.0
+
+# Rate limiting (optional, for more sophisticated use)
+# ratelimit>=2.2
