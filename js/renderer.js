@@ -860,6 +860,434 @@ function renderDataQuality(dataQuality) {
 }
 
 // ============================================================
+// Tab Renderers — Valuation, Competitors, Management, IR
+// ============================================================
+
+/**
+ * Render the Valuation tab — multiples, profitability metrics, and narrative.
+ */
+function renderValuationTab(data) {
+  const headlines = data.headline_metrics || [];
+  const dm = data.derived_metrics || {};
+  const narrative = data.narrative || {};
+  const company = data.company || {};
+
+  // Valuation multiples table
+  const multiplesEl = document.getElementById('valuation-multiples');
+  if (multiplesEl) {
+    const valuationMetrics = headlines.filter(m =>
+      ['P/E Ratio', 'EV / Revenue', 'EV / EBITDA', 'Market Cap', 'Enterprise Value', 'Stock Price'].includes(m.label)
+    );
+
+    let html = `
+      <div class="px-5 py-3 border-b border-slate-200">
+        <h3 class="text-sm font-semibold text-slate-900">Valuation Summary</h3>
+      </div>
+      <div class="p-5">
+        <div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-4">
+    `;
+    for (const m of valuationMetrics) {
+      html += `
+        <div class="text-center p-3 bg-slate-50 rounded-lg">
+          <div class="text-[10px] font-medium text-slate-400 uppercase tracking-wider">${escapeHTML(m.label)}</div>
+          <div class="text-lg font-bold font-mono tabular-nums text-slate-900 mt-1">${escapeHTML(m.formatted)}</div>
+        </div>
+      `;
+    }
+    html += '</div></div>';
+    multiplesEl.innerHTML = html;
+  }
+
+  // Profitability + efficiency metrics
+  const metricsEl = document.getElementById('valuation-metrics');
+  if (metricsEl) {
+    metricsEl.innerHTML = '';
+    const cats = [
+      { key: 'profitability', title: 'Profitability Metrics' },
+      { key: 'efficiency', title: 'Efficiency & Returns' },
+    ];
+    for (const { key, title } of cats) {
+      const catData = dm[key];
+      if (!catData) continue;
+      let html = `
+        <div class="bg-white rounded-lg border border-slate-200 shadow-sm">
+          <div class="px-5 py-3 border-b border-slate-100">
+            <h4 class="text-xs font-semibold text-slate-500 uppercase tracking-wider">${escapeHTML(title)}</h4>
+          </div>
+          <div class="divide-y divide-slate-50">
+      `;
+      for (const [mk, mv] of Object.entries(catData)) {
+        if (!mv) continue;
+        const val = typeof mv === 'object' ? mv.value : mv;
+        const trend = typeof mv === 'object' ? mv.trend : null;
+        html += `
+          <div class="flex items-center justify-between px-5 py-3">
+            <span class="text-sm text-slate-600">${escapeHTML(humanizeKey(mk))}</span>
+            <div class="flex items-center gap-2">
+              <span class="text-sm font-semibold font-mono tabular-nums text-slate-900">${escapeHTML(autoFormatMetric(mk, val))}</span>
+              ${trend ? `<span class="trend-${escapeHTML(trend)} text-xs">${trendArrow(trend)}</span>` : ''}
+            </div>
+          </div>
+        `;
+      }
+      html += '</div></div>';
+      metricsEl.innerHTML += html;
+    }
+  }
+
+  // Narrative sections about profitability / cash flow
+  const narEl = document.getElementById('valuation-narrative');
+  if (narEl && narrative.sections) {
+    const relevant = narrative.sections.filter(s =>
+      /profit|cash|capital|balance|valuation|margin/i.test(s.title)
+    );
+    if (relevant.length) {
+      let html = '';
+      for (const section of relevant) {
+        const sentCls = section.sentiment === 'positive' ? 'sentiment-positive'
+          : section.sentiment === 'negative' ? 'sentiment-negative'
+          : section.sentiment === 'mixed' ? 'sentiment-mixed' : 'sentiment-neutral';
+        html += `
+          <div class="bg-white rounded-lg border border-slate-200 shadow-sm p-5">
+            <div class="flex items-center justify-between mb-3">
+              <h4 class="text-sm font-semibold text-slate-900">${escapeHTML(section.title)}</h4>
+              <span class="inline-flex items-center px-2 py-0.5 text-[11px] font-semibold rounded-full ${sentCls}">
+                ${escapeHTML((section.sentiment || 'neutral').charAt(0).toUpperCase() + (section.sentiment || 'neutral').slice(1))}
+              </span>
+            </div>
+            <p class="text-sm text-slate-600 leading-relaxed">${escapeHTML(section.content)}</p>
+          </div>
+        `;
+      }
+      narEl.innerHTML = html;
+    }
+  }
+}
+
+/**
+ * Render the Competitors tab — comps placeholder + competitive narrative.
+ */
+function renderCompetitorsTab(data) {
+  const narrative = data.narrative || {};
+  const company = data.company || {};
+
+  // Public comps table placeholder
+  const compsEl = document.getElementById('comps-table');
+  if (compsEl) {
+    compsEl.innerHTML = `
+      <div class="px-5 py-3 border-b border-slate-200">
+        <h3 class="text-sm font-semibold text-slate-900">Public Comparable Companies</h3>
+      </div>
+      <div class="p-8 text-center">
+        <svg class="w-10 h-10 text-slate-300 mx-auto mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5m.75-9l3-3 2.148 2.148A12.061 12.061 0 0116.5 7.605"/>
+        </svg>
+        <p class="text-sm text-slate-500 font-medium">Comparable companies analysis</p>
+        <p class="text-xs text-slate-400 mt-1">Sortable comps table with valuation multiples coming in Phase 5</p>
+        <p class="text-xs text-slate-400 mt-0.5">Industry: ${escapeHTML(company.industry || 'N/A')}</p>
+      </div>
+    `;
+  }
+
+  // Competitive narrative sections
+  const narEl = document.getElementById('competitors-narrative');
+  if (narEl && narrative.sections) {
+    const relevant = narrative.sections.filter(s =>
+      /compet|market|position|risk|growth|revenue/i.test(s.title)
+    );
+    if (relevant.length) {
+      let html = '';
+      for (const section of relevant) {
+        const sentCls = section.sentiment === 'positive' ? 'sentiment-positive'
+          : section.sentiment === 'negative' ? 'sentiment-negative'
+          : section.sentiment === 'mixed' ? 'sentiment-mixed' : 'sentiment-neutral';
+        html += `
+          <div class="bg-white rounded-lg border border-slate-200 shadow-sm p-5">
+            <div class="flex items-center justify-between mb-3">
+              <h4 class="text-sm font-semibold text-slate-900">${escapeHTML(section.title)}</h4>
+              <span class="inline-flex items-center px-2 py-0.5 text-[11px] font-semibold rounded-full ${sentCls}">
+                ${escapeHTML((section.sentiment || 'neutral').charAt(0).toUpperCase() + (section.sentiment || 'neutral').slice(1))}
+              </span>
+            </div>
+            <p class="text-sm text-slate-600 leading-relaxed">${escapeHTML(section.content)}</p>
+          </div>
+        `;
+      }
+      narEl.innerHTML = html;
+    } else {
+      narEl.innerHTML = `
+        <div class="bg-white rounded-lg border border-slate-200 shadow-sm p-5">
+          <p class="text-sm text-slate-400 italic text-center">No competitive analysis narrative available for this company</p>
+        </div>
+      `;
+    }
+  }
+
+  // Risks as competitive threats
+  if (narrative.risks?.length) {
+    const narEl2 = document.getElementById('competitors-narrative');
+    if (narEl2) {
+      narEl2.innerHTML += `
+        <div class="bg-white rounded-lg border border-slate-200 shadow-sm p-5">
+          <h4 class="text-sm font-semibold text-slate-900 mb-3">Competitive Risk Factors</h4>
+          <ul class="space-y-2">
+            ${narrative.risks.map(r => `
+              <li class="flex gap-2 text-sm text-slate-600">
+                <span class="text-red-400 mt-0.5 flex-shrink-0">&#9679;</span>
+                ${escapeHTML(r)}
+              </li>
+            `).join('')}
+          </ul>
+        </div>
+      `;
+    }
+  }
+}
+
+/**
+ * Render the Management tab — company overview, risks, outlook.
+ */
+function renderManagementTab(data) {
+  const company = data.company || {};
+  const narrative = data.narrative || {};
+  const dm = data.derived_metrics || {};
+
+  // Company overview card
+  const overviewEl = document.getElementById('management-overview');
+  if (overviewEl) {
+    const liquidity = dm.liquidity || {};
+    const leverage = dm.leverage || {};
+
+    let metricsHtml = '';
+    const keyMetrics = [
+      ['Market Cap', company.market_cap ? formatCurrency(company.market_cap, true) : 'N/A'],
+      ['Shares Outstanding', company.shares_outstanding ? formatNumber(company.shares_outstanding / 1e6, 1) + 'M' : 'N/A'],
+      ['Current Ratio', liquidity.current_ratio ? formatRatio(liquidity.current_ratio.value) : 'N/A'],
+      ['Debt to Equity', leverage.debt_to_equity ? formatRatio(leverage.debt_to_equity.value) : 'N/A'],
+    ];
+    for (const [label, val] of keyMetrics) {
+      metricsHtml += `
+        <div class="flex items-center justify-between py-2.5 border-b border-slate-50 last:border-0">
+          <span class="text-sm text-slate-500">${escapeHTML(label)}</span>
+          <span class="text-sm font-semibold font-mono tabular-nums text-slate-900">${escapeHTML(val)}</span>
+        </div>
+      `;
+    }
+
+    overviewEl.innerHTML = `
+      <div class="px-5 py-3 border-b border-slate-200">
+        <h3 class="text-sm font-semibold text-slate-900">Company Overview</h3>
+      </div>
+      <div class="p-5">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <h4 class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">Company Details</h4>
+            <div class="space-y-2">
+              <div class="flex justify-between text-sm"><span class="text-slate-500">Name</span><span class="font-medium text-slate-900">${escapeHTML(company.name || 'N/A')}</span></div>
+              <div class="flex justify-between text-sm"><span class="text-slate-500">Ticker</span><span class="font-medium text-slate-900">${escapeHTML(company.ticker || 'N/A')}</span></div>
+              <div class="flex justify-between text-sm"><span class="text-slate-500">Exchange</span><span class="font-medium text-slate-900">${escapeHTML(company.exchange || 'N/A')}</span></div>
+              <div class="flex justify-between text-sm"><span class="text-slate-500">Sector</span><span class="font-medium text-slate-900">${escapeHTML(company.sector || 'N/A')}</span></div>
+              <div class="flex justify-between text-sm"><span class="text-slate-500">Industry</span><span class="font-medium text-slate-900">${escapeHTML(company.industry || 'N/A')}</span></div>
+              <div class="flex justify-between text-sm"><span class="text-slate-500">Fiscal Year End</span><span class="font-medium text-slate-900">${escapeHTML(company.fiscal_year_end || 'N/A')}</span></div>
+              <div class="flex justify-between text-sm"><span class="text-slate-500">CIK</span><span class="font-medium font-mono text-slate-900">${escapeHTML(company.cik || 'N/A')}</span></div>
+            </div>
+          </div>
+          <div>
+            <h4 class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">Key Financial Metrics</h4>
+            ${metricsHtml}
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  // Risk factors
+  const risksEl = document.getElementById('management-risks');
+  if (risksEl && narrative.risks?.length) {
+    risksEl.innerHTML = `
+      <div class="px-5 py-3 border-b border-slate-200">
+        <h3 class="text-sm font-semibold text-slate-900">Key Risk Factors</h3>
+      </div>
+      <div class="p-5">
+        <ul class="space-y-3">
+          ${narrative.risks.map((r, i) => `
+            <li class="flex gap-3">
+              <span class="flex-shrink-0 w-6 h-6 rounded-full bg-red-50 text-red-600 text-xs font-bold flex items-center justify-center">${i + 1}</span>
+              <p class="text-sm text-slate-600 leading-relaxed">${escapeHTML(r)}</p>
+            </li>
+          `).join('')}
+        </ul>
+      </div>
+    `;
+  } else if (risksEl) {
+    risksEl.innerHTML = '';
+  }
+
+  // Forward outlook
+  const outlookEl = document.getElementById('management-outlook');
+  if (outlookEl && narrative.outlook) {
+    outlookEl.innerHTML = `
+      <div class="px-5 py-3 border-b border-slate-200">
+        <h3 class="text-sm font-semibold text-slate-900">Forward Outlook</h3>
+      </div>
+      <div class="p-5">
+        <p class="text-sm text-slate-600 leading-relaxed">${escapeHTML(narrative.outlook)}</p>
+      </div>
+    `;
+  } else if (outlookEl) {
+    outlookEl.innerHTML = '';
+  }
+}
+
+/**
+ * Render the IR tab — SEC filing links, sources, metadata.
+ */
+function renderIRTab(data) {
+  const sources = data.sources || [];
+  const dq = data.data_quality || {};
+  const meta = data.metadata || {};
+  const company = data.company || {};
+
+  // SEC filing links
+  const filingsEl = document.getElementById('ir-filings');
+  if (filingsEl) {
+    const secSources = sources.filter(s => s.type === 'sec_filing');
+    const cik = company.cik || '';
+    const edgarUrl = cik ? `https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=${cik}&type=10-K` : '';
+
+    filingsEl.innerHTML = `
+      <div class="px-5 py-3 border-b border-slate-200">
+        <h3 class="text-sm font-semibold text-slate-900">SEC Filings</h3>
+      </div>
+      <div class="p-5">
+        ${secSources.length ? secSources.map(s => `
+          <div class="flex items-center gap-3 p-3 bg-slate-50 rounded-lg mb-2">
+            <span class="source-tag source-tag-sec">SEC Filing</span>
+            <div class="flex-1">
+              <div class="text-sm font-medium text-slate-800">${escapeHTML(s.label)}</div>
+              ${s.date ? `<div class="text-xs text-slate-400 mt-0.5">${escapeHTML(s.date)}</div>` : ''}
+            </div>
+            ${s.url ? `<a href="${escapeHTML(s.url)}" target="_blank" rel="noopener" class="text-xs text-blue-600 hover:text-blue-800 font-medium">View on EDGAR</a>` : ''}
+          </div>
+        `).join('') : '<p class="text-sm text-slate-400 italic">No SEC filing sources</p>'}
+        ${edgarUrl ? `
+          <div class="mt-4 pt-4 border-t border-slate-100">
+            <a href="${escapeHTML(edgarUrl)}" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-sm text-blue-600 hover:text-blue-800 font-medium">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/>
+              </svg>
+              Browse all ${escapeHTML(company.ticker || '')} filings on SEC EDGAR
+            </a>
+          </div>
+        ` : ''}
+      </div>
+    `;
+  }
+
+  // All sources
+  const sourcesEl = document.getElementById('ir-sources');
+  if (sourcesEl) {
+    const confidenceColors = { high: 'bg-emerald-500', medium: 'bg-amber-500', low: 'bg-red-500' };
+    const confidence = dq.overall_confidence || 'medium';
+    const completeness = dq.completeness != null ? Math.round(dq.completeness * 100) : null;
+
+    let qualityHtml = `
+      <div class="flex items-center gap-3 p-4 rounded-lg ${confidence === 'high' ? 'bg-emerald-50' : confidence === 'low' ? 'bg-red-50' : 'bg-amber-50'}">
+        <span class="w-3 h-3 rounded-full ${confidenceColors[confidence] || 'bg-slate-300'}"></span>
+        <div>
+          <div class="text-sm font-semibold ${confidence === 'high' ? 'text-emerald-800' : confidence === 'low' ? 'text-red-800' : 'text-amber-800'}">
+            ${escapeHTML(confidence.charAt(0).toUpperCase() + confidence.slice(1))} Confidence
+          </div>
+          ${completeness != null ? `<div class="text-xs text-slate-500 mt-0.5">${completeness}% data completeness</div>` : ''}
+        </div>
+      </div>
+    `;
+
+    if (dq.warnings?.length) {
+      qualityHtml += `
+        <div class="mt-4">
+          <h5 class="text-xs font-semibold text-amber-700 mb-2">Warnings</h5>
+          <ul class="space-y-1.5">
+            ${dq.warnings.map(w => `<li class="text-xs text-slate-600 flex gap-2"><span class="text-amber-500">&#9888;</span>${escapeHTML(w)}</li>`).join('')}
+          </ul>
+        </div>
+      `;
+    }
+
+    if (dq.missing_data?.length) {
+      qualityHtml += `
+        <div class="mt-4">
+          <h5 class="text-xs font-semibold text-slate-500 mb-2">Missing Data</h5>
+          <ul class="space-y-1.5">
+            ${dq.missing_data.map(m => `<li class="text-xs text-slate-500 flex gap-2"><span class="text-slate-400">&#8212;</span>${escapeHTML(m)}</li>`).join('')}
+          </ul>
+        </div>
+      `;
+    }
+
+    sourcesEl.innerHTML = `
+      <div class="px-5 py-3 border-b border-slate-200">
+        <h3 class="text-sm font-semibold text-slate-900">Data Sources & Quality</h3>
+      </div>
+      <div class="p-5">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <h4 class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">Sources</h4>
+            <div class="space-y-2">
+              ${sources.map(s => {
+                const typeLabels = { sec_filing: 'SEC Filing', uploaded_document: 'Upload', analyst_input: 'Analyst', computed: 'Computed' };
+                const typeTagClass = { sec_filing: 'source-tag-sec', uploaded_document: 'source-tag-upload', analyst_input: 'source-tag-analyst', computed: 'source-tag-computed' };
+                return `
+                  <div class="flex items-center gap-3 p-3 bg-slate-50 rounded-lg text-sm">
+                    <span class="source-tag ${typeTagClass[s.type] || 'source-tag-computed'}">${escapeHTML(typeLabels[s.type] || s.type)}</span>
+                    <span class="flex-1 text-slate-700 truncate">${escapeHTML(s.label || 'Unknown')}</span>
+                    <span class="text-xs text-slate-400">${escapeHTML(s.reliability || '')}</span>
+                  </div>
+                `;
+              }).join('')}
+            </div>
+          </div>
+          <div>
+            <h4 class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">Quality Assessment</h4>
+            ${qualityHtml}
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  // Analysis metadata
+  const metaEl = document.getElementById('ir-metadata');
+  if (metaEl) {
+    metaEl.innerHTML = `
+      <div class="px-5 py-3 border-b border-slate-200">
+        <h3 class="text-sm font-semibold text-slate-900">Analysis Metadata</h3>
+      </div>
+      <div class="p-5">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div>
+            <div class="text-[10px] font-medium text-slate-400 uppercase tracking-wider">Analysis ID</div>
+            <div class="text-sm font-mono text-slate-900 mt-1">${escapeHTML(meta.analysis_id || 'N/A')}</div>
+          </div>
+          <div>
+            <div class="text-[10px] font-medium text-slate-400 uppercase tracking-wider">Timestamp</div>
+            <div class="text-sm font-mono text-slate-900 mt-1">${escapeHTML(meta.timestamp ? new Date(meta.timestamp).toLocaleDateString() : 'N/A')}</div>
+          </div>
+          <div>
+            <div class="text-[10px] font-medium text-slate-400 uppercase tracking-wider">Model</div>
+            <div class="text-sm font-mono text-slate-900 mt-1">${escapeHTML(meta.model || 'N/A')}</div>
+          </div>
+          <div>
+            <div class="text-[10px] font-medium text-slate-400 uppercase tracking-wider">Schema Version</div>
+            <div class="text-sm font-mono text-slate-900 mt-1">${escapeHTML(meta.prompt_version || 'N/A')}</div>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+}
+
+// ============================================================
 // Main Entry Point
 // ============================================================
 
@@ -885,6 +1313,12 @@ export function renderAnalysis(analysisJSON) {
   renderNarrative(analysisJSON.narrative);
   renderSources(analysisJSON.sources);
   renderDataQuality(analysisJSON.data_quality);
+
+  // Render tab-specific content
+  renderValuationTab(analysisJSON);
+  renderCompetitorsTab(analysisJSON);
+  renderManagementTab(analysisJSON);
+  renderIRTab(analysisJSON);
 
   // Update analysis status badge
   const statusEl = document.getElementById('analysis-status');
