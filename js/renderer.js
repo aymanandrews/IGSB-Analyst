@@ -205,7 +205,11 @@ function humanizeKey(key) {
 const SUBTOTAL_CONCEPTS = new Set([
   'GrossProfit',
   'OperatingIncomeLoss',
+  'OperatingExpenses',
+  'IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest',
   'IncomeFromContinuingOperations',
+  'AssetsCurrent',
+  'LiabilitiesCurrent',
   'TotalCurrentAssets',
   'TotalCurrentLiabilities',
   'CashFromOperations',
@@ -214,6 +218,8 @@ const SUBTOTAL_CONCEPTS = new Set([
   'NetCashProvidedByOperatingActivities',
   'NetCashUsedInInvestingActivities',
   'NetCashUsedInFinancingActivities',
+  'NetCashProvidedByUsedInInvestingActivities',
+  'NetCashProvidedByUsedInFinancingActivities',
 ]);
 
 const TOTAL_CONCEPTS = new Set([
@@ -226,18 +232,34 @@ const TOTAL_CONCEPTS = new Set([
   'TotalLiabilities',
   'TotalStockholdersEquity',
   'FreeCashFlow',
+  'CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsPeriodIncreaseDecreaseIncludingExchangeRateEffect',
 ]);
 
 const INDENT_CONCEPTS = new Set([
   'Products',
   'Services',
   'DepreciationAndAmortization',
+  'DepreciationDepletionAndAmortization',
   'StockBasedCompensation',
+  'ShareBasedCompensation',
   'ChangesInWorkingCapital',
+  'IncreaseDecreaseInOperatingCapital',
   'DeferredIncomeTax',
   'AccountsReceivableChange',
   'InventoryChange',
   'AccountsPayableChange',
+  'OtherNoncashIncomeExpense',
+  'ResearchAndDevelopmentExpense',
+  'SellingAndMarketingExpense',
+  'GeneralAndAdministrativeExpense',
+  'CostOfGoodsAndServicesSold',
+  'PaymentsToAcquirePropertyPlantAndEquipment',
+  'PaymentsToAcquireBusinessesNetOfCashAcquired',
+  'PaymentsToAcquireInvestments',
+  'ProceedsFromMaturitiesPrepaymentsAndCallsOfAvailableForSaleSecurities',
+  'PaymentsForRepurchaseOfCommonStock',
+  'ProceedsFromStockPlans',
+  'PaymentsRelatedToTaxWithholdingForShareBasedCompensation',
 ]);
 
 /**
@@ -246,7 +268,9 @@ const INDENT_CONCEPTS = new Set([
  * @returns {string}
  */
 function rowClass(item) {
-  const concept = (item.concept || '').replace(/^us-gaap:/, '');
+  const concept = (item.concept || '').replace(/^us-gaap:/, '').replace(/^derived:/, '');
+  // Margin/percent rows get special styling
+  if (item.unit === 'percent') return 'margin-row';
   if (TOTAL_CONCEPTS.has(concept)) return 'total';
   if (SUBTOTAL_CONCEPTS.has(concept)) return 'subtotal';
   if (INDENT_CONCEPTS.has(concept)) return 'indent-1';
@@ -275,10 +299,33 @@ function renderCompanyHeader(company) {
 
   if (metaEl) {
     const parts = [];
+    if (company.exchange) parts.push(escapeHTML(company.exchange));
     if (company.sector) parts.push(escapeHTML(company.sector));
     if (company.industry) parts.push(escapeHTML(company.industry));
     if (company.fiscal_year_end) parts.push('FY ends ' + escapeHTML(company.fiscal_year_end));
     metaEl.textContent = parts.join(' | ');
+  }
+}
+
+/**
+ * Render headline valuation metrics strip.
+ * @param {Array} metrics - headline_metrics array from AnalysisJSON
+ */
+export function renderHeadlineMetrics(metrics) {
+  if (!metrics || !Array.isArray(metrics)) return;
+
+  const container = document.getElementById('headline-metrics');
+  if (!container) return;
+
+  container.innerHTML = '';
+  for (const m of metrics) {
+    const el = document.createElement('div');
+    el.className = 'flex flex-col items-center px-4 py-2';
+    el.innerHTML = `
+      <span class="text-[10px] font-medium text-slate-400 uppercase tracking-wider">${escapeHTML(m.label)}</span>
+      <span class="text-sm font-bold font-mono tabular-nums text-slate-900 mt-0.5">${escapeHTML(m.formatted)}</span>
+    `;
+    container.appendChild(el);
   }
 }
 
@@ -405,6 +452,9 @@ export function renderFinancialStatements(statements) {
       // Value cells for each period
       const vals = item.values || {};
       const periodValues = periods.map(p => vals[p] != null ? vals[p] : null);
+      const isPercent = item.unit === 'percent';
+      const isShares = item.unit === 'shares';
+      const isEPS = item.unit === 'USD/shares';
 
       for (let i = 0; i < periods.length; i++) {
         const td = document.createElement('td');
@@ -418,6 +468,21 @@ export function renderFinancialStatements(statements) {
         if (val == null) {
           td.className = `py-2 px-4 font-mono tabular-nums text-slate-400 ${weight}`;
           td.textContent = '\u2014';
+        } else if (isPercent) {
+          const pctStr = (val * 100).toFixed(1) + '%';
+          const color = val < 0 ? 'text-red-600' : baseColor;
+          td.className = `py-2 px-4 font-mono tabular-nums text-right ${color} ${weight} italic text-xs`;
+          td.textContent = pctStr;
+        } else if (isShares) {
+          const sharesStr = (val / 1e6).toFixed(1) + 'M';
+          td.className = `py-2 px-4 font-mono tabular-nums ${baseColor} ${weight}`;
+          td.textContent = sharesStr;
+        } else if (isEPS) {
+          const isNeg = val < 0;
+          const color = isNeg ? 'text-red-600' : baseColor;
+          const epsStr = isNeg ? '($' + Math.abs(val).toFixed(2) + ')' : '$' + val.toFixed(2);
+          td.className = `py-2 px-4 font-mono tabular-nums ${color} ${weight}`;
+          td.textContent = epsStr;
         } else {
           const isNeg = val < 0;
           const color = isNeg ? 'text-red-600' : baseColor;
@@ -434,7 +499,14 @@ export function renderFinancialStatements(statements) {
         const prior = periodValues[1];
         const weight = isTotal ? 'font-bold' : (isSubtotal ? 'font-semibold' : '');
 
-        if (current != null && prior != null && prior !== 0) {
+        if (isPercent && current != null && prior != null) {
+          // For margin rows, show pp change
+          const ppChange = (current - prior) * 100;
+          const changeStr = (ppChange >= 0 ? '+' : '') + ppChange.toFixed(1) + 'pp';
+          const changeColor = ppChange > 0.1 ? 'text-emerald-600' : (ppChange < -0.1 ? 'text-red-600' : 'text-slate-500');
+          td.className = `py-2 px-4 font-mono tabular-nums ${changeColor} ${weight} text-xs`;
+          td.textContent = changeStr;
+        } else if (current != null && prior != null && prior !== 0) {
           const change = (current - prior) / Math.abs(prior);
           const changeStr = (change >= 0 ? '+' : '') + (change * 100).toFixed(1) + '%';
           const changeColor = change > 0.001 ? 'text-emerald-600' : (change < -0.001 ? 'text-red-600' : 'text-slate-500');
@@ -806,6 +878,7 @@ export function renderAnalysis(analysisJSON) {
 
   // Render each section
   renderCompanyHeader(analysisJSON.company);
+  renderHeadlineMetrics(analysisJSON.headline_metrics);
   renderKPIs(analysisJSON.kpis);
   renderFinancialStatements(analysisJSON.financial_statements);
   renderDerivedMetrics(analysisJSON.derived_metrics);
