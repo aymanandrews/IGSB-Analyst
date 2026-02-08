@@ -6,6 +6,7 @@
 import { initUpload, uploadedDocuments, getParsedData } from './upload.js';
 import { fetchCompanyInfo, fetchFinancials, getCompanyInfo, getFinancialStatements } from './edgar.js';
 import { runAnalysis, cancelAnalysis, getCurrentAnalysis } from './analysis.js';
+import { renderAnalysis } from './renderer.js';
 
 // App state
 const state = {
@@ -143,6 +144,7 @@ async function handleRunAnalysis() {
       }
       const streamEl = document.getElementById('analysis-stream');
       if (streamEl) streamEl.classList.add('hidden');
+      renderAnalysis(result);
       showToast('Analysis complete', 'success');
     },
     // onError
