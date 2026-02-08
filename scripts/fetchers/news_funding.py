@@ -2,7 +2,7 @@
 
 Fetches recent company news articles from the Finnhub /company-news endpoint and
 combines them with a curated dataset of private competitor funding rounds for the
-six tickers tracked by IGSB-Analyst.
+six tickers tracked by Folio.
 
 Usage:
     fetcher = NewsFundingFetcher()
@@ -33,7 +33,7 @@ _CACHE_HOURS_FUNDING = 168  # curated data, refreshed weekly at most
 # ------------------------------------------------------------------ #
 #  Private company funding rounds are not freely available via APIs.  #
 #  This curated dataset covers 2-4 key private competitors for each  #
-#  ticker tracked by IGSB-Analyst.                                    #
+#  ticker tracked by Folio.                                            #
 # ------------------------------------------------------------------ #
 
 COMPETITOR_FUNDING: Dict[str, List[Dict[str, Any]]] = {

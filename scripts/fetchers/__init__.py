@@ -1,4 +1,4 @@
-"""Fetchers package — data collection modules for IGSB-Analyst pipeline."""
+"""Fetchers package — data collection modules for Folio pipeline."""
 from scripts.fetchers.edgar_financials import EdgarFinancialsFetcher
 from scripts.fetchers.edgar_mda import EdgarMDAFetcher
 from scripts.fetchers.edgar_management import EdgarManagementFetcher

@@ -1,7 +1,7 @@
-# IGSB-Analyst
+# Folio
 
 ## Project Overview
-Financial analysis platform for IGSB (Investment Grade Short-term Bond). Combines EDGAR/SEC filings data, uploaded documents (PDF/Excel/text), and Claude AI analysis to produce structured financial reports with source attribution.
+Equity research platform. Combines EDGAR/SEC filings data, uploaded documents (PDF/Excel/text), and Claude AI analysis to produce structured investment analysis reports with source attribution.
 
 ## Architecture
 - **Frontend:** Static HTML + Tailwind CSS (CDN) + vanilla JavaScript

@@ -1,11 +1,11 @@
-"""Investment Group of Santa Barbara — FastAPI Backend"""
+"""Folio — FastAPI Backend"""
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from routers import edgar, analysis
 
 app = FastAPI(
-    title="IGSB Analyst API — Investment Group of Santa Barbara",
+    title="Folio API",
     description="Financial analysis backend using EDGAR data and Claude AI",
     version="2.0.0",
 )

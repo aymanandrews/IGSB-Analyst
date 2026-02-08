@@ -1,5 +1,5 @@
 /**
- * Investment Group of Santa Barbara — Analysis Orchestration Module
+ * Folio — Analysis Orchestration Module
  * Sends data to Claude via backend, handles SSE streaming, validates response.
  */
 

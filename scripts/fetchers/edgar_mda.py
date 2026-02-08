@@ -23,7 +23,7 @@ from scripts.base_fetcher import BaseFetcher
 logger = logging.getLogger(__name__)
 
 # SEC requires a User-Agent header with contact info
-set_identity("IGSB-Analyst/2.0 admin@example.com")
+set_identity("Folio/2.0 admin@example.com")
 
 # Item boundaries for section extraction
 _ITEM_BOUNDARIES: Dict[str, Dict[str, str]] = {

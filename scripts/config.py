@@ -20,7 +20,7 @@ FRED_API_KEY = os.getenv("FRED_API_KEY", "")
 ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY", "")
 
 # ---- SEC EDGAR ----
-EDGAR_USER_AGENT = "IGSB-Analyst/2.0 admin@example.com"
+EDGAR_USER_AGENT = "Folio/2.0 admin@example.com"
 
 # ---- Rate Limits (requests per second) ----
 RATE_LIMITS = {

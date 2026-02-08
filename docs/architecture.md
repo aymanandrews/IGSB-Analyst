@@ -1,8 +1,8 @@
-# IGSB-Analyst: Technical Architecture
+# Folio: Technical Architecture
 
 ## System Overview
 
-IGSB-Analyst is a financial analysis platform that combines SEC/EDGAR filings, user-uploaded documents, and Claude AI to produce structured investment analysis reports for Investment Grade Short-term Bonds.
+Folio is an equity research platform that combines SEC/EDGAR filings, user-uploaded documents, and Claude AI to produce structured investment analysis reports.
 
 ## Component Architecture
 

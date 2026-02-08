@@ -22,7 +22,7 @@ from scripts.config import EDGAR_USER_AGENT
 
 logger = logging.getLogger(__name__)
 
-set_identity("IGSB-Analyst/2.0 admin@example.com")
+set_identity("Folio/2.0 admin@example.com")
 
 # SEC EDGAR full-text search API for Form 4 filings
 _EFTS_SEARCH_URL = "https://efts.sec.gov/LATEST/search-index"

@@ -1,5 +1,5 @@
 /**
- * Investment Group of Santa Barbara — Main Application Controller
+ * Folio — Main Application Controller
  * Entry point that initializes all modules.
  */
 
@@ -46,7 +46,7 @@ function init() {
     showToast('Previous session restored', 'info');
   }
 
-  console.log('[IGSB-Analyst] Initialized');
+  console.log('[Folio] Initialized');
 }
 
 /**
@@ -155,7 +155,7 @@ async function handleTickerSearch(ticker) {
     showAnalysisContent();
     showToast(`Loaded EDGAR data for ${data.company.name}`, 'success');
   } catch (err) {
-    console.warn('[IGSB-Analyst] EDGAR fetch failed, trying cached data:', err.message);
+    console.warn('[Folio] EDGAR fetch failed, trying cached data:', err.message);
   }
 
   // Sync company dropdown if ticker matches one of our covered companies

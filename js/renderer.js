@@ -1,5 +1,5 @@
 /**
- * Investment Group of Santa Barbara — Financial Statement Renderer
+ * Folio — Financial Statement Renderer
  * Takes AnalysisJSON data and renders KPI cards, financial statements,
  * derived metrics, narrative, and source attribution into the DOM.
  */

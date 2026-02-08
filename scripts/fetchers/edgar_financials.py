@@ -22,7 +22,7 @@ from scripts.base_fetcher import BaseFetcher
 logger = logging.getLogger(__name__)
 
 # SEC requires a User-Agent header with contact info
-set_identity("IGSB-Analyst/2.0 admin@example.com")
+set_identity("Folio/2.0 admin@example.com")
 
 # Map internal statement keys to edgartools EntityFacts method names
 _STATEMENT_MAP: dict[str, str] = {

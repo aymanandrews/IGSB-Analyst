@@ -1,5 +1,5 @@
 /**
- * Investment Group of Santa Barbara — EDGAR Data Fetching Module
+ * Folio — EDGAR Data Fetching Module
  * Communicates with the FastAPI backend to fetch SEC/EDGAR data.
  */
 

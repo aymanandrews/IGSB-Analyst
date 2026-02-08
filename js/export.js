@@ -1,9 +1,9 @@
 /**
- * Investment Group of Santa Barbara — Export & Session Management Module
+ * Folio — Export & Session Management Module
  * Handles JSON/PDF export and localStorage persistence.
  */
 
-const STORAGE_KEY = 'igsb-analyst-session';
+const STORAGE_KEY = 'folio-session';
 
 /**
  * Save current session state to localStorage

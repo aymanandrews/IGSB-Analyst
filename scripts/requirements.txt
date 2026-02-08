@@ -1,4 +1,4 @@
-# IGSB-Analyst Data Pipeline Dependencies
+# Folio Data Pipeline Dependencies
 # Install: pip install -r scripts/requirements.txt
 
 # Data Sources
