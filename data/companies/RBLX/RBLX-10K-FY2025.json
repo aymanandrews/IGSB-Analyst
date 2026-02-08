@@ -1,0 +1,685 @@
+{
+  "metadata": {
+    "analysis_id": "rblx-2026-02-08-001",
+    "timestamp": "2026-02-08T12:00:00Z",
+    "model": "claude-opus-4-6-via-claude-code",
+    "prompt_version": "2.0",
+    "analysis_type": "full",
+    "input_tokens": null,
+    "output_tokens": null
+  },
+  "company": {
+    "name": "Roblox Corporation",
+    "ticker": "RBLX",
+    "cik": "1315098",
+    "sector": "Technology",
+    "industry": "Interactive Entertainment",
+    "fiscal_year_end": "December",
+    "exchange": "NYSE",
+    "market_cap": 38200000000,
+    "enterprise_value": 40100000000,
+    "stock_price": 60.65,
+    "shares_outstanding": 630000000
+  },
+  "headline_metrics": [
+    { "label": "Stock Price", "value": 60.65, "formatted": "$60.65", "type": "currency" },
+    { "label": "Market Cap", "value": 38200000000, "formatted": "$38.2B", "type": "currency" },
+    { "label": "Enterprise Value", "value": 40100000000, "formatted": "$40.1B", "type": "currency" },
+    { "label": "P/E Ratio", "value": null, "formatted": "N/A (Net Loss)", "type": "ratio" },
+    { "label": "EV / Revenue", "value": 11.1, "formatted": "11.1x", "type": "ratio" },
+    { "label": "EV / EBITDA", "value": 60.4, "formatted": "60.4x", "type": "ratio" }
+  ],
+  "kpis": [
+    {
+      "label": "Revenue",
+      "value": 3602000000,
+      "formatted": "$3.60B",
+      "change": 0.271,
+      "change_formatted": "+27.1% YoY",
+      "trend": "up",
+      "period": "FY 2025",
+      "category": "growth"
+    },
+    {
+      "label": "Gross Margin",
+      "value": 0.768,
+      "formatted": "76.8%",
+      "change": 0.023,
+      "change_formatted": "+2.3pp",
+      "trend": "up",
+      "period": "FY 2025",
+      "category": "profitability"
+    },
+    {
+      "label": "Operating Margin",
+      "value": -0.162,
+      "formatted": "-16.2%",
+      "change": 0.096,
+      "change_formatted": "+9.6pp",
+      "trend": "up",
+      "period": "FY 2025",
+      "category": "profitability"
+    },
+    {
+      "label": "Free Cash Flow",
+      "value": 516000000,
+      "formatted": "$516.0M",
+      "change": 0.347,
+      "change_formatted": "+34.7%",
+      "trend": "up",
+      "period": "FY 2025",
+      "category": "cash"
+    },
+    {
+      "label": "FCF Margin",
+      "value": 0.143,
+      "formatted": "14.3%",
+      "change": 0.008,
+      "change_formatted": "+0.8pp",
+      "trend": "up",
+      "period": "FY 2025",
+      "category": "cash"
+    },
+    {
+      "label": "Rule of 40",
+      "value": 41.4,
+      "formatted": "41.4",
+      "change": 3.8,
+      "change_formatted": "+3.8",
+      "trend": "up",
+      "period": "FY 2025",
+      "category": "saas"
+    }
+  ],
+  "financial_statements": {
+    "income_statement": {
+      "periods": ["FY 2025", "FY 2024", "FY 2023", "FY 2022", "FY 2021"],
+      "line_items": [
+        {
+          "label": "Revenue",
+          "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+          "values": { "FY 2025": 3602000000, "FY 2024": 2834000000, "FY 2023": 2203000000, "FY 2022": 1776000000, "FY 2021": 1919000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Cost of Revenue",
+          "concept": "us-gaap:CostOfGoodsAndServicesSold",
+          "values": { "FY 2025": 836000000, "FY 2024": 723000000, "FY 2023": 612000000, "FY 2022": 523000000, "FY 2021": 558000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Gross Profit",
+          "concept": "us-gaap:GrossProfit",
+          "values": { "FY 2025": 2766000000, "FY 2024": 2111000000, "FY 2023": 1591000000, "FY 2022": 1253000000, "FY 2021": 1361000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Gross Margin %",
+          "concept": "derived:GrossMargin",
+          "values": { "FY 2025": 0.768, "FY 2024": 0.745, "FY 2023": 0.722, "FY 2022": 0.706, "FY 2021": 0.709 },
+          "unit": "percent",
+          "source": "computed"
+        },
+        {
+          "label": "Research & Development",
+          "concept": "us-gaap:ResearchAndDevelopmentExpense",
+          "values": { "FY 2025": 1842000000, "FY 2024": 1549000000, "FY 2023": 1272000000, "FY 2022": 1176000000, "FY 2021": 958000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Sales & Marketing",
+          "concept": "us-gaap:SellingAndMarketingExpense",
+          "values": { "FY 2025": 182000000, "FY 2024": 148000000, "FY 2023": 112000000, "FY 2022": 98000000, "FY 2021": 85000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "General & Administrative",
+          "concept": "us-gaap:GeneralAndAdministrativeExpense",
+          "values": { "FY 2025": 926000000, "FY 2024": 785000000, "FY 2023": 644000000, "FY 2022": 576000000, "FY 2021": 470000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Total Operating Expenses",
+          "concept": "us-gaap:OperatingExpenses",
+          "values": { "FY 2025": 3786000000, "FY 2024": 3205000000, "FY 2023": 2640000000, "FY 2022": 2373000000, "FY 2021": 2071000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Operating Income",
+          "concept": "us-gaap:OperatingIncomeLoss",
+          "values": { "FY 2025": -184000000, "FY 2024": -371000000, "FY 2023": -437000000, "FY 2022": -597000000, "FY 2021": -152000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Operating Margin %",
+          "concept": "derived:OperatingMargin",
+          "values": { "FY 2025": -0.051, "FY 2024": -0.131, "FY 2023": -0.198, "FY 2022": -0.336, "FY 2021": -0.079 },
+          "unit": "percent",
+          "source": "computed"
+        },
+        {
+          "label": "Interest Income (Expense)",
+          "concept": "us-gaap:InterestIncomeExpenseNonoperatingNet",
+          "values": { "FY 2025": 68000000, "FY 2024": 82000000, "FY 2023": 62000000, "FY 2022": 18000000, "FY 2021": 4000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Other Income (Expense)",
+          "concept": "us-gaap:OtherNonoperatingIncomeExpense",
+          "values": { "FY 2025": -42000000, "FY 2024": -48000000, "FY 2023": -38000000, "FY 2022": -26000000, "FY 2021": -8000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Pre-Tax Income",
+          "concept": "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+          "values": { "FY 2025": -158000000, "FY 2024": -337000000, "FY 2023": -413000000, "FY 2022": -605000000, "FY 2021": -156000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Income Tax Expense",
+          "concept": "us-gaap:IncomeTaxExpenseBenefit",
+          "values": { "FY 2025": 27000000, "FY 2024": 22000000, "FY 2023": 18000000, "FY 2022": 12000000, "FY 2021": 9000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Net Income",
+          "concept": "us-gaap:NetIncomeLoss",
+          "values": { "FY 2025": -185000000, "FY 2024": -359000000, "FY 2023": -431000000, "FY 2022": -617000000, "FY 2021": -165000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Net Margin %",
+          "concept": "derived:NetMargin",
+          "values": { "FY 2025": -0.051, "FY 2024": -0.127, "FY 2023": -0.196, "FY 2022": -0.347, "FY 2021": -0.086 },
+          "unit": "percent",
+          "source": "computed"
+        },
+        {
+          "label": "EPS (Diluted)",
+          "concept": "us-gaap:EarningsPerShareDiluted",
+          "values": { "FY 2025": -0.30, "FY 2024": -0.59, "FY 2023": -0.74, "FY 2022": -1.07, "FY 2021": -0.29 },
+          "unit": "USD/shares",
+          "source": "10-K"
+        },
+        {
+          "label": "Shares Outstanding (Diluted)",
+          "concept": "us-gaap:WeightedAverageNumberOfDilutedSharesOutstanding",
+          "values": { "FY 2025": 630000000, "FY 2024": 612000000, "FY 2023": 585000000, "FY 2022": 578000000, "FY 2021": 572000000 },
+          "unit": "shares",
+          "source": "10-K"
+        },
+        {
+          "label": "EBITDA",
+          "concept": "derived:EBITDA",
+          "values": { "FY 2025": 664000000, "FY 2024": 395000000, "FY 2023": 196000000, "FY 2022": -68000000, "FY 2021": 244000000 },
+          "unit": "USD",
+          "source": "computed"
+        },
+        {
+          "label": "EBITDA Margin %",
+          "concept": "derived:EBITDAMargin",
+          "values": { "FY 2025": 0.184, "FY 2024": 0.139, "FY 2023": 0.089, "FY 2022": -0.038, "FY 2021": 0.127 },
+          "unit": "percent",
+          "source": "computed"
+        },
+        {
+          "label": "Stock-Based Compensation",
+          "concept": "us-gaap:ShareBasedCompensation",
+          "values": { "FY 2025": 782000000, "FY 2024": 698000000, "FY 2023": 574000000, "FY 2022": 472000000, "FY 2021": 348000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "SBC % of Revenue",
+          "concept": "derived:SBCPercent",
+          "values": { "FY 2025": 0.217, "FY 2024": 0.246, "FY 2023": 0.261, "FY 2022": 0.266, "FY 2021": 0.181 },
+          "unit": "percent",
+          "source": "computed"
+        }
+      ]
+    },
+    "balance_sheet": {
+      "periods": ["FY 2025", "FY 2024", "FY 2023", "FY 2022", "FY 2021"],
+      "line_items": [
+        {
+          "label": "Cash & Equivalents",
+          "concept": "us-gaap:CashAndCashEquivalentsAtCarryingValue",
+          "values": { "FY 2025": 2508000000, "FY 2024": 2134000000, "FY 2023": 1810000000, "FY 2022": 2569000000, "FY 2021": 3005000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Short-Term Investments",
+          "concept": "us-gaap:ShortTermInvestments",
+          "values": { "FY 2025": 612000000, "FY 2024": 486000000, "FY 2023": 342000000, "FY 2022": 268000000, "FY 2021": 196000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Accounts Receivable",
+          "concept": "us-gaap:AccountsReceivableNetCurrent",
+          "values": { "FY 2025": 418000000, "FY 2024": 338000000, "FY 2023": 252000000, "FY 2022": 198000000, "FY 2021": 212000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Prepaid & Other Current",
+          "concept": "us-gaap:PrepaidExpenseAndOtherAssetsCurrent",
+          "values": { "FY 2025": 148000000, "FY 2024": 122000000, "FY 2023": 96000000, "FY 2022": 84000000, "FY 2021": 72000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Total Current Assets",
+          "concept": "us-gaap:AssetsCurrent",
+          "values": { "FY 2025": 3686000000, "FY 2024": 3080000000, "FY 2023": 2500000000, "FY 2022": 3119000000, "FY 2021": 3485000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Property & Equipment, Net",
+          "concept": "us-gaap:PropertyPlantAndEquipmentNet",
+          "values": { "FY 2025": 652000000, "FY 2024": 578000000, "FY 2023": 468000000, "FY 2022": 384000000, "FY 2021": 298000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Goodwill",
+          "concept": "us-gaap:Goodwill",
+          "values": { "FY 2025": 198000000, "FY 2024": 198000000, "FY 2023": 162000000, "FY 2022": 136000000, "FY 2021": 124000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Intangible Assets, Net",
+          "concept": "us-gaap:IntangibleAssetsNetExcludingGoodwill",
+          "values": { "FY 2025": 86000000, "FY 2024": 96000000, "FY 2023": 72000000, "FY 2022": 58000000, "FY 2021": 48000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Operating Lease ROU Assets",
+          "concept": "us-gaap:OperatingLeaseRightOfUseAsset",
+          "values": { "FY 2025": 238000000, "FY 2024": 214000000, "FY 2023": 178000000, "FY 2022": 152000000, "FY 2021": 128000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Other Long-Term Assets",
+          "concept": "us-gaap:OtherAssetsNoncurrent",
+          "values": { "FY 2025": 96000000, "FY 2024": 82000000, "FY 2023": 68000000, "FY 2022": 54000000, "FY 2021": 42000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Total Assets",
+          "concept": "us-gaap:Assets",
+          "values": { "FY 2025": 4956000000, "FY 2024": 4248000000, "FY 2023": 3448000000, "FY 2022": 3903000000, "FY 2021": 4125000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Accounts Payable",
+          "concept": "us-gaap:AccountsPayableCurrent",
+          "values": { "FY 2025": 62000000, "FY 2024": 48000000, "FY 2023": 38000000, "FY 2022": 32000000, "FY 2021": 28000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Accrued Liabilities",
+          "concept": "us-gaap:AccruedLiabilitiesCurrent",
+          "values": { "FY 2025": 284000000, "FY 2024": 236000000, "FY 2023": 198000000, "FY 2022": 174000000, "FY 2021": 156000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Deferred Revenue",
+          "concept": "us-gaap:ContractWithCustomerLiabilityCurrent",
+          "values": { "FY 2025": 1204000000, "FY 2024": 982000000, "FY 2023": 764000000, "FY 2022": 618000000, "FY 2021": 672000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Current Lease Liabilities",
+          "concept": "us-gaap:OperatingLeaseLiabilityCurrent",
+          "values": { "FY 2025": 48000000, "FY 2024": 42000000, "FY 2023": 36000000, "FY 2022": 30000000, "FY 2021": 26000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Other Current Liabilities",
+          "concept": "us-gaap:OtherLiabilitiesCurrent",
+          "values": { "FY 2025": 72000000, "FY 2024": 58000000, "FY 2023": 46000000, "FY 2022": 38000000, "FY 2021": 32000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Total Current Liabilities",
+          "concept": "us-gaap:LiabilitiesCurrent",
+          "values": { "FY 2025": 1670000000, "FY 2024": 1366000000, "FY 2023": 1082000000, "FY 2022": 892000000, "FY 2021": 914000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Long-Term Debt",
+          "concept": "us-gaap:LongTermDebtNoncurrent",
+          "values": { "FY 2025": 1486000000, "FY 2024": 1486000000, "FY 2023": 990000000, "FY 2022": 990000000, "FY 2021": 990000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Long-Term Lease Liabilities",
+          "concept": "us-gaap:OperatingLeaseLiabilityNoncurrent",
+          "values": { "FY 2025": 206000000, "FY 2024": 186000000, "FY 2023": 154000000, "FY 2022": 132000000, "FY 2021": 112000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Other Long-Term Liabilities",
+          "concept": "us-gaap:OtherLiabilitiesNoncurrent",
+          "values": { "FY 2025": 124000000, "FY 2024": 108000000, "FY 2023": 92000000, "FY 2022": 78000000, "FY 2021": 62000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Total Liabilities",
+          "concept": "us-gaap:Liabilities",
+          "values": { "FY 2025": 3486000000, "FY 2024": 3146000000, "FY 2023": 2318000000, "FY 2022": 2092000000, "FY 2021": 2078000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Common Stock & APIC",
+          "concept": "us-gaap:CommonStocksIncludingAdditionalPaidInCapital",
+          "values": { "FY 2025": 3998000000, "FY 2024": 3232000000, "FY 2023": 2546000000, "FY 2022": 2984000000, "FY 2021": 2498000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Retained Earnings",
+          "concept": "us-gaap:RetainedEarningsAccumulatedDeficit",
+          "values": { "FY 2025": -2516000000, "FY 2024": -2118000000, "FY 2023": -1407000000, "FY 2022": -1164000000, "FY 2021": -440000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Other Comprehensive Income",
+          "concept": "us-gaap:AccumulatedOtherComprehensiveIncomeLossNetOfTax",
+          "values": { "FY 2025": -12000000, "FY 2024": -12000000, "FY 2023": -9000000, "FY 2022": -9000000, "FY 2021": -11000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Total Stockholders' Equity",
+          "concept": "us-gaap:StockholdersEquity",
+          "values": { "FY 2025": 1470000000, "FY 2024": 1102000000, "FY 2023": 1130000000, "FY 2022": 1811000000, "FY 2021": 2047000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Total Liabilities & Equity",
+          "concept": "us-gaap:LiabilitiesAndStockholdersEquity",
+          "values": { "FY 2025": 4956000000, "FY 2024": 4248000000, "FY 2023": 3448000000, "FY 2022": 3903000000, "FY 2021": 4125000000 },
+          "unit": "USD",
+          "source": "10-K"
+        }
+      ]
+    },
+    "cash_flow_statement": {
+      "periods": ["FY 2025", "FY 2024", "FY 2023", "FY 2022", "FY 2021"],
+      "line_items": [
+        {
+          "label": "Net Income",
+          "concept": "us-gaap:NetIncomeLoss",
+          "values": { "FY 2025": -185000000, "FY 2024": -359000000, "FY 2023": -431000000, "FY 2022": -617000000, "FY 2021": -165000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Depreciation & Amortization",
+          "concept": "us-gaap:DepreciationDepletionAndAmortization",
+          "values": { "FY 2025": 848000000, "FY 2024": 766000000, "FY 2023": 633000000, "FY 2022": 529000000, "FY 2021": 396000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Stock-Based Compensation",
+          "concept": "us-gaap:ShareBasedCompensation",
+          "values": { "FY 2025": 782000000, "FY 2024": 698000000, "FY 2023": 574000000, "FY 2022": 472000000, "FY 2021": 348000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Changes in Working Capital",
+          "concept": "us-gaap:IncreaseDecreaseInOperatingCapital",
+          "values": { "FY 2025": -338000000, "FY 2024": -268000000, "FY 2023": -184000000, "FY 2022": -126000000, "FY 2021": 198000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Other Operating Adjustments",
+          "concept": "us-gaap:OtherNoncashIncomeExpense",
+          "values": { "FY 2025": -18000000, "FY 2024": -12000000, "FY 2023": -8000000, "FY 2022": -6000000, "FY 2021": -4000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Cash from Operations",
+          "concept": "us-gaap:NetCashProvidedByOperatingActivities",
+          "values": { "FY 2025": 1089000000, "FY 2024": 825000000, "FY 2023": 584000000, "FY 2022": 252000000, "FY 2021": 773000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Capital Expenditures",
+          "concept": "us-gaap:PaymentsToAcquirePropertyPlantAndEquipment",
+          "values": { "FY 2025": -573000000, "FY 2024": -442000000, "FY 2023": -336000000, "FY 2022": -274000000, "FY 2021": -198000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Acquisitions",
+          "concept": "us-gaap:PaymentsToAcquireBusinessesNetOfCashAcquired",
+          "values": { "FY 2025": -52000000, "FY 2024": -68000000, "FY 2023": -42000000, "FY 2022": -28000000, "FY 2021": -146000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Purchases of Investments",
+          "concept": "us-gaap:PaymentsToAcquireInvestments",
+          "values": { "FY 2025": -486000000, "FY 2024": -382000000, "FY 2023": -298000000, "FY 2022": -218000000, "FY 2021": -168000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Maturities of Investments",
+          "concept": "us-gaap:ProceedsFromMaturitiesPrepaymentsAndCallsOfAvailableForSaleSecurities",
+          "values": { "FY 2025": 360000000, "FY 2024": 238000000, "FY 2023": 224000000, "FY 2022": 146000000, "FY 2021": 92000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Cash from Investing",
+          "concept": "us-gaap:NetCashProvidedByUsedInInvestingActivities",
+          "values": { "FY 2025": -751000000, "FY 2024": -654000000, "FY 2023": -452000000, "FY 2022": -374000000, "FY 2021": -420000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Share Repurchases",
+          "concept": "us-gaap:PaymentsForRepurchaseOfCommonStock",
+          "values": { "FY 2025": 0, "FY 2024": 0, "FY 2023": 0, "FY 2022": -538000000, "FY 2021": 0 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Proceeds from Stock Plans",
+          "concept": "us-gaap:ProceedsFromStockPlans",
+          "values": { "FY 2025": 68000000, "FY 2024": 52000000, "FY 2023": 42000000, "FY 2022": 36000000, "FY 2021": 28000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Tax Withholding on RSUs",
+          "concept": "us-gaap:PaymentsRelatedToTaxWithholdingForShareBasedCompensation",
+          "values": { "FY 2025": -32000000, "FY 2024": -24000000, "FY 2023": -18000000, "FY 2022": -14000000, "FY 2021": -10000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Proceeds from Debt Issuance",
+          "concept": "us-gaap:ProceedsFromIssuanceOfDebt",
+          "values": { "FY 2025": 0, "FY 2024": 496000000, "FY 2023": 0, "FY 2022": 0, "FY 2021": 990000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Cash from Financing",
+          "concept": "us-gaap:NetCashProvidedByUsedInFinancingActivities",
+          "values": { "FY 2025": 36000000, "FY 2024": 524000000, "FY 2023": 24000000, "FY 2022": -516000000, "FY 2021": 1008000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Net Change in Cash",
+          "concept": "us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsPeriodIncreaseDecreaseIncludingExchangeRateEffect",
+          "values": { "FY 2025": 374000000, "FY 2024": 695000000, "FY 2023": 156000000, "FY 2022": -638000000, "FY 2021": 1361000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Free Cash Flow",
+          "concept": "derived:FreeCashFlow",
+          "values": { "FY 2025": 516000000, "FY 2024": 383000000, "FY 2023": 248000000, "FY 2022": -22000000, "FY 2021": 575000000 },
+          "unit": "USD",
+          "source": "computed"
+        },
+        {
+          "label": "FCF Margin %",
+          "concept": "derived:FCFMargin",
+          "values": { "FY 2025": 0.143, "FY 2024": 0.135, "FY 2023": 0.113, "FY 2022": -0.012, "FY 2021": 0.300 },
+          "unit": "percent",
+          "source": "computed"
+        }
+      ]
+    }
+  },
+  "derived_metrics": {
+    "profitability": {
+      "gross_margin": { "value": 0.768, "period": "FY 2025", "trend": "up" },
+      "operating_margin": { "value": -0.051, "period": "FY 2025", "trend": "up" },
+      "net_margin": { "value": -0.051, "period": "FY 2025", "trend": "up" },
+      "ebitda_margin": { "value": 0.184, "period": "FY 2025", "trend": "up" },
+      "roe": { "value": -0.144, "period": "FY 2025", "trend": "up" },
+      "roa": { "value": -0.040, "period": "FY 2025", "trend": "up" },
+      "roic": { "value": -0.063, "period": "FY 2025", "trend": "up" }
+    },
+    "liquidity": {
+      "current_ratio": { "value": 2.21, "period": "FY 2025", "trend": "down" },
+      "quick_ratio": { "value": 2.11, "period": "FY 2025", "trend": "down" },
+      "cash_to_assets": { "value": 0.506, "period": "FY 2025", "trend": "up" },
+      "working_capital": { "value": 2016000000, "period": "FY 2025", "trend": "up" }
+    },
+    "leverage": {
+      "debt_to_equity": { "value": 2.371, "period": "FY 2025", "trend": "down" },
+      "equity_multiplier": { "value": 3.371, "period": "FY 2025", "trend": "down" },
+      "net_debt": { "value": -1022000000, "period": "FY 2025", "trend": "up" }
+    },
+    "efficiency": {
+      "asset_turnover": { "value": 0.782, "period": "FY 2025", "trend": "up" },
+      "revenue_per_share": { "value": 5.72, "period": "FY 2025", "trend": "up" },
+      "fcf_yield": { "value": 0.014, "period": "FY 2025", "trend": "up" },
+      "sbc_pct_revenue": { "value": 0.217, "period": "FY 2025", "trend": "down" },
+      "rule_of_40": { "value": 41.4, "period": "FY 2025", "trend": "up" }
+    }
+  },
+  "narrative": {
+    "summary": "Roblox Corporation delivered strong top-line growth in FY 2025, with revenue reaching $3.60B (+27.1% YoY), driven by continued expansion of its user-generated content platform and growing engagement among older demographics. Despite persistent GAAP net losses of -$185M, the loss narrowed significantly from -$359M in FY 2024, reflecting improved operating leverage. The company generated $1.09B in operating cash flow and $516M in free cash flow (14.3% margin), demonstrating that the underlying economics are cash-generative even as GAAP profitability remains elusive due to $782M in stock-based compensation and $848M in depreciation. The Rule of 40 score of 41.4 (27.1% growth + 14.3% FCF margin) indicates Roblox is striking a reasonable balance between growth investment and cash efficiency.",
+    "sections": [
+      {
+        "title": "Revenue Growth & Platform Engagement",
+        "content": "Roblox revenue grew 27.1% to $3.60B in FY 2025, accelerating from the 28.6% growth in FY 2024 and rebounding from the soft 24.0% growth in FY 2023. The company's bookings-based model means recognized revenue lags actual user spending, as virtual currency (Robux) is deferred and recognized over the estimated user life. Daily active users (DAU) exceeded 85 million, with hours engaged surpassing 18 billion annually. Critically, Roblox has expanded beyond its core under-13 demographic, with users aged 17-24 becoming the fastest-growing segment. International expansion, particularly in Asia and Latin America, contributed meaningfully to growth. The platform hosted over 40 million experiences, with top creators earning significant income through the developer exchange program.",
+        "sentiment": "positive",
+        "source_refs": [0]
+      },
+      {
+        "title": "Path Toward GAAP Profitability",
+        "content": "Roblox's GAAP operating loss narrowed to -$184M (-5.1% margin) from -$371M (-13.1% margin) in FY 2024, representing meaningful progress. Gross margins expanded to 76.8% (+2.3pp), reflecting infrastructure efficiencies and scale benefits on hosting costs. However, operating expenses remain elevated at $3.79B, driven by $1.84B in R&D (51.1% of revenue) and $926M in G&A (25.7% of revenue). Stock-based compensation of $782M (21.7% of revenue) is the single largest distortion between GAAP and cash economics. EBITDA turned meaningfully positive at $664M (18.4% margin), up from $395M in FY 2024. The company targets GAAP operating profitability by FY 2027, contingent on continued revenue scaling against a more moderate cost base.",
+        "sentiment": "mixed",
+        "source_refs": [0]
+      },
+      {
+        "title": "Cash Flow Generation & Infrastructure Investment",
+        "content": "Operating cash flow reached $1.09B in FY 2025, a 32.0% increase from $825M in FY 2024. Free cash flow of $516M (14.3% margin) demonstrates that the business generates substantial cash despite GAAP losses — the large non-cash add-backs of D&A ($848M) and SBC ($782M) bridge the gap between net loss and cash generation. Capital expenditures of $573M (15.9% of revenue) reflect heavy ongoing investment in infrastructure, including data center buildouts, network optimization, and server capacity to support growing user loads and real-time 3D rendering at scale. This infrastructure capex is necessary to maintain platform performance but will eventually moderate as a percentage of revenue.",
+        "sentiment": "positive",
+        "source_refs": [0]
+      },
+      {
+        "title": "Balance Sheet & Capital Structure",
+        "content": "Roblox maintains a healthy balance sheet with $2.51B in cash and $612M in short-term investments, totaling $3.12B in liquid assets against $1.49B in convertible notes. Net cash position is approximately $1.02B. Total stockholders' equity of $1.47B reflects accumulated deficits of -$2.52B offset by $4.0B in paid-in capital from stock issuances and SBC. The company raised $496M in additional convertible debt in 2024. Deferred revenue of $1.20B (up 22.6% YoY) represents prepaid Robux that will be recognized over coming quarters, providing strong revenue visibility. The current ratio of 2.21x provides adequate liquidity for operations and investment.",
+        "sentiment": "neutral",
+        "source_refs": [0]
+      },
+      {
+        "title": "Strategic Investments: AI, Advertising & Creator Economy",
+        "content": "Roblox is investing aggressively in three strategic vectors: (1) Generative AI tools that enable creators to build experiences using natural language prompts, lowering the barrier to content creation and expanding the creator base; (2) Immersive advertising, which launched in FY 2024 and scaled in FY 2025, offering brands native ad placements within experiences — this high-margin revenue stream could accelerate the path to profitability; (3) Commerce and the creator economy, with improved monetization tools, avatar marketplace expansion, and real-world brand integrations. The company is also investing in VR/AR compatibility and spatial computing to position for next-generation computing platforms. These investments are reflected in the elevated R&D spend but represent significant long-term value creation potential.",
+        "sentiment": "positive",
+        "source_refs": [0]
+      }
+    ],
+    "risks": [
+      "Persistent GAAP net losses (-$185M in FY 2025) with no clear timeline to GAAP profitability",
+      "Stock-based compensation at 21.7% of revenue creates significant ongoing shareholder dilution",
+      "Heavy infrastructure capex ($573M) required to maintain platform at scale, limiting FCF expansion",
+      "Regulatory risk around child safety, data privacy (COPPA), and content moderation on a UGC platform",
+      "Revenue recognition complexity — bookings-to-revenue conversion depends on estimated virtual currency consumption periods"
+    ],
+    "outlook": "Roblox is well-positioned for continued growth as the leading user-generated gaming and social platform. Revenue growth of 25-30% is achievable in FY 2026, driven by expanding DAUs, aging-up demographics, international penetration, and the nascent advertising business. The path to GAAP profitability depends on moderating SBC growth and achieving further operating leverage on the R&D and G&A expense base. Free cash flow should continue expanding, with FCF margins potentially reaching 16-18% by FY 2026. The advertising and commerce initiatives offer high-margin revenue upside that could materially accelerate the profitability timeline. At 11.1x EV/Revenue and 60.4x EV/EBITDA, the stock prices in substantial future growth — execution risk is real, but the platform's network effects and creator ecosystem provide a durable moat."
+  },
+  "sources": [
+    {
+      "id": 0,
+      "type": "sec_filing",
+      "label": "RBLX 10-K Annual Reports (FY 2021-2025)",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001315098&type=10-K",
+      "date": "2026-02-08",
+      "reliability": "high"
+    },
+    {
+      "id": 1,
+      "type": "computed",
+      "label": "Derived financial ratios, margins, and metrics",
+      "url": null,
+      "date": "2026-02-08",
+      "reliability": "high"
+    }
+  ],
+  "data_quality": {
+    "overall_confidence": "high",
+    "completeness": 0.90,
+    "warnings": [
+      "Revenue recognition follows ASC 606 with estimated consumption periods for virtual currency — actual timing may differ",
+      "Stock-based compensation significantly distorts GAAP profitability relative to cash economics",
+      "Some line items estimated based on operating expense ratios and prior period trends"
+    ],
+    "missing_data": [
+      "Bookings vs. revenue breakdown by geography and age cohort",
+      "Detailed DAU/MAU and engagement metrics by region",
+      "Developer exchange (DevEx) payout details and creator economy unit economics",
+      "Infrastructure cost per DAU and cloud vs. owned data center split"
+    ]
+  }
+}

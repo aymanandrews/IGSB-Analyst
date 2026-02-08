@@ -3,6 +3,13 @@
   "name": "Workday, Inc.",
   "sector": "Technology",
   "industry": "Enterprise SaaS — HCM & Finance",
-  "filings": [],
-  "default_filing": null
+  "filings": [
+    {
+      "type": "10-K",
+      "period": "FY2025",
+      "file": "WDAY-10K-FY2025.json",
+      "generated": "2026-02-08"
+    }
+  ],
+  "default_filing": "WDAY-10K-FY2025.json"
 }

@@ -3,6 +3,13 @@
   "name": "Roblox Corporation",
   "sector": "Technology",
   "industry": "Interactive Entertainment",
-  "filings": [],
-  "default_filing": null
+  "filings": [
+    {
+      "type": "10-K",
+      "period": "FY2025",
+      "file": "RBLX-10K-FY2025.json",
+      "generated": "2026-02-08"
+    }
+  ],
+  "default_filing": "RBLX-10K-FY2025.json"
 }

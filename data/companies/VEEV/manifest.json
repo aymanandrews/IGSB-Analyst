@@ -2,7 +2,14 @@
   "ticker": "VEEV",
   "name": "Veeva Systems Inc.",
   "sector": "Technology",
-  "industry": "Life Sciences Cloud Software",
-  "filings": [],
-  "default_filing": null
+  "industry": "Life Sciences Cloud Software (SaaS)",
+  "filings": [
+    {
+      "type": "10-K",
+      "period": "FY2025",
+      "file": "VEEV-10K-FY2025.json",
+      "generated": "2026-02-08"
+    }
+  ],
+  "default_filing": "VEEV-10K-FY2025.json"
 }

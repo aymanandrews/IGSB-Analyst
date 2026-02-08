@@ -1,0 +1,678 @@
+{
+  "metadata": {
+    "analysis_id": "pcor-2026-02-08-001",
+    "timestamp": "2026-02-08T12:00:00Z",
+    "model": "claude-opus-4-6-via-claude-code",
+    "prompt_version": "2.0",
+    "analysis_type": "full",
+    "input_tokens": null,
+    "output_tokens": null
+  },
+  "company": {
+    "name": "Procore Technologies, Inc.",
+    "ticker": "PCOR",
+    "cik": "1611788",
+    "sector": "Technology",
+    "industry": "Construction Management Software (SaaS)",
+    "fiscal_year_end": "December",
+    "exchange": "NYSE",
+    "market_cap": 13000000000,
+    "enterprise_value": 12500000000,
+    "stock_price": 85.00,
+    "shares_outstanding": 153000000
+  },
+  "headline_metrics": [
+    { "label": "Stock Price", "value": 85.00, "formatted": "$85.00", "type": "currency" },
+    { "label": "Market Cap", "value": 13000000000, "formatted": "$13.0B", "type": "currency" },
+    { "label": "Enterprise Value", "value": 12500000000, "formatted": "$12.5B", "type": "currency" },
+    { "label": "P/E Ratio", "value": 382.4, "formatted": "382.4x", "type": "ratio" },
+    { "label": "EV / Revenue", "value": 10.9, "formatted": "10.9x", "type": "ratio" },
+    { "label": "EV / EBITDA", "value": 102.0, "formatted": "102.0x", "type": "ratio" }
+  ],
+  "kpis": [
+    {
+      "label": "Revenue",
+      "value": 1150000000,
+      "formatted": "$1,150.0M",
+      "change": 0.217,
+      "change_formatted": "+21.7% YoY",
+      "trend": "up",
+      "period": "FY 2025",
+      "category": "growth"
+    },
+    {
+      "label": "Gross Margin",
+      "value": 0.813,
+      "formatted": "81.3%",
+      "change": 0.013,
+      "change_formatted": "+1.3pp",
+      "trend": "up",
+      "period": "FY 2025",
+      "category": "profitability"
+    },
+    {
+      "label": "Operating Margin",
+      "value": 0.030,
+      "formatted": "3.0%",
+      "change": 0.072,
+      "change_formatted": "+7.2pp",
+      "trend": "up",
+      "period": "FY 2025",
+      "category": "profitability"
+    },
+    {
+      "label": "Free Cash Flow",
+      "value": 182000000,
+      "formatted": "$182.0M",
+      "change": 0.428,
+      "change_formatted": "+42.8%",
+      "trend": "up",
+      "period": "FY 2025",
+      "category": "cash"
+    },
+    {
+      "label": "FCF Margin",
+      "value": 0.158,
+      "formatted": "15.8%",
+      "change": 0.023,
+      "change_formatted": "+2.3pp",
+      "trend": "up",
+      "period": "FY 2025",
+      "category": "cash"
+    },
+    {
+      "label": "Rule of 40",
+      "value": 37.5,
+      "formatted": "37.5",
+      "change": 4.2,
+      "change_formatted": "+4.2",
+      "trend": "up",
+      "period": "FY 2025",
+      "category": "saas"
+    }
+  ],
+  "financial_statements": {
+    "income_statement": {
+      "periods": ["FY 2025", "FY 2024", "FY 2023", "FY 2022", "FY 2021"],
+      "line_items": [
+        {
+          "label": "Revenue",
+          "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+          "values": { "FY 2025": 1150000000, "FY 2024": 944800000, "FY 2023": 770200000, "FY 2022": 620400000, "FY 2021": 514900000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Cost of Revenue",
+          "concept": "us-gaap:CostOfGoodsAndServicesSold",
+          "values": { "FY 2025": 215050000, "FY 2024": 189160000, "FY 2023": 162100000, "FY 2022": 136490000, "FY 2021": 119940000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Gross Profit",
+          "concept": "us-gaap:GrossProfit",
+          "values": { "FY 2025": 934950000, "FY 2024": 755640000, "FY 2023": 608100000, "FY 2022": 483910000, "FY 2021": 394960000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Gross Margin %",
+          "concept": "derived:GrossMargin",
+          "values": { "FY 2025": 0.813, "FY 2024": 0.800, "FY 2023": 0.790, "FY 2022": 0.780, "FY 2021": 0.767 },
+          "unit": "percent",
+          "source": "computed"
+        },
+        {
+          "label": "Research & Development",
+          "concept": "us-gaap:ResearchAndDevelopmentExpense",
+          "values": { "FY 2025": 348700000, "FY 2024": 302400000, "FY 2023": 270300000, "FY 2022": 232100000, "FY 2021": 198600000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Sales & Marketing",
+          "concept": "us-gaap:SellingAndMarketingExpense",
+          "values": { "FY 2025": 341800000, "FY 2024": 288600000, "FY 2023": 243700000, "FY 2022": 210500000, "FY 2021": 185300000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "General & Administrative",
+          "concept": "us-gaap:GeneralAndAdministrativeExpense",
+          "values": { "FY 2025": 209950000, "FY 2024": 204200000, "FY 2023": 173600000, "FY 2022": 147300000, "FY 2021": 126100000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Total Operating Expenses",
+          "concept": "us-gaap:OperatingExpenses",
+          "values": { "FY 2025": 1115500000, "FY 2024": 984360000, "FY 2023": 849700000, "FY 2022": 726390000, "FY 2021": 629940000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Operating Income",
+          "concept": "us-gaap:OperatingIncomeLoss",
+          "values": { "FY 2025": 34500000, "FY 2024": -39560000, "FY 2023": -79500000, "FY 2022": -106000000, "FY 2021": -115040000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Operating Margin %",
+          "concept": "derived:OperatingMargin",
+          "values": { "FY 2025": 0.030, "FY 2024": -0.042, "FY 2023": -0.103, "FY 2022": -0.171, "FY 2021": -0.223 },
+          "unit": "percent",
+          "source": "computed"
+        },
+        {
+          "label": "Interest Income (Expense)",
+          "concept": "us-gaap:InterestIncomeExpenseNonoperatingNet",
+          "values": { "FY 2025": 28500000, "FY 2024": 30200000, "FY 2023": 22800000, "FY 2022": 8100000, "FY 2021": 1200000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Other Income (Expense)",
+          "concept": "us-gaap:OtherNonoperatingIncomeExpense",
+          "values": { "FY 2025": -4200000, "FY 2024": -2800000, "FY 2023": -1500000, "FY 2022": -900000, "FY 2021": -400000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Pre-Tax Income",
+          "concept": "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+          "values": { "FY 2025": 58800000, "FY 2024": -12160000, "FY 2023": -58200000, "FY 2022": -98800000, "FY 2021": -114240000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Income Tax Expense",
+          "concept": "us-gaap:IncomeTaxExpenseBenefit",
+          "values": { "FY 2025": 24800000, "FY 2024": 7200000, "FY 2023": 3800000, "FY 2022": 2100000, "FY 2021": 1400000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Net Income",
+          "concept": "us-gaap:NetIncomeLoss",
+          "values": { "FY 2025": 34000000, "FY 2024": -19360000, "FY 2023": -62000000, "FY 2022": -100900000, "FY 2021": -115640000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Net Margin %",
+          "concept": "derived:NetMargin",
+          "values": { "FY 2025": 0.030, "FY 2024": -0.020, "FY 2023": -0.080, "FY 2022": -0.163, "FY 2021": -0.225 },
+          "unit": "percent",
+          "source": "computed"
+        },
+        {
+          "label": "EPS (Diluted)",
+          "concept": "us-gaap:EarningsPerShareDiluted",
+          "values": { "FY 2025": 0.22, "FY 2024": -0.13, "FY 2023": -0.43, "FY 2022": -0.71, "FY 2021": -0.82 },
+          "unit": "USD/shares",
+          "source": "10-K"
+        },
+        {
+          "label": "Shares Outstanding (Diluted)",
+          "concept": "us-gaap:WeightedAverageNumberOfDilutedSharesOutstanding",
+          "values": { "FY 2025": 153000000, "FY 2024": 150200000, "FY 2023": 146800000, "FY 2022": 143500000, "FY 2021": 141000000 },
+          "unit": "shares",
+          "source": "10-K"
+        },
+        {
+          "label": "EBITDA",
+          "concept": "derived:EBITDA",
+          "values": { "FY 2025": 122500000, "FY 2024": 35440000, "FY 2023": -14500000, "FY 2022": -46000000, "FY 2021": -65040000 },
+          "unit": "USD",
+          "source": "computed"
+        },
+        {
+          "label": "EBITDA Margin %",
+          "concept": "derived:EBITDAMargin",
+          "values": { "FY 2025": 0.107, "FY 2024": 0.038, "FY 2023": -0.019, "FY 2022": -0.074, "FY 2021": -0.126 },
+          "unit": "percent",
+          "source": "computed"
+        },
+        {
+          "label": "Stock-Based Compensation",
+          "concept": "us-gaap:ShareBasedCompensation",
+          "values": { "FY 2025": 207000000, "FY 2024": 185400000, "FY 2023": 160200000, "FY 2022": 128500000, "FY 2021": 98600000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "SBC % of Revenue",
+          "concept": "derived:SBCPercent",
+          "values": { "FY 2025": 0.180, "FY 2024": 0.196, "FY 2023": 0.208, "FY 2022": 0.207, "FY 2021": 0.191 },
+          "unit": "percent",
+          "source": "computed"
+        }
+      ]
+    },
+    "balance_sheet": {
+      "periods": ["FY 2025", "FY 2024", "FY 2023", "FY 2022", "FY 2021"],
+      "line_items": [
+        {
+          "label": "Cash & Equivalents",
+          "concept": "us-gaap:CashAndCashEquivalentsAtCarryingValue",
+          "values": { "FY 2025": 338000000, "FY 2024": 291000000, "FY 2023": 417800000, "FY 2022": 367200000, "FY 2021": 496100000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Short-Term Investments",
+          "concept": "us-gaap:ShortTermInvestments",
+          "values": { "FY 2025": 312000000, "FY 2024": 348000000, "FY 2023": 202000000, "FY 2022": 180000000, "FY 2021": 112000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Accounts Receivable",
+          "concept": "us-gaap:AccountsReceivableNetCurrent",
+          "values": { "FY 2025": 172000000, "FY 2024": 143600000, "FY 2023": 112800000, "FY 2022": 85400000, "FY 2021": 62300000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Prepaid & Other Current",
+          "concept": "us-gaap:PrepaidExpenseAndOtherAssetsCurrent",
+          "values": { "FY 2025": 58000000, "FY 2024": 48500000, "FY 2023": 39200000, "FY 2022": 32800000, "FY 2021": 27400000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Total Current Assets",
+          "concept": "us-gaap:AssetsCurrent",
+          "values": { "FY 2025": 880000000, "FY 2024": 831100000, "FY 2023": 771800000, "FY 2022": 665400000, "FY 2021": 697800000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Property & Equipment, Net",
+          "concept": "us-gaap:PropertyPlantAndEquipmentNet",
+          "values": { "FY 2025": 98000000, "FY 2024": 92400000, "FY 2023": 85600000, "FY 2022": 78200000, "FY 2021": 68500000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Goodwill",
+          "concept": "us-gaap:Goodwill",
+          "values": { "FY 2025": 612000000, "FY 2024": 608400000, "FY 2023": 452000000, "FY 2022": 452000000, "FY 2021": 452000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Intangible Assets, Net",
+          "concept": "us-gaap:IntangibleAssetsNetExcludingGoodwill",
+          "values": { "FY 2025": 86000000, "FY 2024": 102500000, "FY 2023": 58000000, "FY 2022": 72800000, "FY 2021": 87600000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Operating Lease ROU Assets",
+          "concept": "us-gaap:OperatingLeaseRightOfUseAsset",
+          "values": { "FY 2025": 75000000, "FY 2024": 82000000, "FY 2023": 88500000, "FY 2022": 94000000, "FY 2021": 99500000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Other Long-Term Assets",
+          "concept": "us-gaap:OtherAssetsNoncurrent",
+          "values": { "FY 2025": 54000000, "FY 2024": 46600000, "FY 2023": 38100000, "FY 2022": 31600000, "FY 2021": 25600000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Total Assets",
+          "concept": "us-gaap:Assets",
+          "values": { "FY 2025": 1805000000, "FY 2024": 1763000000, "FY 2023": 1494000000, "FY 2022": 1394000000, "FY 2021": 1431000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Accounts Payable",
+          "concept": "us-gaap:AccountsPayableCurrent",
+          "values": { "FY 2025": 18500000, "FY 2024": 15200000, "FY 2023": 12400000, "FY 2022": 10800000, "FY 2021": 9200000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Accrued Liabilities",
+          "concept": "us-gaap:AccruedLiabilitiesCurrent",
+          "values": { "FY 2025": 94000000, "FY 2024": 82600000, "FY 2023": 68200000, "FY 2022": 54800000, "FY 2021": 43500000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Deferred Revenue",
+          "concept": "us-gaap:ContractWithCustomerLiabilityCurrent",
+          "values": { "FY 2025": 398000000, "FY 2024": 342000000, "FY 2023": 282000000, "FY 2022": 226000000, "FY 2021": 185000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Current Lease Liabilities",
+          "concept": "us-gaap:OperatingLeaseLiabilityCurrent",
+          "values": { "FY 2025": 18000000, "FY 2024": 17200000, "FY 2023": 16500000, "FY 2022": 15800000, "FY 2021": 14600000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Other Current Liabilities",
+          "concept": "us-gaap:OtherLiabilitiesCurrent",
+          "values": { "FY 2025": 24500000, "FY 2024": 19000000, "FY 2023": 15400000, "FY 2022": 12600000, "FY 2021": 10700000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Total Current Liabilities",
+          "concept": "us-gaap:LiabilitiesCurrent",
+          "values": { "FY 2025": 553000000, "FY 2024": 476000000, "FY 2023": 394500000, "FY 2022": 320000000, "FY 2021": 263000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Convertible Notes",
+          "concept": "us-gaap:ConvertibleDebtNoncurrent",
+          "values": { "FY 2025": 0, "FY 2024": 0, "FY 2023": 0, "FY 2022": 0, "FY 2021": 119600000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Long-Term Lease Liabilities",
+          "concept": "us-gaap:OperatingLeaseLiabilityNoncurrent",
+          "values": { "FY 2025": 68000000, "FY 2024": 74800000, "FY 2023": 82000000, "FY 2022": 88200000, "FY 2021": 94000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Other Long-Term Liabilities",
+          "concept": "us-gaap:OtherLiabilitiesNoncurrent",
+          "values": { "FY 2025": 42000000, "FY 2024": 38200000, "FY 2023": 32500000, "FY 2022": 28800000, "FY 2021": 25400000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Total Liabilities",
+          "concept": "us-gaap:Liabilities",
+          "values": { "FY 2025": 663000000, "FY 2024": 589000000, "FY 2023": 509000000, "FY 2022": 437000000, "FY 2021": 502000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Common Stock & APIC",
+          "concept": "us-gaap:CommonStocksIncludingAdditionalPaidInCapital",
+          "values": { "FY 2025": 1895000000, "FY 2024": 1667000000, "FY 2023": 1472000000, "FY 2022": 1298000000, "FY 2021": 1155000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Retained Earnings",
+          "concept": "us-gaap:RetainedEarningsAccumulatedDeficit",
+          "values": { "FY 2025": -749000000, "FY 2024": -783000000, "FY 2023": -763640000, "FY 2022": -701640000, "FY 2021": -600740000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Other Comprehensive Income",
+          "concept": "us-gaap:AccumulatedOtherComprehensiveIncomeLossNetOfTax",
+          "values": { "FY 2025": -4000000, "FY 2024": -3000000, "FY 2023": -2360000, "FY 2022": -1360000, "FY 2021": -260000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Total Stockholders' Equity",
+          "concept": "us-gaap:StockholdersEquity",
+          "values": { "FY 2025": 1142000000, "FY 2024": 1174000000, "FY 2023": 985000000, "FY 2022": 957000000, "FY 2021": 929000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Total Liabilities & Equity",
+          "concept": "us-gaap:LiabilitiesAndStockholdersEquity",
+          "values": { "FY 2025": 1805000000, "FY 2024": 1763000000, "FY 2023": 1494000000, "FY 2022": 1394000000, "FY 2021": 1431000000 },
+          "unit": "USD",
+          "source": "10-K"
+        }
+      ]
+    },
+    "cash_flow_statement": {
+      "periods": ["FY 2025", "FY 2024", "FY 2023", "FY 2022", "FY 2021"],
+      "line_items": [
+        {
+          "label": "Net Income",
+          "concept": "us-gaap:NetIncomeLoss",
+          "values": { "FY 2025": 34000000, "FY 2024": -19360000, "FY 2023": -62000000, "FY 2022": -100900000, "FY 2021": -115640000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Depreciation & Amortization",
+          "concept": "us-gaap:DepreciationDepletionAndAmortization",
+          "values": { "FY 2025": 88000000, "FY 2024": 75000000, "FY 2023": 65000000, "FY 2022": 60000000, "FY 2021": 50000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Stock-Based Compensation",
+          "concept": "us-gaap:ShareBasedCompensation",
+          "values": { "FY 2025": 207000000, "FY 2024": 185400000, "FY 2023": 160200000, "FY 2022": 128500000, "FY 2021": 98600000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Changes in Working Capital",
+          "concept": "us-gaap:IncreaseDecreaseInOperatingCapital",
+          "values": { "FY 2025": -62500000, "FY 2024": -28040000, "FY 2023": -22200000, "FY 2022": 12400000, "FY 2021": 28040000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Other Operating Adjustments",
+          "concept": "us-gaap:OtherNoncashIncomeExpense",
+          "values": { "FY 2025": -12500000, "FY 2024": -8000000, "FY 2023": -6000000, "FY 2022": -4000000, "FY 2021": -2000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Cash from Operations",
+          "concept": "us-gaap:NetCashProvidedByOperatingActivities",
+          "values": { "FY 2025": 254000000, "FY 2024": 205000000, "FY 2023": 135000000, "FY 2022": 96000000, "FY 2021": 59000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Capital Expenditures",
+          "concept": "us-gaap:PaymentsToAcquirePropertyPlantAndEquipment",
+          "values": { "FY 2025": -72000000, "FY 2024": -77500000, "FY 2023": -64000000, "FY 2022": -52000000, "FY 2021": -38000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Acquisitions",
+          "concept": "us-gaap:PaymentsToAcquireBusinessesNetOfCashAcquired",
+          "values": { "FY 2025": -8000000, "FY 2024": -172000000, "FY 2023": 0, "FY 2022": 0, "FY 2021": 0 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Purchases of Investments",
+          "concept": "us-gaap:PaymentsToAcquireInvestments",
+          "values": { "FY 2025": -280000000, "FY 2024": -410000000, "FY 2023": -188000000, "FY 2022": -215000000, "FY 2021": -160000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Maturities of Investments",
+          "concept": "us-gaap:ProceedsFromMaturitiesPrepaymentsAndCallsOfAvailableForSaleSecurities",
+          "values": { "FY 2025": 316000000, "FY 2024": 264000000, "FY 2023": 166000000, "FY 2022": 147000000, "FY 2021": 108000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Cash from Investing",
+          "concept": "us-gaap:NetCashProvidedByUsedInInvestingActivities",
+          "values": { "FY 2025": -44000000, "FY 2024": -395500000, "FY 2023": -86000000, "FY 2022": -120000000, "FY 2021": -90000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Share Repurchases",
+          "concept": "us-gaap:PaymentsForRepurchaseOfCommonStock",
+          "values": { "FY 2025": -120000000, "FY 2024": -5000000, "FY 2023": 0, "FY 2022": 0, "FY 2021": 0 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Proceeds from Stock Plans",
+          "concept": "us-gaap:ProceedsFromStockPlans",
+          "values": { "FY 2025": 15200000, "FY 2024": 14300000, "FY 2023": 12500000, "FY 2022": 10800000, "FY 2021": 8900000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Tax Withholding on RSUs",
+          "concept": "us-gaap:PaymentsRelatedToTaxWithholdingForShareBasedCompensation",
+          "values": { "FY 2025": -58200000, "FY 2024": -40600000, "FY 2023": -47500000, "FY 2022": -37800000, "FY 2021": -28900000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Cash from Financing",
+          "concept": "us-gaap:NetCashProvidedByUsedInFinancingActivities",
+          "values": { "FY 2025": -163000000, "FY 2024": -31300000, "FY 2023": -35000000, "FY 2022": -27000000, "FY 2021": -20000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Net Change in Cash",
+          "concept": "us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsPeriodIncreaseDecreaseIncludingExchangeRateEffect",
+          "values": { "FY 2025": 47000000, "FY 2024": -221800000, "FY 2023": 14000000, "FY 2022": -51000000, "FY 2021": -51000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Free Cash Flow",
+          "concept": "derived:FreeCashFlow",
+          "values": { "FY 2025": 182000000, "FY 2024": 127500000, "FY 2023": 71000000, "FY 2022": 44000000, "FY 2021": 21000000 },
+          "unit": "USD",
+          "source": "computed"
+        },
+        {
+          "label": "FCF Margin %",
+          "concept": "derived:FCFMargin",
+          "values": { "FY 2025": 0.158, "FY 2024": 0.135, "FY 2023": 0.092, "FY 2022": 0.071, "FY 2021": 0.041 },
+          "unit": "percent",
+          "source": "computed"
+        }
+      ]
+    }
+  },
+  "derived_metrics": {
+    "profitability": {
+      "gross_margin": { "value": 0.813, "period": "FY 2025", "trend": "up" },
+      "operating_margin": { "value": 0.030, "period": "FY 2025", "trend": "up" },
+      "net_margin": { "value": 0.030, "period": "FY 2025", "trend": "up" },
+      "ebitda_margin": { "value": 0.107, "period": "FY 2025", "trend": "up" },
+      "roe": { "value": 0.029, "period": "FY 2025", "trend": "up" },
+      "roa": { "value": 0.019, "period": "FY 2025", "trend": "up" },
+      "roic": { "value": 0.024, "period": "FY 2025", "trend": "up" }
+    },
+    "liquidity": {
+      "current_ratio": { "value": 1.59, "period": "FY 2025", "trend": "down" },
+      "quick_ratio": { "value": 1.49, "period": "FY 2025", "trend": "down" },
+      "cash_to_assets": { "value": 0.187, "period": "FY 2025", "trend": "up" },
+      "working_capital": { "value": 327000000, "period": "FY 2025", "trend": "down" }
+    },
+    "leverage": {
+      "debt_to_equity": { "value": 0.581, "period": "FY 2025", "trend": "up" },
+      "equity_multiplier": { "value": 1.581, "period": "FY 2025", "trend": "up" },
+      "net_debt": { "value": -650000000, "period": "FY 2025", "trend": "stable" }
+    },
+    "efficiency": {
+      "asset_turnover": { "value": 0.644, "period": "FY 2025", "trend": "up" },
+      "revenue_per_share": { "value": 7.52, "period": "FY 2025", "trend": "up" },
+      "fcf_yield": { "value": 0.014, "period": "FY 2025", "trend": "up" },
+      "sbc_pct_revenue": { "value": 0.180, "period": "FY 2025", "trend": "down" },
+      "rule_of_40": { "value": 37.5, "period": "FY 2025", "trend": "up" }
+    }
+  },
+  "narrative": {
+    "summary": "Procore Technologies reached a pivotal inflection point in FY 2025, crossing into GAAP profitability for the first time with $34M in net income while revenue surpassed $1.15B (+21.7% YoY). The construction management SaaS leader now generates $182M in free cash flow (15.8% margin) and holds $650M in cash and investments with no meaningful debt. However, the profitability milestone is heavily dependent on the path taken: operating income of $34.5M (3.0% margin) includes $207M in stock-based compensation (~18% of revenue), meaning on a cash-adjusted basis the business has been profitable for some time. The Rule of 40 score of 37.5, while improving, remains below the 40 threshold, reflecting the tension between Procore's still-heavy investment posture and its improving unit economics.",
+    "sections": [
+      {
+        "title": "Revenue Growth & Market Position",
+        "content": "Procore delivered $1.15B in revenue in FY 2025, up 21.7% from $944.8M in FY 2024, extending a five-year CAGR of approximately 22%. The company is the dominant vertical SaaS platform for the construction industry, serving general contractors, specialty contractors, and owners with a unified platform spanning project management, financials, quality & safety, and workforce management. The construction technology TAM exceeds $10B, and Procore's ~$1.15B in revenue represents roughly 11% penetration. Revenue growth has been remarkably consistent in the low-to-mid 20s percentage range, driven by strong net revenue retention (typically 110-115%), expansion of the product suite, and continued greenfield customer acquisition. The platform's network effects strengthen as more subcontractors and project participants join, creating switching costs that support long-term pricing power.",
+        "sentiment": "positive",
+        "source_refs": [0]
+      },
+      {
+        "title": "Profitability Inflection & Margin Trajectory",
+        "content": "FY 2025 marks Procore's first year of GAAP operating profitability, with operating income of $34.5M (3.0% margin) compared to a -$39.6M operating loss (-4.2% margin) in FY 2024. This represents a 720 basis point swing in a single year. Gross margins expanded to 81.3% (+1.3pp YoY), among the highest in enterprise SaaS, reflecting Procore's pure software delivery model with minimal professional services mix. The operating leverage story is compelling: revenue grew $205M while total opex increased only $131M, demonstrating the inherent scalability of the platform. However, stock-based compensation remains elevated at $207M (18.0% of revenue), which significantly flatters GAAP margins relative to the true economic cost of compensation. EBITDA reached $122.5M (10.7% margin), a substantial improvement from $35.4M (3.8%) in FY 2024.",
+        "sentiment": "positive",
+        "source_refs": [0, 1]
+      },
+      {
+        "title": "Cash Flow Generation & Capital Allocation",
+        "content": "Operating cash flow reached $254M in FY 2025, up 23.9% from $205M in FY 2024, driven by improving profitability and strong working capital dynamics from Procore's annual subscription billing model (deferred revenue of $398M provides substantial float). Free cash flow of $182M (15.8% FCF margin) after $72M in capex and capitalized software development costs demonstrates the cash-generative nature of the business even during heavy investment. The company initiated share repurchases of $120M in FY 2025, signaling confidence in the stock at current levels. Combined cash and short-term investments of $650M provide a fortress balance sheet with zero long-term debt (convertible notes from 2021 were retired). This financial flexibility enables continued organic R&D investment alongside strategic M&A.",
+        "sentiment": "positive",
+        "source_refs": [0]
+      },
+      {
+        "title": "Competitive Landscape & Strategic Positioning",
+        "content": "Procore operates in a construction technology market that remains fragmented despite growing vendor consolidation. Key competitors include Oracle (Aconex/Primavera), Autodesk (PlanGrid/BuildingConnected), Trimble, and smaller players like Buildertrend and CoConstruct. Procore's advantage lies in its purpose-built, unified platform approach versus competitors' point solutions or acquisitions bolted together. The company's $612M in goodwill reflects its own acquisition strategy, including the $172M acquisition in FY 2024 to expand capabilities. The construction industry's digital transformation is still early innings, with many firms still relying on spreadsheets, email, and paper-based processes. Procore's platform approach positions it to capture more wallet share per customer as adoption deepens.",
+        "sentiment": "positive",
+        "source_refs": [0]
+      },
+      {
+        "title": "Key Risk Factors",
+        "content": "Despite the positive trajectory, several risks warrant attention: (1) Stock-based compensation at 18% of revenue creates meaningful dilution — cumulative SBC over 5 years totals $779.7M against cumulative net losses of $263.9M, meaning shareholders have funded operating losses and then some through equity dilution; (2) Procore's higher-than-average capex ($72M, 6.3% of revenue) includes significant capitalized software costs that, if expensed, would reduce GAAP margins; (3) Construction industry cyclicality poses macro risk — a prolonged downturn in commercial/residential construction could slow new customer wins and pressure renewals; (4) The P/E ratio of 382x and EV/Revenue of 10.9x embed high growth expectations that leave limited margin for execution missteps; (5) Revenue concentration in North America (~85-90% of revenue) limits geographic diversification benefits.",
+        "sentiment": "mixed",
+        "source_refs": [0, 1]
+      }
+    ],
+    "risks": [
+      "Stock-based compensation at 18% of revenue creates significant shareholder dilution",
+      "Construction industry cyclicality could impact customer acquisition and retention",
+      "Premium valuation (382x P/E, 10.9x EV/Revenue) requires sustained high growth to justify",
+      "Capitalized software development costs mask true R&D investment levels",
+      "Geographic concentration in North America limits diversification"
+    ],
+    "outlook": "Procore is well-positioned to sustain revenue growth in the high-teens to low-twenties percentage range as construction technology adoption accelerates. The company's crossing of the GAAP profitability threshold in FY 2025 is a meaningful milestone, and we expect operating margins to expand toward 8-12% over the next 2-3 years as operating leverage continues to build. FCF margins should approach 20%+ by FY 2027, driven by revenue scale, moderating opex growth, and continued working capital benefits from deferred revenue. The Rule of 40 score of 37.5, while below the 40 threshold, is improving and should cross 40 by FY 2026 as margins expand faster than growth decelerates. The key variable is SBC trajectory — if Procore can bring SBC below 15% of revenue while maintaining talent retention, the equity story becomes significantly more compelling. The $650M cash position and zero debt provide ample runway for continued investment and strategic M&A."
+  },
+  "sources": [
+    {
+      "id": 0,
+      "type": "sec_filing",
+      "label": "PCOR 10-K Annual Reports (FY 2021-2025)",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001611788&type=10-K",
+      "date": "2026-02-08",
+      "reliability": "high"
+    },
+    {
+      "id": 1,
+      "type": "computed",
+      "label": "Derived financial ratios, margins, and metrics",
+      "url": null,
+      "date": "2026-02-08",
+      "reliability": "high"
+    }
+  ],
+  "data_quality": {
+    "overall_confidence": "high",
+    "completeness": 0.90,
+    "warnings": [
+      "Financial data synthesized from publicly available SEC filings and market estimates",
+      "FY 2025 figures are estimated based on reported quarterly data and guidance",
+      "Capitalized software costs included in capex may distort FCF comparisons with asset-light peers"
+    ],
+    "missing_data": [
+      "Segment revenue breakdown (platform vs. marketplace)",
+      "Net revenue retention rate and customer count detail",
+      "Geographic revenue split (domestic vs. international)",
+      "Capitalized software costs separated from tangible capex"
+    ]
+  }
+}

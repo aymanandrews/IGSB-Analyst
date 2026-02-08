@@ -1,0 +1,684 @@
+{
+  "metadata": {
+    "analysis_id": "veev-2026-02-08-001",
+    "timestamp": "2026-02-08T12:00:00Z",
+    "model": "claude-opus-4-6-via-claude-code",
+    "prompt_version": "2.0",
+    "analysis_type": "full",
+    "input_tokens": null,
+    "output_tokens": null
+  },
+  "company": {
+    "name": "Veeva Systems Inc.",
+    "ticker": "VEEV",
+    "cik": "1393052",
+    "sector": "Technology",
+    "industry": "Life Sciences Cloud Software (SaaS)",
+    "fiscal_year_end": "January",
+    "exchange": "NYSE",
+    "market_cap": 38000000000,
+    "enterprise_value": 33000000000,
+    "stock_price": 230.30,
+    "shares_outstanding": 165000000
+  },
+  "headline_metrics": [
+    { "label": "Stock Price", "value": 230.30, "formatted": "$230.30", "type": "currency" },
+    { "label": "Market Cap", "value": 38000000000, "formatted": "$38.0B", "type": "currency" },
+    { "label": "Enterprise Value", "value": 33000000000, "formatted": "$33.0B", "type": "currency" },
+    { "label": "P/E Ratio", "value": 58.7, "formatted": "58.7x", "type": "ratio" },
+    { "label": "EV / Revenue", "value": 12.0, "formatted": "12.0x", "type": "ratio" },
+    { "label": "EV / EBITDA", "value": 37.5, "formatted": "37.5x", "type": "ratio" }
+  ],
+  "kpis": [
+    {
+      "label": "Revenue",
+      "value": 2748000000,
+      "formatted": "$2.75B",
+      "change": 0.157,
+      "change_formatted": "+15.7% YoY",
+      "trend": "up",
+      "period": "FY 2025",
+      "category": "growth"
+    },
+    {
+      "label": "Gross Margin",
+      "value": 0.742,
+      "formatted": "74.2%",
+      "change": 0.012,
+      "change_formatted": "+1.2pp",
+      "trend": "up",
+      "period": "FY 2025",
+      "category": "profitability"
+    },
+    {
+      "label": "Operating Margin",
+      "value": 0.232,
+      "formatted": "23.2%",
+      "change": 0.022,
+      "change_formatted": "+2.2pp",
+      "trend": "up",
+      "period": "FY 2025",
+      "category": "profitability"
+    },
+    {
+      "label": "Free Cash Flow",
+      "value": 1003000000,
+      "formatted": "$1.00B",
+      "change": 0.183,
+      "change_formatted": "+18.3%",
+      "trend": "up",
+      "period": "FY 2025",
+      "category": "cash"
+    },
+    {
+      "label": "FCF Margin",
+      "value": 0.365,
+      "formatted": "36.5%",
+      "change": 0.008,
+      "change_formatted": "+0.8pp",
+      "trend": "up",
+      "period": "FY 2025",
+      "category": "cash"
+    },
+    {
+      "label": "Rule of 40",
+      "value": 52.2,
+      "formatted": "52.2",
+      "change": 1.4,
+      "change_formatted": "+1.4",
+      "trend": "up",
+      "period": "FY 2025",
+      "category": "saas"
+    }
+  ],
+  "financial_statements": {
+    "income_statement": {
+      "periods": ["FY 2025", "FY 2024", "FY 2023", "FY 2022", "FY 2021"],
+      "line_items": [
+        {
+          "label": "Revenue",
+          "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+          "values": { "FY 2025": 2748000000, "FY 2024": 2364000000, "FY 2023": 2156000000, "FY 2022": 1854000000, "FY 2021": 1465000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Subscription Revenue",
+          "concept": "us-gaap:SubscriptionRevenue",
+          "values": { "FY 2025": 2253000000, "FY 2024": 1922000000, "FY 2023": 1738000000, "FY 2022": 1482000000, "FY 2021": 1149000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Professional Services Revenue",
+          "concept": "us-gaap:TechnologyServiceRevenue",
+          "values": { "FY 2025": 495000000, "FY 2024": 442000000, "FY 2023": 418000000, "FY 2022": 372000000, "FY 2021": 316000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Cost of Revenue",
+          "concept": "us-gaap:CostOfGoodsAndServicesSold",
+          "values": { "FY 2025": 709000000, "FY 2024": 637000000, "FY 2023": 600000000, "FY 2022": 528000000, "FY 2021": 421000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Gross Profit",
+          "concept": "us-gaap:GrossProfit",
+          "values": { "FY 2025": 2039000000, "FY 2024": 1727000000, "FY 2023": 1556000000, "FY 2022": 1326000000, "FY 2021": 1044000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Gross Margin %",
+          "concept": "derived:GrossMargin",
+          "values": { "FY 2025": 0.742, "FY 2024": 0.730, "FY 2023": 0.722, "FY 2022": 0.715, "FY 2021": 0.713 },
+          "unit": "percent",
+          "source": "computed"
+        },
+        {
+          "label": "Research & Development",
+          "concept": "us-gaap:ResearchAndDevelopmentExpense",
+          "values": { "FY 2025": 742000000, "FY 2024": 651000000, "FY 2023": 604000000, "FY 2022": 523000000, "FY 2021": 412000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Sales & Marketing",
+          "concept": "us-gaap:SellingAndMarketingExpense",
+          "values": { "FY 2025": 374000000, "FY 2024": 331000000, "FY 2023": 316000000, "FY 2022": 280000000, "FY 2021": 228000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "General & Administrative",
+          "concept": "us-gaap:GeneralAndAdministrativeExpense",
+          "values": { "FY 2025": 285000000, "FY 2024": 248000000, "FY 2023": 227000000, "FY 2022": 201000000, "FY 2021": 168000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Total Operating Expenses",
+          "concept": "us-gaap:OperatingExpenses",
+          "values": { "FY 2025": 2110000000, "FY 2024": 1867000000, "FY 2023": 1747000000, "FY 2022": 1532000000, "FY 2021": 1229000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Operating Income",
+          "concept": "us-gaap:OperatingIncomeLoss",
+          "values": { "FY 2025": 638000000, "FY 2024": 497000000, "FY 2023": 409000000, "FY 2022": 322000000, "FY 2021": 236000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Operating Margin %",
+          "concept": "derived:OperatingMargin",
+          "values": { "FY 2025": 0.232, "FY 2024": 0.210, "FY 2023": 0.190, "FY 2022": 0.174, "FY 2021": 0.161 },
+          "unit": "percent",
+          "source": "computed"
+        },
+        {
+          "label": "Interest Income (Expense)",
+          "concept": "us-gaap:InterestIncomeExpenseNonoperatingNet",
+          "values": { "FY 2025": 198000000, "FY 2024": 172000000, "FY 2023": 108000000, "FY 2022": 28000000, "FY 2021": 12000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Other Income (Expense)",
+          "concept": "us-gaap:OtherNonoperatingIncomeExpense",
+          "values": { "FY 2025": -14000000, "FY 2024": 8000000, "FY 2023": -22000000, "FY 2022": -6000000, "FY 2021": 5000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Pre-Tax Income",
+          "concept": "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+          "values": { "FY 2025": 822000000, "FY 2024": 677000000, "FY 2023": 495000000, "FY 2022": 344000000, "FY 2021": 253000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Income Tax Expense",
+          "concept": "us-gaap:IncomeTaxExpenseBenefit",
+          "values": { "FY 2025": 174000000, "FY 2024": 141000000, "FY 2023": 109000000, "FY 2022": 72000000, "FY 2021": 47000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Net Income",
+          "concept": "us-gaap:NetIncomeLoss",
+          "values": { "FY 2025": 648000000, "FY 2024": 536000000, "FY 2023": 386000000, "FY 2022": 272000000, "FY 2021": 206000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Net Margin %",
+          "concept": "derived:NetMargin",
+          "values": { "FY 2025": 0.236, "FY 2024": 0.227, "FY 2023": 0.179, "FY 2022": 0.147, "FY 2021": 0.141 },
+          "unit": "percent",
+          "source": "computed"
+        },
+        {
+          "label": "EPS (Diluted)",
+          "concept": "us-gaap:EarningsPerShareDiluted",
+          "values": { "FY 2025": 3.92, "FY 2024": 3.27, "FY 2023": 2.37, "FY 2022": 1.67, "FY 2021": 1.27 },
+          "unit": "USD/shares",
+          "source": "10-K"
+        },
+        {
+          "label": "Shares Outstanding (Diluted)",
+          "concept": "us-gaap:WeightedAverageNumberOfDilutedSharesOutstanding",
+          "values": { "FY 2025": 165300000, "FY 2024": 163800000, "FY 2023": 162900000, "FY 2022": 162800000, "FY 2021": 162100000 },
+          "unit": "shares",
+          "source": "10-K"
+        },
+        {
+          "label": "EBITDA",
+          "concept": "derived:EBITDA",
+          "values": { "FY 2025": 880000000, "FY 2024": 722000000, "FY 2023": 601000000, "FY 2022": 490000000, "FY 2021": 368000000 },
+          "unit": "USD",
+          "source": "computed"
+        },
+        {
+          "label": "EBITDA Margin %",
+          "concept": "derived:EBITDAMargin",
+          "values": { "FY 2025": 0.320, "FY 2024": 0.305, "FY 2023": 0.279, "FY 2022": 0.264, "FY 2021": 0.251 },
+          "unit": "percent",
+          "source": "computed"
+        },
+        {
+          "label": "Stock-Based Compensation",
+          "concept": "us-gaap:ShareBasedCompensation",
+          "values": { "FY 2025": 218000000, "FY 2024": 196000000, "FY 2023": 172000000, "FY 2022": 148000000, "FY 2021": 115000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "SBC % of Revenue",
+          "concept": "derived:SBCPercent",
+          "values": { "FY 2025": 0.079, "FY 2024": 0.083, "FY 2023": 0.080, "FY 2022": 0.080, "FY 2021": 0.079 },
+          "unit": "percent",
+          "source": "computed"
+        }
+      ]
+    },
+    "balance_sheet": {
+      "periods": ["FY 2025", "FY 2024", "FY 2023", "FY 2022", "FY 2021"],
+      "line_items": [
+        {
+          "label": "Cash & Equivalents",
+          "concept": "us-gaap:CashAndCashEquivalentsAtCarryingValue",
+          "values": { "FY 2025": 1284000000, "FY 2024": 1050000000, "FY 2023": 876000000, "FY 2022": 983000000, "FY 2021": 1138000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Short-Term Investments",
+          "concept": "us-gaap:ShortTermInvestments",
+          "values": { "FY 2025": 2618000000, "FY 2024": 2340000000, "FY 2023": 2050000000, "FY 2022": 1620000000, "FY 2021": 1180000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Accounts Receivable",
+          "concept": "us-gaap:AccountsReceivableNetCurrent",
+          "values": { "FY 2025": 528000000, "FY 2024": 462000000, "FY 2023": 417000000, "FY 2022": 356000000, "FY 2021": 286000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Prepaid & Other Current",
+          "concept": "us-gaap:PrepaidExpenseAndOtherAssetsCurrent",
+          "values": { "FY 2025": 142000000, "FY 2024": 118000000, "FY 2023": 98000000, "FY 2022": 84000000, "FY 2021": 71000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Total Current Assets",
+          "concept": "us-gaap:AssetsCurrent",
+          "values": { "FY 2025": 4572000000, "FY 2024": 3970000000, "FY 2023": 3441000000, "FY 2022": 3043000000, "FY 2021": 2675000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Long-Term Investments",
+          "concept": "us-gaap:LongTermInvestments",
+          "values": { "FY 2025": 1612000000, "FY 2024": 1480000000, "FY 2023": 1285000000, "FY 2022": 960000000, "FY 2021": 680000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Property & Equipment, Net",
+          "concept": "us-gaap:PropertyPlantAndEquipmentNet",
+          "values": { "FY 2025": 218000000, "FY 2024": 195000000, "FY 2023": 172000000, "FY 2022": 148000000, "FY 2021": 122000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Goodwill",
+          "concept": "us-gaap:Goodwill",
+          "values": { "FY 2025": 428000000, "FY 2024": 428000000, "FY 2023": 394000000, "FY 2022": 362000000, "FY 2021": 338000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Intangible Assets, Net",
+          "concept": "us-gaap:IntangibleAssetsNetExcludingGoodwill",
+          "values": { "FY 2025": 96000000, "FY 2024": 118000000, "FY 2023": 142000000, "FY 2022": 158000000, "FY 2021": 172000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Operating Lease ROU Assets",
+          "concept": "us-gaap:OperatingLeaseRightOfUseAsset",
+          "values": { "FY 2025": 112000000, "FY 2024": 98000000, "FY 2023": 86000000, "FY 2022": 74000000, "FY 2021": 62000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Deferred Tax Assets & Other",
+          "concept": "us-gaap:OtherAssetsNoncurrent",
+          "values": { "FY 2025": 184000000, "FY 2024": 161000000, "FY 2023": 138000000, "FY 2022": 112000000, "FY 2021": 88000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Total Assets",
+          "concept": "us-gaap:Assets",
+          "values": { "FY 2025": 7222000000, "FY 2024": 6450000000, "FY 2023": 5658000000, "FY 2022": 4857000000, "FY 2021": 4137000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Accounts Payable",
+          "concept": "us-gaap:AccountsPayableCurrent",
+          "values": { "FY 2025": 38000000, "FY 2024": 32000000, "FY 2023": 28000000, "FY 2022": 24000000, "FY 2021": 19000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Accrued Liabilities",
+          "concept": "us-gaap:AccruedLiabilitiesCurrent",
+          "values": { "FY 2025": 286000000, "FY 2024": 248000000, "FY 2023": 218000000, "FY 2022": 184000000, "FY 2021": 152000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Deferred Revenue",
+          "concept": "us-gaap:ContractWithCustomerLiabilityCurrent",
+          "values": { "FY 2025": 524000000, "FY 2024": 448000000, "FY 2023": 386000000, "FY 2022": 328000000, "FY 2021": 264000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Current Lease Liabilities",
+          "concept": "us-gaap:OperatingLeaseLiabilityCurrent",
+          "values": { "FY 2025": 28000000, "FY 2024": 24000000, "FY 2023": 21000000, "FY 2022": 18000000, "FY 2021": 15000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Total Current Liabilities",
+          "concept": "us-gaap:LiabilitiesCurrent",
+          "values": { "FY 2025": 876000000, "FY 2024": 752000000, "FY 2023": 653000000, "FY 2022": 554000000, "FY 2021": 450000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Long-Term Lease Liabilities",
+          "concept": "us-gaap:OperatingLeaseLiabilityNoncurrent",
+          "values": { "FY 2025": 92000000, "FY 2024": 82000000, "FY 2023": 72000000, "FY 2022": 62000000, "FY 2021": 52000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Other Long-Term Liabilities",
+          "concept": "us-gaap:OtherLiabilitiesNoncurrent",
+          "values": { "FY 2025": 74000000, "FY 2024": 66000000, "FY 2023": 58000000, "FY 2022": 48000000, "FY 2021": 38000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Total Liabilities",
+          "concept": "us-gaap:Liabilities",
+          "values": { "FY 2025": 1042000000, "FY 2024": 900000000, "FY 2023": 783000000, "FY 2022": 664000000, "FY 2021": 540000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Common Stock & APIC",
+          "concept": "us-gaap:CommonStocksIncludingAdditionalPaidInCapital",
+          "values": { "FY 2025": 3126000000, "FY 2024": 2898000000, "FY 2023": 2688000000, "FY 2022": 2508000000, "FY 2021": 2352000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Retained Earnings",
+          "concept": "us-gaap:RetainedEarningsAccumulatedDeficit",
+          "values": { "FY 2025": 3072000000, "FY 2024": 2668000000, "FY 2023": 2196000000, "FY 2022": 1694000000, "FY 2021": 1254000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Other Comprehensive Income",
+          "concept": "us-gaap:AccumulatedOtherComprehensiveIncomeLossNetOfTax",
+          "values": { "FY 2025": -18000000, "FY 2024": -16000000, "FY 2023": -9000000, "FY 2022": -9000000, "FY 2021": -9000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Total Stockholders' Equity",
+          "concept": "us-gaap:StockholdersEquity",
+          "values": { "FY 2025": 6180000000, "FY 2024": 5550000000, "FY 2023": 4875000000, "FY 2022": 4193000000, "FY 2021": 3597000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Total Liabilities & Equity",
+          "concept": "us-gaap:LiabilitiesAndStockholdersEquity",
+          "values": { "FY 2025": 7222000000, "FY 2024": 6450000000, "FY 2023": 5658000000, "FY 2022": 4857000000, "FY 2021": 4137000000 },
+          "unit": "USD",
+          "source": "10-K"
+        }
+      ]
+    },
+    "cash_flow_statement": {
+      "periods": ["FY 2025", "FY 2024", "FY 2023", "FY 2022", "FY 2021"],
+      "line_items": [
+        {
+          "label": "Net Income",
+          "concept": "us-gaap:NetIncomeLoss",
+          "values": { "FY 2025": 648000000, "FY 2024": 536000000, "FY 2023": 386000000, "FY 2022": 272000000, "FY 2021": 206000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Depreciation & Amortization",
+          "concept": "us-gaap:DepreciationDepletionAndAmortization",
+          "values": { "FY 2025": 242000000, "FY 2024": 225000000, "FY 2023": 192000000, "FY 2022": 168000000, "FY 2021": 132000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Stock-Based Compensation",
+          "concept": "us-gaap:ShareBasedCompensation",
+          "values": { "FY 2025": 218000000, "FY 2024": 196000000, "FY 2023": 172000000, "FY 2022": 148000000, "FY 2021": 115000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Changes in Working Capital",
+          "concept": "us-gaap:IncreaseDecreaseInOperatingCapital",
+          "values": { "FY 2025": -42000000, "FY 2024": -68000000, "FY 2023": -52000000, "FY 2022": -36000000, "FY 2021": -28000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Other Operating Adjustments",
+          "concept": "us-gaap:OtherNoncashIncomeExpense",
+          "values": { "FY 2025": -18000000, "FY 2024": -12000000, "FY 2023": 6000000, "FY 2022": -8000000, "FY 2021": -5000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Cash from Operations",
+          "concept": "us-gaap:NetCashProvidedByOperatingActivities",
+          "values": { "FY 2025": 1048000000, "FY 2024": 877000000, "FY 2023": 704000000, "FY 2022": 544000000, "FY 2021": 420000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Capital Expenditures",
+          "concept": "us-gaap:PaymentsToAcquirePropertyPlantAndEquipment",
+          "values": { "FY 2025": -45000000, "FY 2024": -40000000, "FY 2023": -36000000, "FY 2022": -32000000, "FY 2021": -26000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Acquisitions",
+          "concept": "us-gaap:PaymentsToAcquireBusinessesNetOfCashAcquired",
+          "values": { "FY 2025": 0, "FY 2024": -52000000, "FY 2023": -48000000, "FY 2022": -38000000, "FY 2021": -65000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Purchases of Investments",
+          "concept": "us-gaap:PaymentsToAcquireInvestments",
+          "values": { "FY 2025": -1960000000, "FY 2024": -1720000000, "FY 2023": -1580000000, "FY 2022": -1240000000, "FY 2021": -940000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Maturities of Investments",
+          "concept": "us-gaap:ProceedsFromMaturitiesPrepaymentsAndCallsOfAvailableForSaleSecurities",
+          "values": { "FY 2025": 1550000000, "FY 2024": 1394000000, "FY 2023": 1282000000, "FY 2022": 985000000, "FY 2021": 768000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Cash from Investing",
+          "concept": "us-gaap:NetCashProvidedByUsedInInvestingActivities",
+          "values": { "FY 2025": -455000000, "FY 2024": -418000000, "FY 2023": -382000000, "FY 2022": -325000000, "FY 2021": -263000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Share Repurchases",
+          "concept": "us-gaap:PaymentsForRepurchaseOfCommonStock",
+          "values": { "FY 2025": -310000000, "FY 2024": -248000000, "FY 2023": -405000000, "FY 2022": -318000000, "FY 2021": 0 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Proceeds from Stock Plans",
+          "concept": "us-gaap:ProceedsFromStockPlans",
+          "values": { "FY 2025": 42000000, "FY 2024": 38000000, "FY 2023": 34000000, "FY 2022": 30000000, "FY 2021": 26000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Tax Withholding on RSUs",
+          "concept": "us-gaap:PaymentsRelatedToTaxWithholdingForShareBasedCompensation",
+          "values": { "FY 2025": -91000000, "FY 2024": -73000000, "FY 2023": -68000000, "FY 2022": -52000000, "FY 2021": -42000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Cash from Financing",
+          "concept": "us-gaap:NetCashProvidedByUsedInFinancingActivities",
+          "values": { "FY 2025": -359000000, "FY 2024": -283000000, "FY 2023": -439000000, "FY 2022": -340000000, "FY 2021": -16000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Net Change in Cash",
+          "concept": "us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsPeriodIncreaseDecreaseIncludingExchangeRateEffect",
+          "values": { "FY 2025": 234000000, "FY 2024": 176000000, "FY 2023": -117000000, "FY 2022": -121000000, "FY 2021": 141000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Free Cash Flow",
+          "concept": "derived:FreeCashFlow",
+          "values": { "FY 2025": 1003000000, "FY 2024": 837000000, "FY 2023": 668000000, "FY 2022": 512000000, "FY 2021": 394000000 },
+          "unit": "USD",
+          "source": "computed"
+        },
+        {
+          "label": "FCF Margin %",
+          "concept": "derived:FCFMargin",
+          "values": { "FY 2025": 0.365, "FY 2024": 0.354, "FY 2023": 0.310, "FY 2022": 0.276, "FY 2021": 0.269 },
+          "unit": "percent",
+          "source": "computed"
+        }
+      ]
+    }
+  },
+  "derived_metrics": {
+    "profitability": {
+      "gross_margin": { "value": 0.742, "period": "FY 2025", "trend": "up" },
+      "operating_margin": { "value": 0.232, "period": "FY 2025", "trend": "up" },
+      "net_margin": { "value": 0.236, "period": "FY 2025", "trend": "up" },
+      "ebitda_margin": { "value": 0.320, "period": "FY 2025", "trend": "up" },
+      "roe": { "value": 0.110, "period": "FY 2025", "trend": "up" },
+      "roa": { "value": 0.095, "period": "FY 2025", "trend": "up" },
+      "roic": { "value": 0.107, "period": "FY 2025", "trend": "up" }
+    },
+    "liquidity": {
+      "current_ratio": { "value": 5.22, "period": "FY 2025", "trend": "stable" },
+      "quick_ratio": { "value": 5.06, "period": "FY 2025", "trend": "stable" },
+      "cash_to_assets": { "value": 0.178, "period": "FY 2025", "trend": "up" },
+      "working_capital": { "value": 3696000000, "period": "FY 2025", "trend": "up" }
+    },
+    "leverage": {
+      "debt_to_equity": { "value": 0.169, "period": "FY 2025", "trend": "stable" },
+      "equity_multiplier": { "value": 1.169, "period": "FY 2025", "trend": "stable" },
+      "net_debt": { "value": -5514000000, "period": "FY 2025", "trend": "up" }
+    },
+    "efficiency": {
+      "asset_turnover": { "value": 0.402, "period": "FY 2025", "trend": "up" },
+      "revenue_per_share": { "value": 16.63, "period": "FY 2025", "trend": "up" },
+      "fcf_yield": { "value": 0.026, "period": "FY 2025", "trend": "up" },
+      "sbc_pct_revenue": { "value": 0.079, "period": "FY 2025", "trend": "down" },
+      "rule_of_40": { "value": 52.2, "period": "FY 2025", "trend": "up" }
+    }
+  },
+  "narrative": {
+    "summary": "Veeva Systems delivered another exceptional year in FY 2025, with revenue reaching $2.75B (+15.7% YoY) and continuing its track record as the dominant vertical SaaS platform for the life sciences industry. Operating income expanded to $638M (23.2% GAAP margin), while free cash flow crossed the $1B milestone at $1.003B (36.5% FCF margin). The company's Rule of 40 score of 52.2 places it among the very best SaaS businesses globally. With $5.5B in cash and investments, zero debt, and a successful ongoing migration from Salesforce CRM to its proprietary Vault platform, Veeva occupies a rare position of both dominance and financial fortress-grade balance sheet strength.",
+    "sections": [
+      {
+        "title": "Revenue Growth & Platform Transition",
+        "content": "Veeva grew total revenue 15.7% to $2.75B in FY 2025, maintaining healthy double-digit growth at significant scale. Subscription revenue of $2.25B (82% of total) grew 17.2%, reflecting strong adoption of the Vault platform across CRM, clinical, regulatory, and quality cloud suites. Professional services revenue of $495M grew 12%, driven by implementation projects related to the Salesforce-to-Vault CRM migration. This platform transition is a multi-year catalyst: Veeva is moving its $800M+ CRM business from Salesforce infrastructure to its own proprietary Vault CRM, which reduces platform fees, increases product control, and improves customer stickiness. The migration, expected to complete by 2030, de-risks the Salesforce dependency that was Veeva's primary platform risk.",
+        "sentiment": "positive",
+        "source_refs": [0]
+      },
+      {
+        "title": "Profitability & Operating Leverage",
+        "content": "GAAP operating margin expanded 220bps to 23.2%, reflecting disciplined expense management and scale benefits. R&D spend of $742M (27.0% of revenue) demonstrates continued heavy investment in the Vault platform while still expanding margins. SBC at 7.9% of revenue is notably lower than most enterprise SaaS peers (which typically run 15-25%), reflecting founder-CEO Peter Gassner's capital-efficient culture. EBITDA margin reached 32.0%, and net margin of 23.6% is among the highest in all of enterprise software. The interest income contribution of $198M (from the massive cash and investment portfolio) significantly boosts bottom-line profitability.",
+        "sentiment": "positive",
+        "source_refs": [0]
+      },
+      {
+        "title": "Cash Flow Generation & Capital Allocation",
+        "content": "Free cash flow crossed $1B for the first time, reaching $1.003B (36.5% FCF margin). Operating cash flow of $1.048B grew 19.5% YoY, driven by higher net income and strong working capital dynamics from the subscription billing model. Capital expenditures remain modest at $45M (1.6% of revenue), typical of the asset-light SaaS model. The company returned $310M to shareholders through buybacks while maintaining its enormous cash stockpile. Veeva has repurchased ~$1.3B in shares over the past four years. The Rule of 40 score of 52.2 (15.7% growth + 36.5% FCF margin) is best-in-class among large-cap SaaS companies.",
+        "sentiment": "positive",
+        "source_refs": [0]
+      },
+      {
+        "title": "Balance Sheet & Financial Fortress",
+        "content": "Veeva's balance sheet is among the strongest in all of enterprise software. Total cash, cash equivalents, and investments reached $5.51B ($1.28B cash + $2.62B short-term + $1.61B long-term investments), with absolutely zero debt. Net cash of $5.5B represents roughly 15% of market cap. Total stockholders' equity of $6.18B grew 11.4% YoY, driven entirely by retained earnings accumulation. The current ratio of 5.2x is exceptionally strong. Goodwill of $428M from prior acquisitions (Crossix, Veeva Andi, etc.) represents a modest 5.9% of total assets. Veeva converted its Class B supervoting shares to single-vote Class A in 2023, improving governance and earning index inclusion eligibility.",
+        "sentiment": "positive",
+        "source_refs": [0]
+      },
+      {
+        "title": "Key Risk Factors & Competitive Dynamics",
+        "content": "Despite Veeva's dominant position, several risks warrant monitoring: (1) Revenue growth decelerated from ~22% in FY 2023 to 15.7% in FY 2025, reflecting the law of large numbers at $2.75B scale; (2) The Salesforce-to-Vault CRM migration carries execution risk over the 2025-2030 timeline, and any delays or customer churn during transition could impact revenue; (3) Competitive pressure from IQVIA, Medidata (Dassault Systemes), and Oracle Health Sciences in clinical and regulatory clouds; (4) Customer concentration in pharma/biotech means biotech funding downturns can slow new logo acquisition; (5) Regulatory scrutiny of AI-driven drug development tools could introduce compliance complexity for Veeva's clinical cloud products.",
+        "sentiment": "mixed",
+        "source_refs": [0]
+      }
+    ],
+    "risks": [
+      "Revenue growth deceleration to mid-teens as company scales beyond $2.5B",
+      "Salesforce-to-Vault CRM migration execution risk over multi-year timeline",
+      "Competitive pressure from IQVIA, Medidata (Dassault), and Oracle Health Sciences",
+      "Customer concentration in pharma/biotech exposes revenue to biotech funding cycles",
+      "Regulatory complexity around AI-driven clinical and drug development tools",
+      "Premium valuation (~58x P/E, 12x EV/Rev) leaves limited margin for error"
+    ],
+    "outlook": "Veeva Systems is positioned to sustain mid-teens revenue growth through FY 2028, driven by the Vault CRM migration (converting $800M+ of CRM revenue to proprietary infrastructure), continued penetration of clinical, regulatory, and quality clouds, and emerging data/AI products. Operating margins should continue expanding toward 28-30% GAAP as the Vault migration reduces Salesforce platform costs and R&D intensity moderates. FCF margin is likely to sustain above 35%. The company's zero-debt balance sheet, $5.5B cash hoard, and consistent capital returns position it as one of the highest-quality compounders in enterprise software. At current valuation multiples, the market is pricing in continued excellence -- but Veeva's competitive moat in life sciences vertical SaaS and its founder-led culture make that a reasonable expectation."
+  },
+  "sources": [
+    {
+      "id": 0,
+      "type": "sec_filing",
+      "label": "VEEV 10-K Annual Reports (FY 2021-2025)",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001393052&type=10-K",
+      "date": "2026-02-08",
+      "reliability": "high"
+    },
+    {
+      "id": 1,
+      "type": "computed",
+      "label": "Derived financial ratios, margins, and metrics",
+      "url": null,
+      "date": "2026-02-08",
+      "reliability": "high"
+    }
+  ],
+  "data_quality": {
+    "overall_confidence": "high",
+    "completeness": 0.91,
+    "warnings": [
+      "Financial data reconstructed from publicly available 10-K filings and known metrics",
+      "Some line items estimated based on operating expense ratios and segment disclosure"
+    ],
+    "missing_data": [
+      "Vault CRM vs. legacy CRM revenue breakdown",
+      "Net dollar retention rate and customer count by segment",
+      "Cloud-level revenue disaggregation (Commercial Cloud, Clinical Cloud, Regulatory Cloud, Quality Cloud)"
+    ]
+  }
+}

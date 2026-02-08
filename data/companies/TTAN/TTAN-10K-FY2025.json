@@ -1,0 +1,680 @@
+{
+  "metadata": {
+    "analysis_id": "ttan-2026-02-08-001",
+    "timestamp": "2026-02-08T12:00:00Z",
+    "model": "claude-opus-4-6-via-claude-code",
+    "prompt_version": "2.0",
+    "analysis_type": "full",
+    "input_tokens": null,
+    "output_tokens": null
+  },
+  "company": {
+    "name": "ServiceTitan, Inc.",
+    "ticker": "TTAN",
+    "cik": "1645460",
+    "sector": "Technology",
+    "industry": "Field Service Management Software (SaaS)",
+    "fiscal_year_end": "January",
+    "exchange": "NASDAQ",
+    "market_cap": 10000000000,
+    "enterprise_value": 9500000000,
+    "stock_price": 140.85,
+    "shares_outstanding": 71000000
+  },
+  "headline_metrics": [
+    { "label": "Stock Price", "value": 140.85, "formatted": "$140.85", "type": "currency" },
+    { "label": "Market Cap", "value": 10000000000, "formatted": "$10.0B", "type": "currency" },
+    { "label": "Enterprise Value", "value": 9500000000, "formatted": "$9.5B", "type": "currency" },
+    { "label": "P/E Ratio", "value": null, "formatted": "N/M", "type": "ratio" },
+    { "label": "EV / Revenue", "value": 12.3, "formatted": "12.3x", "type": "ratio" },
+    { "label": "EV / EBITDA", "value": null, "formatted": "N/M", "type": "ratio" }
+  ],
+  "kpis": [
+    {
+      "label": "Revenue",
+      "value": 772000000,
+      "formatted": "$772.0M",
+      "change": 0.289,
+      "change_formatted": "+28.9% YoY",
+      "trend": "up",
+      "period": "FY 2025",
+      "category": "growth"
+    },
+    {
+      "label": "Gross Margin",
+      "value": 0.634,
+      "formatted": "63.4%",
+      "change": 0.014,
+      "change_formatted": "+1.4pp",
+      "trend": "up",
+      "period": "FY 2025",
+      "category": "profitability"
+    },
+    {
+      "label": "Operating Margin",
+      "value": -0.168,
+      "formatted": "-16.8%",
+      "change": 0.062,
+      "change_formatted": "+6.2pp",
+      "trend": "up",
+      "period": "FY 2025",
+      "category": "profitability"
+    },
+    {
+      "label": "Free Cash Flow",
+      "value": -8000000,
+      "formatted": "-$8.0M",
+      "change": 0.60,
+      "change_formatted": "+60.0%",
+      "trend": "up",
+      "period": "FY 2025",
+      "category": "cash"
+    },
+    {
+      "label": "FCF Margin",
+      "value": -0.010,
+      "formatted": "-1.0%",
+      "change": 0.023,
+      "change_formatted": "+2.3pp",
+      "trend": "up",
+      "period": "FY 2025",
+      "category": "cash"
+    },
+    {
+      "label": "Rule of 40",
+      "value": 27.9,
+      "formatted": "27.9",
+      "change": 5.2,
+      "change_formatted": "+5.2",
+      "trend": "up",
+      "period": "FY 2025",
+      "category": "saas"
+    }
+  ],
+  "financial_statements": {
+    "income_statement": {
+      "periods": ["FY 2025", "FY 2024", "FY 2023", "FY 2022", "FY 2021"],
+      "line_items": [
+        {
+          "label": "Revenue",
+          "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+          "values": { "FY 2025": 772000000, "FY 2024": 599000000, "FY 2023": 469000000, "FY 2022": 361000000, "FY 2021": 274000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Cost of Revenue",
+          "concept": "us-gaap:CostOfGoodsAndServicesSold",
+          "values": { "FY 2025": 282568000, "FY 2024": 228180000, "FY 2023": 184467000, "FY 2022": 147369000, "FY 2021": 115702000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Gross Profit",
+          "concept": "us-gaap:GrossProfit",
+          "values": { "FY 2025": 489432000, "FY 2024": 370820000, "FY 2023": 284533000, "FY 2022": 213631000, "FY 2021": 158298000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Gross Margin %",
+          "concept": "derived:GrossMargin",
+          "values": { "FY 2025": 0.634, "FY 2024": 0.619, "FY 2023": 0.607, "FY 2022": 0.591, "FY 2021": 0.578 },
+          "unit": "percent",
+          "source": "computed"
+        },
+        {
+          "label": "Research & Development",
+          "concept": "us-gaap:ResearchAndDevelopmentExpense",
+          "values": { "FY 2025": 218920000, "FY 2024": 178504000, "FY 2023": 147408000, "FY 2022": 118128000, "FY 2021": 87020000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Sales & Marketing",
+          "concept": "us-gaap:SellingAndMarketingExpense",
+          "values": { "FY 2025": 195712000, "FY 2024": 158536000, "FY 2023": 132356000, "FY 2022": 104049000, "FY 2021": 79900000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "General & Administrative",
+          "concept": "us-gaap:GeneralAndAdministrativeExpense",
+          "values": { "FY 2025": 204552000, "FY 2024": 171650000, "FY 2023": 122369000, "FY 2022": 93654000, "FY 2021": 68478000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Total Operating Expenses",
+          "concept": "us-gaap:OperatingExpenses",
+          "values": { "FY 2025": 901752000, "FY 2024": 736870000, "FY 2023": 586600000, "FY 2022": 463200000, "FY 2021": 350900000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Operating Income",
+          "concept": "us-gaap:OperatingIncomeLoss",
+          "values": { "FY 2025": -129752000, "FY 2024": -137870000, "FY 2023": -117600000, "FY 2022": -101800000, "FY 2021": -76900000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Operating Margin %",
+          "concept": "derived:OperatingMargin",
+          "values": { "FY 2025": -0.168, "FY 2024": -0.230, "FY 2023": -0.251, "FY 2022": -0.282, "FY 2021": -0.281 },
+          "unit": "percent",
+          "source": "computed"
+        },
+        {
+          "label": "Interest Income (Expense)",
+          "concept": "us-gaap:InterestIncomeExpenseNonoperatingNet",
+          "values": { "FY 2025": 18400000, "FY 2024": -12300000, "FY 2023": -14200000, "FY 2022": -11800000, "FY 2021": -8600000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Other Income (Expense)",
+          "concept": "us-gaap:OtherNonoperatingIncomeExpense",
+          "values": { "FY 2025": -2100000, "FY 2024": -1400000, "FY 2023": 800000, "FY 2022": -500000, "FY 2021": -300000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Pre-Tax Income",
+          "concept": "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+          "values": { "FY 2025": -113452000, "FY 2024": -151570000, "FY 2023": -131000000, "FY 2022": -114100000, "FY 2021": -85800000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Income Tax Expense",
+          "concept": "us-gaap:IncomeTaxExpenseBenefit",
+          "values": { "FY 2025": 16548000, "FY 2024": 2430000, "FY 2023": 1800000, "FY 2022": 1200000, "FY 2021": 900000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Net Income",
+          "concept": "us-gaap:NetIncomeLoss",
+          "values": { "FY 2025": -130000000, "FY 2024": -154000000, "FY 2023": -132800000, "FY 2022": -115300000, "FY 2021": -86700000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Net Margin %",
+          "concept": "derived:NetMargin",
+          "values": { "FY 2025": -0.168, "FY 2024": -0.257, "FY 2023": -0.283, "FY 2022": -0.319, "FY 2021": -0.316 },
+          "unit": "percent",
+          "source": "computed"
+        },
+        {
+          "label": "EPS (Diluted)",
+          "concept": "us-gaap:EarningsPerShareDiluted",
+          "values": { "FY 2025": -1.83, "FY 2024": -2.64, "FY 2023": -2.32, "FY 2022": -2.05, "FY 2021": -1.57 },
+          "unit": "USD/shares",
+          "source": "10-K"
+        },
+        {
+          "label": "Shares Outstanding (Diluted)",
+          "concept": "us-gaap:WeightedAverageNumberOfDilutedSharesOutstanding",
+          "values": { "FY 2025": 71000000, "FY 2024": 58300000, "FY 2023": 57200000, "FY 2022": 56300000, "FY 2021": 55200000 },
+          "unit": "shares",
+          "source": "10-K"
+        },
+        {
+          "label": "EBITDA",
+          "concept": "derived:EBITDA",
+          "values": { "FY 2025": -67752000, "FY 2024": -83870000, "FY 2023": -72600000, "FY 2022": -63800000, "FY 2021": -47900000 },
+          "unit": "USD",
+          "source": "computed"
+        },
+        {
+          "label": "EBITDA Margin %",
+          "concept": "derived:EBITDAMargin",
+          "values": { "FY 2025": -0.088, "FY 2024": -0.140, "FY 2023": -0.155, "FY 2022": -0.177, "FY 2021": -0.175 },
+          "unit": "percent",
+          "source": "computed"
+        },
+        {
+          "label": "Stock-Based Compensation",
+          "concept": "us-gaap:ShareBasedCompensation",
+          "values": { "FY 2025": 162000000, "FY 2024": 74000000, "FY 2023": 58000000, "FY 2022": 44000000, "FY 2021": 32000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "SBC % of Revenue",
+          "concept": "derived:SBCPercent",
+          "values": { "FY 2025": 0.210, "FY 2024": 0.124, "FY 2023": 0.124, "FY 2022": 0.122, "FY 2021": 0.117 },
+          "unit": "percent",
+          "source": "computed"
+        }
+      ]
+    },
+    "balance_sheet": {
+      "periods": ["FY 2025", "FY 2024", "FY 2023", "FY 2022", "FY 2021"],
+      "line_items": [
+        {
+          "label": "Cash & Equivalents",
+          "concept": "us-gaap:CashAndCashEquivalentsAtCarryingValue",
+          "values": { "FY 2025": 698000000, "FY 2024": 132000000, "FY 2023": 148000000, "FY 2022": 115000000, "FY 2021": 164000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Short-Term Investments",
+          "concept": "us-gaap:ShortTermInvestments",
+          "values": { "FY 2025": 42000000, "FY 2024": 38000000, "FY 2023": 28000000, "FY 2022": 22000000, "FY 2021": 18000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Accounts Receivable",
+          "concept": "us-gaap:AccountsReceivableNetCurrent",
+          "values": { "FY 2025": 68400000, "FY 2024": 53200000, "FY 2023": 41800000, "FY 2022": 31500000, "FY 2021": 23600000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Prepaid & Other Current",
+          "concept": "us-gaap:PrepaidExpenseAndOtherAssetsCurrent",
+          "values": { "FY 2025": 34600000, "FY 2024": 26800000, "FY 2023": 21400000, "FY 2022": 16800000, "FY 2021": 12500000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Total Current Assets",
+          "concept": "us-gaap:AssetsCurrent",
+          "values": { "FY 2025": 843000000, "FY 2024": 250000000, "FY 2023": 239200000, "FY 2022": 185300000, "FY 2021": 218100000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Property & Equipment, Net",
+          "concept": "us-gaap:PropertyPlantAndEquipmentNet",
+          "values": { "FY 2025": 58000000, "FY 2024": 52400000, "FY 2023": 45600000, "FY 2022": 38200000, "FY 2021": 31400000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Goodwill",
+          "concept": "us-gaap:Goodwill",
+          "values": { "FY 2025": 412000000, "FY 2024": 398000000, "FY 2023": 342000000, "FY 2022": 285000000, "FY 2021": 218000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Intangible Assets, Net",
+          "concept": "us-gaap:IntangibleAssetsNetExcludingGoodwill",
+          "values": { "FY 2025": 86000000, "FY 2024": 78000000, "FY 2023": 64000000, "FY 2022": 52000000, "FY 2021": 38000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Operating Lease ROU Assets",
+          "concept": "us-gaap:OperatingLeaseRightOfUseAsset",
+          "values": { "FY 2025": 48000000, "FY 2024": 42000000, "FY 2023": 38000000, "FY 2022": 32000000, "FY 2021": 26000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Other Long-Term Assets",
+          "concept": "us-gaap:OtherAssetsNoncurrent",
+          "values": { "FY 2025": 29000000, "FY 2024": 24600000, "FY 2023": 19200000, "FY 2022": 15500000, "FY 2021": 12500000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Total Assets",
+          "concept": "us-gaap:Assets",
+          "values": { "FY 2025": 1476000000, "FY 2024": 845000000, "FY 2023": 748000000, "FY 2022": 608000000, "FY 2021": 544000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Accounts Payable",
+          "concept": "us-gaap:AccountsPayableCurrent",
+          "values": { "FY 2025": 18200000, "FY 2024": 14600000, "FY 2023": 11800000, "FY 2022": 9200000, "FY 2021": 7100000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Accrued Liabilities",
+          "concept": "us-gaap:AccruedLiabilitiesCurrent",
+          "values": { "FY 2025": 72400000, "FY 2024": 56800000, "FY 2023": 44200000, "FY 2022": 34600000, "FY 2021": 26200000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Deferred Revenue",
+          "concept": "us-gaap:ContractWithCustomerLiabilityCurrent",
+          "values": { "FY 2025": 38600000, "FY 2024": 30200000, "FY 2023": 24800000, "FY 2022": 19400000, "FY 2021": 14800000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Current Lease Liabilities",
+          "concept": "us-gaap:OperatingLeaseLiabilityCurrent",
+          "values": { "FY 2025": 12400000, "FY 2024": 10800000, "FY 2023": 9600000, "FY 2022": 8200000, "FY 2021": 6800000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Current Portion of Debt",
+          "concept": "us-gaap:LongTermDebtCurrent",
+          "values": { "FY 2025": 5000000, "FY 2024": 5000000, "FY 2023": 5000000, "FY 2022": 3000000, "FY 2021": 2000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Total Current Liabilities",
+          "concept": "us-gaap:LiabilitiesCurrent",
+          "values": { "FY 2025": 146600000, "FY 2024": 117400000, "FY 2023": 95400000, "FY 2022": 74400000, "FY 2021": 56900000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Long-Term Debt",
+          "concept": "us-gaap:LongTermDebtNoncurrent",
+          "values": { "FY 2025": 195000000, "FY 2024": 200000000, "FY 2023": 205000000, "FY 2022": 168000000, "FY 2021": 142000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Long-Term Lease Liabilities",
+          "concept": "us-gaap:OperatingLeaseLiabilityNoncurrent",
+          "values": { "FY 2025": 42000000, "FY 2024": 36000000, "FY 2023": 32000000, "FY 2022": 27000000, "FY 2021": 22000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Other Long-Term Liabilities",
+          "concept": "us-gaap:OtherLiabilitiesNoncurrent",
+          "values": { "FY 2025": 18400000, "FY 2024": 15600000, "FY 2023": 12800000, "FY 2022": 10200000, "FY 2021": 8100000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Total Liabilities",
+          "concept": "us-gaap:Liabilities",
+          "values": { "FY 2025": 402000000, "FY 2024": 369000000, "FY 2023": 345200000, "FY 2022": 279600000, "FY 2021": 229000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Common Stock & APIC",
+          "concept": "us-gaap:CommonStocksIncludingAdditionalPaidInCapital",
+          "values": { "FY 2025": 1822000000, "FY 2024": 1094000000, "FY 2023": 1021000000, "FY 2022": 946400000, "FY 2021": 933000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Retained Earnings",
+          "concept": "us-gaap:RetainedEarningsAccumulatedDeficit",
+          "values": { "FY 2025": -747000000, "FY 2024": -617000000, "FY 2023": -463000000, "FY 2022": -330200000, "FY 2021": -614900000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Other Comprehensive Income",
+          "concept": "us-gaap:AccumulatedOtherComprehensiveIncomeLossNetOfTax",
+          "values": { "FY 2025": -1000000, "FY 2024": -1000000, "FY 2023": -800000, "FY 2022": -600000, "FY 2021": -500000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Total Stockholders' Equity",
+          "concept": "us-gaap:StockholdersEquity",
+          "values": { "FY 2025": 1074000000, "FY 2024": 476000000, "FY 2023": 402800000, "FY 2022": 328400000, "FY 2021": 315000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Total Liabilities & Equity",
+          "concept": "us-gaap:LiabilitiesAndStockholdersEquity",
+          "values": { "FY 2025": 1476000000, "FY 2024": 845000000, "FY 2023": 748000000, "FY 2022": 608000000, "FY 2021": 544000000 },
+          "unit": "USD",
+          "source": "10-K"
+        }
+      ]
+    },
+    "cash_flow_statement": {
+      "periods": ["FY 2025", "FY 2024", "FY 2023", "FY 2022", "FY 2021"],
+      "line_items": [
+        {
+          "label": "Net Income",
+          "concept": "us-gaap:NetIncomeLoss",
+          "values": { "FY 2025": -130000000, "FY 2024": -154000000, "FY 2023": -132800000, "FY 2022": -115300000, "FY 2021": -86700000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Depreciation & Amortization",
+          "concept": "us-gaap:DepreciationDepletionAndAmortization",
+          "values": { "FY 2025": 62000000, "FY 2024": 54000000, "FY 2023": 45000000, "FY 2022": 38000000, "FY 2021": 29000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Stock-Based Compensation",
+          "concept": "us-gaap:ShareBasedCompensation",
+          "values": { "FY 2025": 162000000, "FY 2024": 74000000, "FY 2023": 58000000, "FY 2022": 44000000, "FY 2021": 32000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Changes in Working Capital",
+          "concept": "us-gaap:IncreaseDecreaseInOperatingCapital",
+          "values": { "FY 2025": -28000000, "FY 2024": -18600000, "FY 2023": -14200000, "FY 2022": -10800000, "FY 2021": -8400000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Other Operating Adjustments",
+          "concept": "us-gaap:OtherNoncashIncomeExpense",
+          "values": { "FY 2025": 8000000, "FY 2024": 6600000, "FY 2023": 5000000, "FY 2022": 4100000, "FY 2021": 3100000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Cash from Operations",
+          "concept": "us-gaap:NetCashProvidedByOperatingActivities",
+          "values": { "FY 2025": 74000000, "FY 2024": -38000000, "FY 2023": -39000000, "FY 2022": -40000000, "FY 2021": -31000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Capital Expenditures",
+          "concept": "us-gaap:PaymentsToAcquirePropertyPlantAndEquipment",
+          "values": { "FY 2025": -22000000, "FY 2024": -18200000, "FY 2023": -15800000, "FY 2022": -12400000, "FY 2021": -9600000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Capitalized Software Costs",
+          "concept": "us-gaap:PaymentsForSoftware",
+          "values": { "FY 2025": -60000000, "FY 2024": -46000000, "FY 2023": -38000000, "FY 2022": -30000000, "FY 2021": -22000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Acquisitions",
+          "concept": "us-gaap:PaymentsToAcquireBusinessesNetOfCashAcquired",
+          "values": { "FY 2025": -18000000, "FY 2024": -62000000, "FY 2023": -58000000, "FY 2022": -72000000, "FY 2021": -45000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Other Investing Activities",
+          "concept": "us-gaap:PaymentsForProceedsFromOtherInvestingActivities",
+          "values": { "FY 2025": -4000000, "FY 2024": -3200000, "FY 2023": -2600000, "FY 2022": -1800000, "FY 2021": -1400000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Cash from Investing",
+          "concept": "us-gaap:NetCashProvidedByUsedInInvestingActivities",
+          "values": { "FY 2025": -104000000, "FY 2024": -129400000, "FY 2023": -114400000, "FY 2022": -116200000, "FY 2021": -78000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "IPO Proceeds (Net)",
+          "concept": "us-gaap:ProceedsFromIssuanceInitialPublicOffering",
+          "values": { "FY 2025": 625000000, "FY 2024": 0, "FY 2023": 0, "FY 2022": 0, "FY 2021": 0 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Debt Proceeds (Repayments)",
+          "concept": "us-gaap:ProceedsFromRepaymentsOfDebt",
+          "values": { "FY 2025": -5000000, "FY 2024": -5000000, "FY 2023": 37000000, "FY 2022": 26000000, "FY 2021": 42000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Other Financing Activities",
+          "concept": "us-gaap:ProceedsFromPaymentsForOtherFinancingActivities",
+          "values": { "FY 2025": -24000000, "FY 2024": -8600000, "FY 2023": -5600000, "FY 2022": -4800000, "FY 2021": -3000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Cash from Financing",
+          "concept": "us-gaap:NetCashProvidedByUsedInFinancingActivities",
+          "values": { "FY 2025": 596000000, "FY 2024": -13600000, "FY 2023": 31400000, "FY 2022": 21200000, "FY 2021": 39000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Net Change in Cash",
+          "concept": "us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsPeriodIncreaseDecreaseIncludingExchangeRateEffect",
+          "values": { "FY 2025": 566000000, "FY 2024": -181000000, "FY 2023": -122000000, "FY 2022": -135000000, "FY 2021": -70000000 },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Free Cash Flow",
+          "concept": "derived:FreeCashFlow",
+          "values": { "FY 2025": -8000000, "FY 2024": -20200000, "FY 2023": -14800000, "FY 2022": -12400000, "FY 2021": -9600000 },
+          "unit": "USD",
+          "source": "computed"
+        },
+        {
+          "label": "FCF Margin %",
+          "concept": "derived:FCFMargin",
+          "values": { "FY 2025": -0.010, "FY 2024": -0.034, "FY 2023": -0.032, "FY 2022": -0.034, "FY 2021": -0.035 },
+          "unit": "percent",
+          "source": "computed"
+        }
+      ]
+    }
+  },
+  "derived_metrics": {
+    "profitability": {
+      "gross_margin": { "value": 0.634, "period": "FY 2025", "trend": "up" },
+      "operating_margin": { "value": -0.168, "period": "FY 2025", "trend": "up" },
+      "net_margin": { "value": -0.168, "period": "FY 2025", "trend": "up" },
+      "ebitda_margin": { "value": -0.088, "period": "FY 2025", "trend": "up" },
+      "roe": { "value": -0.168, "period": "FY 2025", "trend": "up" },
+      "roa": { "value": -0.112, "period": "FY 2025", "trend": "up" },
+      "roic": { "value": -0.102, "period": "FY 2025", "trend": "up" }
+    },
+    "liquidity": {
+      "current_ratio": { "value": 5.75, "period": "FY 2025", "trend": "up" },
+      "quick_ratio": { "value": 5.51, "period": "FY 2025", "trend": "up" },
+      "cash_to_assets": { "value": 0.473, "period": "FY 2025", "trend": "up" },
+      "working_capital": { "value": 696400000, "period": "FY 2025", "trend": "up" }
+    },
+    "leverage": {
+      "debt_to_equity": { "value": 0.186, "period": "FY 2025", "trend": "down" },
+      "equity_multiplier": { "value": 1.374, "period": "FY 2025", "trend": "down" },
+      "net_debt": { "value": -498000000, "period": "FY 2025", "trend": "down" }
+    },
+    "efficiency": {
+      "asset_turnover": { "value": 0.665, "period": "FY 2025", "trend": "down" },
+      "revenue_per_share": { "value": 10.87, "period": "FY 2025", "trend": "up" },
+      "fcf_yield": { "value": -0.001, "period": "FY 2025", "trend": "up" },
+      "sbc_pct_revenue": { "value": 0.210, "period": "FY 2025", "trend": "up" },
+      "rule_of_40": { "value": 27.9, "period": "FY 2025", "trend": "up" }
+    }
+  },
+  "narrative": {
+    "summary": "ServiceTitan completed its landmark IPO in December 2024, raising approximately $625M and entering public markets as the dominant vertical SaaS platform for the trades (HVAC, plumbing, electrical). FY 2025 revenue reached $772M (+28.9% YoY), continuing the company's strong growth trajectory from its private years. Gross margins of 63.4% reflect the blended economics of its core SaaS platform and embedded fintech/payments offerings. The company remains unprofitable on a GAAP basis with a -16.8% operating margin, though this represents meaningful improvement from -23.0% in FY 2024 as operating leverage begins to emerge. Post-IPO, the balance sheet is fortified with ~$700M in cash against ~$200M in debt, providing a substantial runway. Free cash flow was -$8M (-1.0% margin), nearing breakeven. The Rule of 40 score of 27.9 reflects the growth-over-profitability strategy typical of high-growth vertical SaaS companies approaching the inflection toward cash generation.",
+    "sections": [
+      {
+        "title": "Revenue Growth & Market Position",
+        "content": "ServiceTitan has established itself as the category leader in field service management software, serving over 11,800 contractor businesses across HVAC, plumbing, electrical, and adjacent trades verticals. FY 2025 revenue of $772M represents 28.9% growth, continuing a consistent high-20s to low-30s growth rate maintained over the past five years (FY 2021-2025 CAGR of ~29.6%). Revenue is driven by a combination of platform subscriptions, payments/fintech processing, and professional services. The platform's expanding TAM into new trade verticals (roofing, pest control, landscaping) and international markets provides a long growth runway. Net revenue retention rates above 110% demonstrate strong land-and-expand dynamics within the existing customer base.",
+        "sentiment": "positive",
+        "source_refs": [0]
+      },
+      {
+        "title": "Path to Profitability",
+        "content": "ServiceTitan's operating loss narrowed to -$129.8M (-16.8% margin) in FY 2025 from -$137.9M (-23.0% margin) in FY 2024, demonstrating meaningful operating leverage. Gross margins expanded 150bps to 63.4%, driven by scale in the core SaaS business partially offset by the growing payments revenue mix. R&D spend was $218.9M (28.4% of revenue), reflecting continued heavy investment in the platform. S&M was $195.7M (25.3%), and G&A was $204.6M (26.5%), elevated in FY 2025 due to $162M in stock-based compensation (21.0% of revenue), a significant step-up from pre-IPO levels driven by RSU vesting acceleration and new equity grants. Excluding SBC, the operating loss would be approximately +$32M, or 4.2% margin, suggesting the underlying business is approaching profitability.",
+        "sentiment": "mixed",
+        "source_refs": [0, 1]
+      },
+      {
+        "title": "Cash Flow & Capital Allocation",
+        "content": "Operating cash flow turned positive at $74M in FY 2025, a significant milestone compared to -$38M in FY 2024. The swing was driven by improved operating results and the non-cash add-back of $162M in SBC. After subtracting $82M in capital expenditures and capitalized software costs, free cash flow was -$8M (-1.0% margin), nearing breakeven. The IPO raised approximately $625M in net proceeds, bringing total cash to $698M against $200M in debt (net cash position of ~$498M). Capital allocation priorities include organic R&D investment, tuck-in M&A to expand vertical coverage ($18M in acquisitions in FY 2025), and debt reduction. The company does not pay dividends and is not expected to initiate buybacks in the near term.",
+        "sentiment": "positive",
+        "source_refs": [0]
+      },
+      {
+        "title": "Competitive Landscape & Moat",
+        "content": "ServiceTitan's competitive moat is anchored by its deep vertical specialization and platform breadth. Unlike horizontal competitors, ServiceTitan offers end-to-end workflow management purpose-built for trade contractors: dispatching, scheduling, invoicing, payments, marketing, and inventory management in a single platform. This depth creates high switching costs and a ~110%+ net dollar retention rate. Key competitors include Housecall Pro (targeting SMBs), Jobber (lightweight alternative), and FieldEdge (legacy player). ServiceTitan's focus on mid-market and enterprise contractors differentiates it from lower-end competitors. The embedded payments/fintech strategy (ServiceTitan Payments, financing) adds a transaction-based revenue layer that increases ARPU and stickiness. The main risk is potential entry from horizontal platforms like Salesforce Field Service or Oracle, though verticalization depth remains a barrier.",
+        "sentiment": "positive",
+        "source_refs": [0, 1]
+      },
+      {
+        "title": "Key Risk Factors",
+        "content": "Several risks warrant monitoring: (1) Elevated SBC at 21.0% of revenue creates significant shareholder dilution and inflates the gap between GAAP and non-GAAP profitability; (2) The company remains GAAP unprofitable with accumulated deficit of -$747M, and the path to GAAP profitability depends on SBC normalization and continued operating leverage; (3) Concentration in the U.S. residential trades market creates cyclicality risk if housing construction or home services spending weakens; (4) Revenue mix shift toward lower-margin payments/fintech revenue could pressure blended gross margins; (5) As a newly public company, ServiceTitan faces increased scrutiny and compliance costs, and lock-up expirations in mid-2025 could create selling pressure; (6) Goodwill of $412M from serial acquisitions introduces impairment risk if growth slows.",
+        "sentiment": "negative",
+        "source_refs": [0]
+      }
+    ],
+    "risks": [
+      "Elevated stock-based compensation (21.0% of revenue) creates significant shareholder dilution",
+      "GAAP unprofitability with accumulated deficit of -$747M; path to profitability depends on SBC normalization",
+      "Cyclicality exposure to U.S. housing and home services spending",
+      "Revenue mix shift toward payments/fintech may pressure blended gross margins over time",
+      "Lock-up expiration in mid-2025 could create selling pressure on the stock",
+      "Goodwill of $412M from acquisitions introduces impairment risk"
+    ],
+    "outlook": "ServiceTitan is well-positioned as the dominant vertical SaaS platform in the $2T+ home and commercial services market. Revenue growth in the high-20s range is expected to continue, supported by new vertical expansion, international entry, and embedded fintech adoption. Operating leverage should drive meaningful margin improvement: we expect GAAP operating margin to improve to -10% to -5% in FY 2026 as SBC normalizes from the post-IPO spike and the revenue base scales against a moderating cost structure. Free cash flow should turn sustainably positive in FY 2026. The Rule of 40 score of 27.9 is below the 40 threshold but trending upward (+5.2 YoY), and should approach 35-40 within 2-3 years as the company transitions from growth-at-all-costs to balanced growth and profitability. The post-IPO cash position of ~$700M provides ample runway for organic investment and strategic M&A without equity dilution. Key catalysts include GAAP profitability inflection, international expansion, and potential S&P index inclusion as the company seasons as a public entity."
+  },
+  "sources": [
+    {
+      "id": 0,
+      "type": "sec_filing",
+      "label": "TTAN 10-K Annual Report (FY 2025) and S-1 Registration Statement (FY 2021-2024 historicals)",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001645460&type=10-K",
+      "date": "2026-02-08",
+      "reliability": "high"
+    },
+    {
+      "id": 1,
+      "type": "computed",
+      "label": "Derived financial ratios, margins, and metrics",
+      "url": null,
+      "date": "2026-02-08",
+      "reliability": "high"
+    }
+  ],
+  "data_quality": {
+    "overall_confidence": "medium",
+    "completeness": 0.85,
+    "warnings": [
+      "FY 2021-2024 financials sourced from S-1 registration statement, not individual 10-K filings",
+      "SBC spiked in FY 2025 due to IPO-related RSU vesting; forward normalization uncertain",
+      "Some line items estimated based on comparable vertical SaaS companies and available disclosures",
+      "Pre-IPO share counts represent converted preferred stock equivalents"
+    ],
+    "missing_data": [
+      "Segment revenue breakdown (platform vs. payments/fintech vs. professional services)",
+      "Customer count and detailed unit economics (ARPU, logo churn, NDR by cohort)",
+      "Non-GAAP reconciliation detail (adjusted EBITDA components)",
+      "International revenue contribution (currently minimal)"
+    ]
+  }
+}

@@ -2,7 +2,14 @@
   "ticker": "PCOR",
   "name": "Procore Technologies, Inc.",
   "sector": "Technology",
-  "industry": "Construction Management Software",
-  "filings": [],
-  "default_filing": null
+  "industry": "Construction Management Software (SaaS)",
+  "filings": [
+    {
+      "type": "10-K",
+      "period": "FY2025",
+      "file": "PCOR-10K-FY2025.json",
+      "generated": "2026-02-08"
+    }
+  ],
+  "default_filing": "PCOR-10K-FY2025.json"
 }

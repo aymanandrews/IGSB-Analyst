@@ -2,7 +2,14 @@
   "ticker": "TTAN",
   "name": "ServiceTitan, Inc.",
   "sector": "Technology",
-  "industry": "Field Service Management Software",
-  "filings": [],
-  "default_filing": null
+  "industry": "Field Service Management Software (SaaS)",
+  "filings": [
+    {
+      "type": "10-K",
+      "period": "FY2025",
+      "file": "TTAN-10K-FY2025.json",
+      "generated": "2026-02-08"
+    }
+  ],
+  "default_filing": "TTAN-10K-FY2025.json"
 }
