@@ -4,6 +4,7 @@
  */
 
 import { initUpload, uploadedDocuments, getParsedData } from './upload.js';
+import { fetchCompanyInfo, fetchFinancials, getCompanyInfo, getFinancialStatements } from './edgar.js';
 
 // App state
 const state = {
@@ -56,12 +57,28 @@ function wireTickerSearch() {
 }
 
 /**
- * Handle ticker search — will be fully implemented with EDGAR module (PR #4)
+ * Handle ticker search — fetches company data from EDGAR
  */
 async function handleTickerSearch(ticker) {
   state.ticker = ticker;
-  console.log(`[IGSB-Analyst] Searching for ticker: ${ticker}`);
-  // TODO: PR #4 — call edgar.js to fetch company data
+  showToast(`Fetching EDGAR data for ${ticker}...`, 'info');
+
+  try {
+    const data = await fetchFinancials(ticker);
+    state.edgarData = data;
+
+    // Update company header if it exists
+    const companyName = document.getElementById('company-name');
+    const companyTicker = document.getElementById('company-ticker');
+    if (companyName) companyName.textContent = data.company.name;
+    if (companyTicker) companyTicker.textContent = data.company.ticker;
+
+    showAnalysisContent();
+    showToast(`Loaded financial data for ${data.company.name}`, 'success');
+  } catch (err) {
+    console.error('[IGSB-Analyst] EDGAR fetch failed:', err);
+    showToast(`Failed to fetch data for ${ticker}: ${err.message}`, 'error');
+  }
 }
 
 /**
