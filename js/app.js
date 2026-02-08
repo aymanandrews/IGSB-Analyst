@@ -8,6 +8,7 @@ import { fetchCompanyInfo, fetchFinancials, getCompanyInfo, getFinancialStatemen
 import { runAnalysis, cancelAnalysis, getCurrentAnalysis } from './analysis.js';
 import { renderAnalysis } from './renderer.js';
 import { initExport, saveSession, restoreSession, exportJSON, exportPDF, exportCSV } from './export.js';
+import { generatePDF } from './pdf-export.js';
 
 // App state
 const state = {
@@ -277,23 +278,67 @@ async function handleRunAnalysis() {
 }
 
 /**
- * Wire up export buttons
+ * Wire up export buttons — header dropdown (PDF/JSON/CSV) + sidebar button
  */
 function wireExportButton() {
-  // Header export button — defaults to JSON
+  const ticker = () => state.ticker || 'analysis';
+
+  // Header export dropdown toggle
   const btn = document.getElementById('header-export-btn');
-  if (btn) {
-    btn.addEventListener('click', () => {
+  const dropdown = document.getElementById('export-dropdown');
+  if (btn && dropdown) {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      dropdown.classList.toggle('hidden');
+    });
+    // Close on outside click
+    document.addEventListener('click', () => dropdown.classList.add('hidden'));
+    dropdown.addEventListener('click', (e) => e.stopPropagation());
+  }
+
+  // PDF export
+  const pdfBtn = document.getElementById('export-pdf-btn');
+  if (pdfBtn) {
+    pdfBtn.addEventListener('click', () => {
+      dropdown?.classList.add('hidden');
       if (!state.analysisResult) {
         showToast('Run an analysis first before exporting', 'warning');
         return;
       }
-      exportJSON(state.analysisResult, state.ticker || 'analysis');
-      showToast('JSON report downloaded', 'success');
+      generatePDF(state.analysisResult, ticker());
+      showToast('PDF report downloading...', 'success');
     });
   }
 
-  // Sidebar export button — show dropdown or default to JSON
+  // JSON export
+  const jsonBtn = document.getElementById('export-json-btn');
+  if (jsonBtn) {
+    jsonBtn.addEventListener('click', () => {
+      dropdown?.classList.add('hidden');
+      if (!state.analysisResult) {
+        showToast('Run an analysis first before exporting', 'warning');
+        return;
+      }
+      exportJSON(state.analysisResult, ticker());
+      showToast('JSON data downloaded', 'success');
+    });
+  }
+
+  // CSV export
+  const csvBtn = document.getElementById('export-csv-btn');
+  if (csvBtn) {
+    csvBtn.addEventListener('click', () => {
+      dropdown?.classList.add('hidden');
+      if (!state.analysisResult) {
+        showToast('Run an analysis first before exporting', 'warning');
+        return;
+      }
+      exportCSV(state.analysisResult, ticker());
+      showToast('CSV financials downloaded', 'success');
+    });
+  }
+
+  // Sidebar export button — defaults to PDF
   const sidebarBtn = document.getElementById('export-report-btn');
   if (sidebarBtn) {
     sidebarBtn.addEventListener('click', () => {
@@ -301,8 +346,8 @@ function wireExportButton() {
         showToast('Run an analysis first before exporting', 'warning');
         return;
       }
-      exportJSON(state.analysisResult, state.ticker || 'analysis');
-      showToast('JSON report downloaded', 'success');
+      generatePDF(state.analysisResult, ticker());
+      showToast('PDF report downloading...', 'success');
     });
   }
 }
