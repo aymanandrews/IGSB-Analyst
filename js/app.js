@@ -5,6 +5,7 @@
 
 import { initUpload, uploadedDocuments, getParsedData } from './upload.js';
 import { fetchCompanyInfo, fetchFinancials, getCompanyInfo, getFinancialStatements } from './edgar.js';
+import { runAnalysis, cancelAnalysis, getCurrentAnalysis } from './analysis.js';
 
 // App state
 const state = {
@@ -92,7 +93,7 @@ function wireAnalysisButton() {
 }
 
 /**
- * Handle analysis run — will be fully implemented in PR #5
+ * Handle analysis run — sends data to Claude via backend
  */
 async function handleRunAnalysis() {
   if (state.isAnalyzing) return;
@@ -105,11 +106,55 @@ async function handleRunAnalysis() {
     return;
   }
 
-  console.log('[IGSB-Analyst] Running analysis...', {
-    documents: parsedDocs.length,
-    ticker: state.ticker,
-  });
-  // TODO: PR #5 — call analysis.js
+  state.isAnalyzing = true;
+  const btn = document.getElementById('run-analysis-btn');
+  if (btn) {
+    btn.disabled = true;
+    btn.textContent = 'Analyzing...';
+  }
+
+  showToast('Starting Claude analysis...', 'info');
+  showAnalysisContent();
+
+  const analystNotes = document.getElementById('analyst-notes')?.value || null;
+
+  await runAnalysis(
+    {
+      companyInfo: state.edgarData?.company || null,
+      financialStatements: state.edgarData?.financial_statements || null,
+      uploadedDocuments: parsedDocs,
+      analystNotes,
+    },
+    // onDelta — streaming text chunk
+    (text) => {
+      const streamEl = document.getElementById('analysis-stream');
+      if (streamEl) {
+        streamEl.textContent += text;
+        streamEl.classList.remove('hidden');
+      }
+    },
+    // onComplete — full AnalysisJSON received
+    (result) => {
+      state.analysisResult = result;
+      state.isAnalyzing = false;
+      if (btn) {
+        btn.disabled = false;
+        btn.textContent = 'Run Analysis';
+      }
+      const streamEl = document.getElementById('analysis-stream');
+      if (streamEl) streamEl.classList.add('hidden');
+      showToast('Analysis complete', 'success');
+    },
+    // onError
+    (errMsg) => {
+      state.isAnalyzing = false;
+      if (btn) {
+        btn.disabled = false;
+        btn.textContent = 'Run Analysis';
+      }
+      showToast(`Analysis failed: ${errMsg}`, 'error');
+    }
+  );
 }
 
 /**
