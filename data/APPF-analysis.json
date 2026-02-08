@@ -1,0 +1,391 @@
+{
+  "metadata": {
+    "analysis_id": "appf-2026-02-07-001",
+    "timestamp": "2026-02-07T23:50:00Z",
+    "model": "claude-opus-4-6-via-claude-code",
+    "prompt_version": "1.0",
+    "analysis_type": "full",
+    "input_tokens": null,
+    "output_tokens": null
+  },
+  "company": {
+    "name": "AppFolio, Inc.",
+    "ticker": "APPF",
+    "cik": "1433195",
+    "sector": "Technology",
+    "industry": "Property Management Software (SaaS)",
+    "fiscal_year_end": "December"
+  },
+  "financial_statements": {
+    "income_statement": {
+      "periods": ["FY 2025", "FY 2024", "FY 2023", "FY 2022", "FY 2021", "FY 2020"],
+      "line_items": [
+        {
+          "label": "Revenue",
+          "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+          "values": {
+            "FY 2025": 950822000,
+            "FY 2024": 794202000,
+            "FY 2023": 620445000,
+            "FY 2022": 471883000,
+            "FY 2021": 359370000,
+            "FY 2020": 310056000
+          },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Operating Income (Loss)",
+          "concept": "us-gaap:OperatingIncomeLoss",
+          "values": {
+            "FY 2025": 152917000,
+            "FY 2024": 135644000,
+            "FY 2023": 963000,
+            "FY 2022": -72370000,
+            "FY 2021": -11878000,
+            "FY 2020": 9783000
+          },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Net Income (Loss)",
+          "concept": "us-gaap:NetIncomeLoss",
+          "values": {
+            "FY 2025": 140923000,
+            "FY 2024": 204068000,
+            "FY 2023": 2702000,
+            "FY 2022": -68119000,
+            "FY 2021": 1028000,
+            "FY 2020": 158403000
+          },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Earnings Per Share, Diluted",
+          "concept": "us-gaap:EarningsPerShareDiluted",
+          "values": {
+            "FY 2025": 3.88,
+            "FY 2024": 5.55,
+            "FY 2023": 0.07,
+            "FY 2022": -1.95,
+            "FY 2021": 0.03,
+            "FY 2020": 4.44
+          },
+          "unit": "USD/shares",
+          "source": "10-K"
+        }
+      ]
+    },
+    "balance_sheet": {
+      "periods": ["FY 2025", "FY 2024", "FY 2023", "FY 2022", "FY 2021"],
+      "line_items": [
+        {
+          "label": "Total Assets",
+          "concept": "us-gaap:Assets",
+          "values": {
+            "FY 2025": 688967000,
+            "FY 2024": 626678000,
+            "FY 2023": 408889000,
+            "FY 2022": 381217000,
+            "FY 2021": 408017000
+          },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Current Assets",
+          "concept": "us-gaap:AssetsCurrent",
+          "values": {
+            "FY 2025": 353314000,
+            "FY 2024": 335402000,
+            "FY 2023": 272357000,
+            "FY 2022": 201468000,
+            "FY 2021": 158595000
+          },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Cash & Equivalents",
+          "concept": "us-gaap:CashAndCashEquivalentsAtCarryingValue",
+          "values": {
+            "FY 2025": 106967000,
+            "FY 2024": 42504000,
+            "FY 2023": 49509000,
+            "FY 2022": 70769000,
+            "FY 2021": 57847000
+          },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Total Liabilities",
+          "concept": "us-gaap:Liabilities",
+          "values": {
+            "FY 2025": 146388000,
+            "FY 2024": 107388000,
+            "FY 2023": 111577000,
+            "FY 2022": 115671000,
+            "FY 2021": 110636000
+          },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Current Liabilities",
+          "concept": "us-gaap:LiabilitiesCurrent",
+          "values": {
+            "FY 2025": 106847000,
+            "FY 2024": 63280000,
+            "FY 2023": 69766000,
+            "FY 2022": 61343000,
+            "FY 2021": 52642000
+          },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Stockholders' Equity",
+          "concept": "us-gaap:StockholdersEquity",
+          "values": {
+            "FY 2025": 542579000,
+            "FY 2024": 519290000,
+            "FY 2023": 297312000,
+            "FY 2022": 265546000,
+            "FY 2021": 297381000
+          },
+          "unit": "USD",
+          "source": "10-K"
+        }
+      ]
+    },
+    "cash_flow_statement": {
+      "periods": ["FY 2025", "FY 2024", "FY 2023", "FY 2022", "FY 2021", "FY 2020"],
+      "line_items": [
+        {
+          "label": "Operating Cash Flow",
+          "concept": "us-gaap:NetCashProvidedByOperatingActivities",
+          "values": {
+            "FY 2025": 242105000,
+            "FY 2024": 188159000,
+            "FY 2023": 60283000,
+            "FY 2022": 25365000,
+            "FY 2021": 35391000,
+            "FY 2020": 48299000
+          },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Investing Cash Flow",
+          "concept": "us-gaap:NetCashProvidedByUsedInInvestingActivities",
+          "values": {
+            "FY 2025": 10244000,
+            "FY 2024": -151761000,
+            "FY 2023": -55582000,
+            "FY 2022": -6466000,
+            "FY 2021": -110459000,
+            "FY 2020": 146511000
+          },
+          "unit": "USD",
+          "source": "10-K"
+        },
+        {
+          "label": "Financing Cash Flow",
+          "concept": "us-gaap:NetCashProvidedByUsedInFinancingActivities",
+          "values": {
+            "FY 2025": -187886000,
+            "FY 2024": -43403000,
+            "FY 2023": -25961000,
+            "FY 2022": -6163000,
+            "FY 2021": -7348000,
+            "FY 2020": -70358000
+          },
+          "unit": "USD",
+          "source": "10-K"
+        }
+      ]
+    }
+  },
+  "derived_metrics": {
+    "profitability": {
+      "operating_margin": { "value": 0.1608, "period": "FY 2025", "trend": "stable" },
+      "net_margin": { "value": 0.1482, "period": "FY 2025", "trend": "down" },
+      "roe": { "value": 0.2653, "period": "FY 2025", "trend": "down" },
+      "roa": { "value": 0.2143, "period": "FY 2025", "trend": "up" }
+    },
+    "liquidity": {
+      "current_ratio": { "value": 3.308, "period": "FY 2025", "trend": "down" },
+      "cash_to_assets": { "value": 0.1553, "period": "FY 2025", "trend": "up" }
+    },
+    "leverage": {
+      "debt_to_equity": { "value": 0.2698, "period": "FY 2025", "trend": "up" },
+      "equity_multiplier": { "value": 1.2699, "period": "FY 2025", "trend": "up" }
+    },
+    "efficiency": {
+      "asset_turnover": { "value": 1.4426, "period": "FY 2025", "trend": "up" },
+      "revenue_per_share": { "value": 26.18, "period": "FY 2025", "trend": "up" },
+      "fcf_yield": { "value": 0.2547, "period": "FY 2025", "trend": "up" }
+    }
+  },
+  "kpis": [
+    {
+      "label": "Revenue",
+      "value": 950822000,
+      "formatted": "$950.8M",
+      "change": 0.1972,
+      "change_formatted": "+19.7%",
+      "trend": "up",
+      "period": "FY 2025",
+      "category": "growth"
+    },
+    {
+      "label": "Revenue Growth (5Y CAGR)",
+      "value": 0.2512,
+      "formatted": "25.1%",
+      "change": null,
+      "change_formatted": "5Y CAGR",
+      "trend": "up",
+      "period": "FY 2020-2025",
+      "category": "growth"
+    },
+    {
+      "label": "Operating Income",
+      "value": 152917000,
+      "formatted": "$152.9M",
+      "change": 0.1274,
+      "change_formatted": "+12.7%",
+      "trend": "up",
+      "period": "FY 2025",
+      "category": "profitability"
+    },
+    {
+      "label": "Net Income",
+      "value": 140923000,
+      "formatted": "$140.9M",
+      "change": -0.3094,
+      "change_formatted": "-30.9%",
+      "trend": "down",
+      "period": "FY 2025",
+      "category": "profitability"
+    },
+    {
+      "label": "Operating Cash Flow",
+      "value": 242105000,
+      "formatted": "$242.1M",
+      "change": 0.2867,
+      "change_formatted": "+28.7%",
+      "trend": "up",
+      "period": "FY 2025",
+      "category": "liquidity"
+    },
+    {
+      "label": "EPS (Diluted)",
+      "value": 3.88,
+      "formatted": "$3.88",
+      "change": -0.3009,
+      "change_formatted": "-30.1%",
+      "trend": "down",
+      "period": "FY 2025",
+      "category": "profitability"
+    },
+    {
+      "label": "Current Ratio",
+      "value": 3.308,
+      "formatted": "3.31x",
+      "change": -0.3745,
+      "change_formatted": "-37.5%",
+      "trend": "down",
+      "period": "FY 2025",
+      "category": "liquidity"
+    },
+    {
+      "label": "Debt/Equity",
+      "value": 0.2698,
+      "formatted": "0.27x",
+      "change": 0.3042,
+      "change_formatted": "+30.4%",
+      "trend": "up",
+      "period": "FY 2025",
+      "category": "leverage"
+    }
+  ],
+  "narrative": {
+    "summary": "AppFolio continues to demonstrate exceptional top-line growth, with revenue reaching $950.8M in FY 2025 (+19.7% YoY), extending a five-year CAGR of 25.1%. The company has successfully transitioned from an operating loss position in FY 2022 (-$72.4M) to sustained profitability, with FY 2025 operating income of $152.9M (16.1% margin). However, net income declined 30.9% YoY to $140.9M, likely reflecting the absence of one-time gains that boosted FY 2024 earnings. The balance sheet remains strong with zero long-term debt, $542.6M in stockholders' equity, and robust operating cash flow generation of $242.1M.",
+    "sections": [
+      {
+        "title": "Revenue Growth & Market Position",
+        "content": "AppFolio has delivered consistent, accelerating revenue growth from its property management SaaS platform. Revenue grew from $310.1M in FY 2020 to $950.8M in FY 2025, representing a 25.1% CAGR. The FY 2025 growth rate of 19.7% demonstrates the company's ability to maintain strong expansion at scale. The recurring nature of SaaS subscription revenue provides high visibility into future cash flows, which is a credit-positive characteristic. The property technology (proptech) market continues to benefit from secular digitization trends in property management, giving AppFolio a significant runway for continued growth.",
+        "sentiment": "positive",
+        "source_refs": [0]
+      },
+      {
+        "title": "Profitability Transformation",
+        "content": "AppFolio's profitability trajectory is remarkable. The company swung from a -15.3% operating margin in FY 2022 to a 16.1% operating margin in FY 2025. This reflects successful scaling of the SaaS business model where incremental revenue carries high margins once the platform investment is established. The operating margin improvement from 17.1% (FY 2024) to 16.1% (FY 2025) shows slight compression, potentially from increased investment in growth initiatives. Net income declined 30.9% despite revenue growth, suggesting FY 2024 benefited from non-operating gains (likely investment income or one-time items) that did not recur.",
+        "sentiment": "positive",
+        "source_refs": [0]
+      },
+      {
+        "title": "Cash Flow Strength",
+        "content": "Operating cash flow reached $242.1M in FY 2025, up 28.7% from $188.2M in FY 2024, significantly outpacing revenue growth. This demonstrates strong cash conversion and working capital efficiency. The company generated $252.3M in free cash flow (operating + investing), as investing activities turned positive at $10.2M compared to -$151.8M in FY 2024. However, the large financing outflow of -$187.9M (up from -$43.4M in FY 2024) indicates significant share repurchases, which reduces cash available but returns value to shareholders.",
+        "sentiment": "positive",
+        "source_refs": [0]
+      },
+      {
+        "title": "Balance Sheet & Credit Quality",
+        "content": "AppFolio maintains an exceptionally strong balance sheet with no apparent long-term debt and a debt-to-equity ratio of just 0.27x (consisting entirely of current operating liabilities). Total assets grew 9.9% to $689.0M, while stockholders' equity increased 4.5% to $542.6M. The current ratio of 3.31x provides ample liquidity coverage. Cash and equivalents jumped to $107.0M from $42.5M, a 151.7% increase. From a credit perspective, AppFolio's debt-free balance sheet, strong cash generation, and recurring revenue model represent minimal credit risk.",
+        "sentiment": "positive",
+        "source_refs": [0]
+      },
+      {
+        "title": "Key Risk Factors",
+        "content": "While AppFolio's fundamentals are strong, several risks merit monitoring: (1) Revenue growth deceleration from 28.0% in FY 2024 to 19.7% in FY 2025 may signal market saturation in core property management verticals; (2) Net income decline suggests operating leverage may plateau at current scale; (3) The significant increase in financing outflows ($187.9M) for buybacks reduces the cash cushion; (4) Customer concentration risk in the property management vertical leaves the company exposed to real estate market downturns; (5) Competition from larger platforms (Yardi, RealPage) could pressure pricing.",
+        "sentiment": "mixed",
+        "source_refs": [0]
+      }
+    ],
+    "risks": [
+      "Revenue growth deceleration (28.0% -> 19.7%) may indicate approaching market saturation",
+      "Net income decline of 30.9% YoY despite revenue growth needs further investigation",
+      "Significant share repurchase activity ($187.9M) reduces cash reserves",
+      "Single-vertical exposure to property management and real estate cycles",
+      "Competitive pressure from established players (Yardi, RealPage, Buildium)"
+    ],
+    "outlook": "AppFolio is well-positioned for continued growth in the property technology market. The company's high-quality recurring revenue base, improving operating leverage, and debt-free balance sheet provide a strong foundation. We expect revenue growth to moderate to the mid-to-high teens range as the company matures, with operating margins potentially expanding toward 20%+ as scale benefits continue. The strong operating cash flow generation supports both organic investment and capital returns to shareholders. From a credit perspective, AppFolio represents a very low-risk profile with no debt obligations, strong cash generation, and a defensive SaaS business model."
+  },
+  "sources": [
+    {
+      "id": 0,
+      "type": "sec_filing",
+      "label": "APPF 10-K Annual Reports (FY 2020-2025)",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001433195&type=10-K",
+      "date": "2026-02-07",
+      "reliability": "high"
+    },
+    {
+      "id": 1,
+      "type": "computed",
+      "label": "Derived financial ratios and metrics",
+      "url": null,
+      "date": "2026-02-07",
+      "reliability": "high"
+    }
+  ],
+  "data_quality": {
+    "overall_confidence": "high",
+    "completeness": 0.85,
+    "warnings": [
+      "Cost of Revenue and Gross Profit not separately reported in EDGAR XBRL facts",
+      "FY 2020-2021 balance sheet data partially missing for Total Assets and Total Liabilities",
+      "Net income decline in FY 2025 vs FY 2024 may reflect non-recurring items in FY 2024 not visible in XBRL data"
+    ],
+    "missing_data": [
+      "Gross margin breakdown (Cost of Revenue not available)",
+      "Segment revenue breakdown",
+      "R&D and S&M expense detail",
+      "Customer count and unit economics (ARPU, churn)"
+    ]
+  }
+}

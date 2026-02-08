@@ -79,27 +79,49 @@ function wireTickerSearch() {
 }
 
 /**
- * Handle ticker search — fetches company data from EDGAR
+ * Try loading a pre-generated analysis from data/ directory
+ */
+async function loadCachedAnalysis(ticker) {
+  try {
+    const res = await fetch(`data/${ticker.toUpperCase()}-analysis.json`);
+    if (!res.ok) return null;
+    return await res.json();
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Handle ticker search — fetches company data from EDGAR + loads cached analysis
  */
 async function handleTickerSearch(ticker) {
   state.ticker = ticker;
-  showToast(`Fetching EDGAR data for ${ticker}...`, 'info');
+  showToast(`Fetching data for ${ticker}...`, 'info');
 
+  // Try EDGAR backend first
   try {
     const data = await fetchFinancials(ticker);
     state.edgarData = data;
 
-    // Update company header if it exists
     const companyName = document.getElementById('company-name');
     const companyTicker = document.getElementById('company-ticker');
     if (companyName) companyName.textContent = data.company.name;
     if (companyTicker) companyTicker.textContent = data.company.ticker;
 
     showAnalysisContent();
-    showToast(`Loaded financial data for ${data.company.name}`, 'success');
+    showToast(`Loaded EDGAR data for ${data.company.name}`, 'success');
   } catch (err) {
-    console.error('[IGSB-Analyst] EDGAR fetch failed:', err);
-    showToast(`Failed to fetch data for ${ticker}: ${err.message}`, 'error');
+    console.warn('[IGSB-Analyst] EDGAR fetch failed, trying cached data:', err.message);
+  }
+
+  // Try loading cached analysis
+  const cached = await loadCachedAnalysis(ticker);
+  if (cached) {
+    state.analysisResult = cached;
+    renderAnalysis(cached);
+    saveSession(state);
+    showAnalysisContent();
+    showToast(`Loaded pre-generated analysis for ${ticker}`, 'success');
   }
 }
 
@@ -114,7 +136,7 @@ function wireAnalysisButton() {
 }
 
 /**
- * Handle analysis run — sends data to Claude via backend
+ * Handle analysis run — tries cached analysis first, then Claude API
  */
 async function handleRunAnalysis() {
   if (state.isAnalyzing) return;
@@ -125,6 +147,27 @@ async function handleRunAnalysis() {
   if (!hasData) {
     showToast('Upload documents or search a ticker first', 'warning');
     return;
+  }
+
+  // If we already have a cached result loaded, just re-render it
+  if (state.analysisResult && !parsedDocs.length) {
+    renderAnalysis(state.analysisResult);
+    showAnalysisContent();
+    showToast('Analysis already loaded', 'info');
+    return;
+  }
+
+  // Try cached analysis file first
+  if (state.ticker) {
+    const cached = await loadCachedAnalysis(state.ticker);
+    if (cached) {
+      state.analysisResult = cached;
+      renderAnalysis(cached);
+      saveSession(state);
+      showAnalysisContent();
+      showToast('Loaded pre-generated analysis', 'success');
+      return;
+    }
   }
 
   state.isAnalyzing = true;
