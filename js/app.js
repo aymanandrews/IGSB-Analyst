@@ -26,6 +26,7 @@ function init() {
   wireTickerSearch();
   wireAnalysisButton();
   wireExportButton();
+  wireCompanySelector();
 
   // Restore previous session if available
   const saved = restoreSession();
@@ -46,6 +47,24 @@ function init() {
   }
 
   console.log('[IGSB-Analyst] Initialized');
+}
+
+/**
+ * Wire up the company dropdown selector (dispatches 'company-selected' from inline JS)
+ */
+function wireCompanySelector() {
+  window.addEventListener('company-selected', (e) => {
+    const ticker = e.detail?.ticker;
+    if (!ticker) return;
+
+    // Sync ticker inputs
+    const tickerInput = document.getElementById('ticker-input');
+    const edgarTicker = document.getElementById('edgar-ticker');
+    if (tickerInput) tickerInput.value = ticker;
+    if (edgarTicker) edgarTicker.value = ticker;
+
+    handleTickerSearch(ticker);
+  });
 }
 
 /**
@@ -129,7 +148,7 @@ async function handleTickerSearch(ticker) {
     state.edgarData = data;
 
     const companyName = document.getElementById('company-name');
-    const companyTicker = document.getElementById('company-ticker');
+    const companyTicker = document.getElementById('company-ticker-badge');
     if (companyName) companyName.textContent = data.company.name;
     if (companyTicker) companyTicker.textContent = data.company.ticker;
 
@@ -137,6 +156,13 @@ async function handleTickerSearch(ticker) {
     showToast(`Loaded EDGAR data for ${data.company.name}`, 'success');
   } catch (err) {
     console.warn('[IGSB-Analyst] EDGAR fetch failed, trying cached data:', err.message);
+  }
+
+  // Sync company dropdown if ticker matches one of our covered companies
+  const companySelector = document.getElementById('company-selector');
+  if (companySelector) {
+    const option = Array.from(companySelector.options).find(o => o.value === ticker);
+    companySelector.value = option ? ticker : '';
   }
 
   // Try loading cached analysis with selected filing type + period

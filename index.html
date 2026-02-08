@@ -55,17 +55,35 @@
         </span>
       </div>
 
-      <!-- Center: Ticker Search -->
-      <div class="flex-1 max-w-lg mx-4">
-        <div class="relative flex items-center">
+      <!-- Center: Company Dropdown + Ticker Search -->
+      <div class="flex-1 max-w-xl mx-4 flex items-center gap-2">
+        <!-- Company Dropdown Selector -->
+        <select
+          id="company-selector"
+          onchange="selectCompany(this.value)"
+          class="h-9 pl-3 pr-8 text-sm bg-slate-50 border border-slate-200 rounded-lg
+                 text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500
+                 transition-colors cursor-pointer min-w-[200px]"
+        >
+          <option value="">Select Company...</option>
+          <option value="APPF">APPF — AppFolio</option>
+          <option value="RBLX">RBLX — Roblox</option>
+          <option value="WDAY">WDAY — Workday</option>
+          <option value="PCOR">PCOR — Procore</option>
+          <option value="TTAN">TTAN — ServiceTitan</option>
+          <option value="VEEV">VEEV — Veeva</option>
+        </select>
+
+        <!-- Auxiliary Ticker Search -->
+        <div class="relative flex items-center flex-1">
           <svg class="absolute left-3 w-4 h-4 text-slate-400 pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
           </svg>
           <input
             id="ticker-input"
             type="text"
-            placeholder="Enter ticker (APPF, RBLX, WDAY, PCOR, TTAN, VEEV)"
-            class="w-full h-9 pl-10 pr-24 text-sm bg-slate-50 border border-slate-200 rounded-lg
+            placeholder="Other ticker..."
+            class="w-full h-9 pl-10 pr-20 text-sm bg-slate-50 border border-slate-200 rounded-lg
                    placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500
                    transition-colors font-mono uppercase"
             autocomplete="off"
@@ -73,7 +91,7 @@
           >
           <button
             id="ticker-search-btn"
-            class="absolute right-1 h-7 px-4 text-xs font-semibold text-white bg-blue-600 rounded-md
+            class="absolute right-1 h-7 px-3 text-xs font-semibold text-white bg-blue-600 rounded-md
                    hover:bg-blue-700 active:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1
                    transition-colors"
           >
@@ -305,7 +323,7 @@
           </div>
           <h2 class="text-xl font-semibold text-slate-700 mb-2">No Analysis Loaded</h2>
           <p class="text-sm text-slate-500 leading-relaxed mb-6">
-            Enter a company ticker or upload financial documents to begin your analysis.
+            Select a company from the dropdown or enter a ticker to begin your analysis.
             Supported formats include SEC filings, annual reports, and financial spreadsheets.
           </p>
           <div class="flex items-center gap-3">
@@ -313,7 +331,7 @@
               <svg class="w-4 h-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
               </svg>
-              <span class="text-xs text-slate-500">Search ticker above</span>
+              <span class="text-xs text-slate-500">Select company above</span>
             </div>
             <span class="text-xs text-slate-400">or</span>
             <div class="flex items-center gap-2 px-3 py-2 bg-slate-50 rounded-lg border border-slate-200">
@@ -357,92 +375,149 @@
           <!-- Dynamically populated: Stock Price, Market Cap, EV, P/E, EV/Rev, EV/EBITDA -->
         </div>
 
-        <!-- KPI Performance Cards -->
-        <section id="kpi-grid" class="px-6 py-5">
-          <div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-3">
-            <!-- Dynamically populated: Revenue, Gross Margin, Op Margin, FCF, FCF Margin, Rule of 40 -->
-          </div>
-        </section>
+
+        <!-- ======================================== -->
+        <!-- MAIN TAB BAR                             -->
+        <!-- ======================================== -->
+        <div class="main-tab-bar flex items-center border-b border-slate-200 bg-white px-6">
+          <button onclick="switchMainTab('overview')" id="main-tab-overview" class="main-tab active">Overview</button>
+          <button onclick="switchMainTab('financials')" id="main-tab-financials" class="main-tab">Financials</button>
+          <button onclick="switchMainTab('valuation')" id="main-tab-valuation" class="main-tab">Valuation</button>
+          <button onclick="switchMainTab('competitors')" id="main-tab-competitors" class="main-tab">Competitors</button>
+          <button onclick="switchMainTab('management')" id="main-tab-management" class="main-tab">Management</button>
+          <button onclick="switchMainTab('ir')" id="main-tab-ir" class="main-tab">IR</button>
+        </div>
 
 
-        <!-- Financial Statements Section -->
-        <section id="statements-panel" class="px-6 pb-5">
-          <div class="bg-white rounded-lg border border-slate-200 shadow-sm">
+        <!-- ======================================== -->
+        <!-- TAB PANELS                               -->
+        <!-- ======================================== -->
 
-            <!-- Tab Bar -->
-            <div class="flex items-center border-b border-slate-200 px-4">
-              <button
-                onclick="switchStatementTab('income')"
-                id="tab-income"
-                class="tab-active px-4 py-3 text-sm font-medium transition-colors whitespace-nowrap"
-              >
-                Income Statement
-              </button>
-              <button
-                onclick="switchStatementTab('balance')"
-                id="tab-balance"
-                class="tab-inactive px-4 py-3 text-sm font-medium transition-colors whitespace-nowrap"
-              >
-                Balance Sheet
-              </button>
-              <button
-                onclick="switchStatementTab('cashflow')"
-                id="tab-cashflow"
-                class="tab-inactive px-4 py-3 text-sm font-medium transition-colors whitespace-nowrap"
-              >
-                Cash Flow
-              </button>
-              <div class="flex-1"></div>
-              <span class="text-[11px] text-slate-400 font-mono">USD in millions</span>
+        <!-- Tab: Overview (default active) -->
+        <div id="panel-overview" class="tab-panel">
+
+          <!-- KPI Performance Cards -->
+          <section id="kpi-grid" class="px-6 py-5">
+            <div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-3">
+              <!-- Dynamically populated: Revenue, Gross Margin, Op Margin, FCF, FCF Margin, Rule of 40 -->
             </div>
+          </section>
 
-            <!-- Dynamically populated by renderer.js -->
-            <div id="stmt-income" class="overflow-x-auto"></div>
-            <div id="stmt-balance" class="overflow-x-auto hidden"></div>
-            <div id="stmt-cashflow" class="overflow-x-auto hidden"></div>
+          <!-- Analysis & Narrative Section (populated by renderer.js) -->
+          <section id="narrative-panel" class="px-6 pb-5">
+            <!-- renderNarrative() replaces this section's innerHTML -->
+            <pre id="analysis-stream" class="hidden bg-slate-900 text-green-400 text-xs font-mono p-4 rounded-lg overflow-auto max-h-96 whitespace-pre-wrap"></pre>
+          </section>
 
-          </div>
-        </section>
+          <!-- Derived Metrics & Ratios Section (populated by renderer.js) -->
+          <section id="metrics-panel" class="px-6 pb-6">
+            <!-- renderDerivedMetrics() replaces this section's innerHTML -->
+          </section>
 
-
-        <!-- Analysis & Narrative Section (populated by renderer.js) -->
-        <section id="narrative-panel" class="px-6 pb-5">
-          <!-- renderNarrative() replaces this section's innerHTML -->
-          <pre id="analysis-stream" class="hidden bg-slate-900 text-green-400 text-xs font-mono p-4 rounded-lg overflow-auto max-h-96 whitespace-pre-wrap"></pre>
-        </section>
-
-
-        <!-- Derived Metrics & Ratios Section (populated by renderer.js) -->
-        <section id="metrics-panel" class="px-6 pb-6">
-          <!-- renderDerivedMetrics() replaces this section's innerHTML -->
-        </section>
-
-        <!-- Source Manifest & Data Quality -->
-        <section id="source-manifest-panel" class="px-6 pb-6">
-          <div class="bg-white rounded-lg border border-slate-200 shadow-sm">
-            <div class="px-6 py-4 border-b border-slate-100">
-              <h3 class="text-sm font-semibold text-slate-900">Source Manifest &amp; Data Quality</h3>
-            </div>
-            <div class="p-6">
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- Sources -->
-                <div>
-                  <h4 class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-3">Data Sources</h4>
-                  <div id="source-manifest-list" class="space-y-2">
-                    <p class="text-sm text-slate-400 italic">Sources will appear after analysis</p>
+          <!-- Source Manifest & Data Quality -->
+          <section id="source-manifest-panel" class="px-6 pb-6">
+            <div class="bg-white rounded-lg border border-slate-200 shadow-sm">
+              <div class="px-6 py-4 border-b border-slate-100">
+                <h3 class="text-sm font-semibold text-slate-900">Source Manifest &amp; Data Quality</h3>
+              </div>
+              <div class="p-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <!-- Sources -->
+                  <div>
+                    <h4 class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-3">Data Sources</h4>
+                    <div id="source-manifest-list" class="space-y-2">
+                      <p class="text-sm text-slate-400 italic">Sources will appear after analysis</p>
+                    </div>
                   </div>
-                </div>
-                <!-- Data Quality -->
-                <div>
-                  <h4 class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-3">Data Quality Assessment</h4>
-                  <div id="data-quality-detail" class="space-y-3">
-                    <p class="text-sm text-slate-400 italic">Quality assessment will appear after analysis</p>
+                  <!-- Data Quality -->
+                  <div>
+                    <h4 class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-3">Data Quality Assessment</h4>
+                    <div id="data-quality-detail" class="space-y-3">
+                      <p class="text-sm text-slate-400 italic">Quality assessment will appear after analysis</p>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
+          </section>
+
+        </div><!-- /panel-overview -->
+
+
+        <!-- Tab: Financials -->
+        <div id="panel-financials" class="tab-panel hidden">
+
+          <section id="statements-panel" class="px-6 py-5">
+            <div class="bg-white rounded-lg border border-slate-200 shadow-sm">
+
+              <!-- Statement Sub-Tab Bar -->
+              <div class="flex items-center border-b border-slate-200 px-4">
+                <button
+                  onclick="switchStatementTab('income')"
+                  id="tab-income"
+                  class="tab-active px-4 py-3 text-sm font-medium transition-colors whitespace-nowrap"
+                >
+                  Income Statement
+                </button>
+                <button
+                  onclick="switchStatementTab('balance')"
+                  id="tab-balance"
+                  class="tab-inactive px-4 py-3 text-sm font-medium transition-colors whitespace-nowrap"
+                >
+                  Balance Sheet
+                </button>
+                <button
+                  onclick="switchStatementTab('cashflow')"
+                  id="tab-cashflow"
+                  class="tab-inactive px-4 py-3 text-sm font-medium transition-colors whitespace-nowrap"
+                >
+                  Cash Flow
+                </button>
+                <div class="flex-1"></div>
+                <span class="text-[11px] text-slate-400 font-mono">USD in millions</span>
+              </div>
+
+              <!-- Dynamically populated by renderer.js -->
+              <div id="stmt-income" class="overflow-x-auto"></div>
+              <div id="stmt-balance" class="overflow-x-auto hidden"></div>
+              <div id="stmt-cashflow" class="overflow-x-auto hidden"></div>
+
+            </div>
+          </section>
+
+        </div><!-- /panel-financials -->
+
+
+        <!-- Tab: Valuation -->
+        <div id="panel-valuation" class="tab-panel hidden">
+          <div id="valuation-panel" class="p-6">
+            <p class="text-sm text-slate-400 italic text-center py-12">Investment frameworks coming soon</p>
           </div>
-        </section>
+        </div><!-- /panel-valuation -->
+
+
+        <!-- Tab: Competitors -->
+        <div id="panel-competitors" class="tab-panel hidden">
+          <div id="competitors-panel" class="p-6">
+            <p class="text-sm text-slate-400 italic text-center py-12">Competitor analysis coming soon</p>
+          </div>
+        </div><!-- /panel-competitors -->
+
+
+        <!-- Tab: Management -->
+        <div id="panel-management" class="tab-panel hidden">
+          <div id="management-panel" class="p-6">
+            <p class="text-sm text-slate-400 italic text-center py-12">Management profiles coming soon</p>
+          </div>
+        </div><!-- /panel-management -->
+
+
+        <!-- Tab: IR -->
+        <div id="panel-ir" class="tab-panel hidden">
+          <div id="ir-panel" class="p-6">
+            <p class="text-sm text-slate-400 italic text-center py-12">IR materials coming soon</p>
+          </div>
+        </div><!-- /panel-ir -->
 
       </div><!-- /analysis-content -->
     </main>
@@ -591,12 +666,49 @@
   <!-- INLINE SCRIPTS: Tab switching + wiring     -->
   <!-- ========================================== -->
   <script>
-    // Financial statement tab switching
+    // ---- Main Tab Navigation ----
+    var mainTabs = ['overview', 'financials', 'valuation', 'competitors', 'management', 'ir'];
+
+    function switchMainTab(tabName) {
+      mainTabs.forEach(function(t) {
+        var tabBtn = document.getElementById('main-tab-' + t);
+        var panel = document.getElementById('panel-' + t);
+        if (t === tabName) {
+          tabBtn.classList.add('active');
+          panel.classList.remove('hidden');
+        } else {
+          tabBtn.classList.remove('active');
+          panel.classList.add('hidden');
+        }
+      });
+      // Update URL hash
+      window.location.hash = tabName;
+    }
+
+    // On page load, activate tab from URL hash (default to overview)
+    (function() {
+      var hash = window.location.hash.replace('#', '');
+      if (hash && mainTabs.indexOf(hash) !== -1) {
+        switchMainTab(hash);
+      } else {
+        switchMainTab('overview');
+      }
+    })();
+
+    // Listen for hash changes (back/forward navigation)
+    window.addEventListener('hashchange', function() {
+      var hash = window.location.hash.replace('#', '');
+      if (hash && mainTabs.indexOf(hash) !== -1) {
+        switchMainTab(hash);
+      }
+    });
+
+    // ---- Financial Statement Sub-Tab Switching ----
     function switchStatementTab(tab) {
-      const tabs = ['income', 'balance', 'cashflow'];
+      var tabs = ['income', 'balance', 'cashflow'];
       tabs.forEach(function(t) {
-        const tabBtn = document.getElementById('tab-' + t);
-        const panel = document.getElementById('stmt-' + t);
+        var tabBtn = document.getElementById('tab-' + t);
+        var panel = document.getElementById('stmt-' + t);
         if (t === tab) {
           tabBtn.className = 'tab-active px-4 py-3 text-sm font-medium transition-colors whitespace-nowrap';
           panel.classList.remove('hidden');
@@ -607,7 +719,16 @@
       });
     }
 
-    // Settings modal toggle
+    // ---- Company Selector ----
+    function selectCompany(ticker) {
+      if (!ticker) return;
+      // Dispatch custom event for app.js to handle
+      window.dispatchEvent(new CustomEvent('company-selected', {
+        detail: { ticker: ticker }
+      }));
+    }
+
+    // ---- Settings modal toggle ----
     document.getElementById('settings-btn').addEventListener('click', function() {
       document.getElementById('modal-overlay').classList.remove('hidden');
     });

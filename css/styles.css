@@ -1,7 +1,24 @@
 /* ============================================
    IGSB Analyst — Investment Group of Santa Barbara
    Complements Tailwind CSS utilities
+   Updated: PRs #27 (color system, typography) & #30 (Tufte tables)
    ============================================ */
+
+/* ---- CSS Custom Properties ---- */
+:root {
+  --color-positive: #0CA678;
+  --color-negative: #E03131;
+  --color-primary: #1971C2;
+  --color-neutral: #64748b;
+  --color-text-primary: #0f172a;
+  --color-text-secondary: #334155;
+  --color-text-muted: #64748b;
+  --color-border: #e2e8f0;
+  --color-border-subtle: #f1f5f9;
+  --color-bg-page: #f8fafc;
+  --color-bg-card: #ffffff;
+  --color-row-alt: rgba(0, 0, 0, 0.015);
+}
 
 /* ---- Base / Reset ---- */
 * {
@@ -14,6 +31,9 @@ html {
 
 body {
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  font-variant-numeric: tabular-nums;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -25,24 +45,37 @@ body {
   letter-spacing: -0.01em;
 }
 
-/* ---- Financial Statement Tables ---- */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---- Financial Statement Tables (Tufte-inspired) ---- */
 .stmt-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.8125rem;
-  line-height: 1.5;
+  font-size: 0.75rem;
+  line-height: 1.6;
+  border-spacing: 0;
+}
+
+.stmt-table thead {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: var(--color-bg-card);
 }
 
 .stmt-table th {
   text-align: right;
   padding: 0.5rem 0.75rem;
   font-weight: 600;
-  font-size: 0.75rem;
+  font-size: 0.6875rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: #64748b;
-  border-bottom: 2px solid #e2e8f0;
+  color: var(--color-text-muted);
+  border-bottom: 2px solid var(--color-text-secondary);
   white-space: nowrap;
+  background: var(--color-bg-card);
 }
 
 .stmt-table th:first-child {
@@ -50,24 +83,38 @@ body {
 }
 
 .stmt-table td {
-  padding: 0.375rem 0.75rem;
+  padding: 0.3125rem 0.75rem;
   text-align: right;
-  border-bottom: 1px solid #f1f5f9;
+  border-bottom: 1px solid var(--color-border-subtle);
   font-family: 'JetBrains Mono', monospace;
   font-variant-numeric: tabular-nums;
-  font-size: 0.8125rem;
+  font-size: 0.75rem;
 }
 
 .stmt-table td:first-child {
   text-align: left;
   font-family: 'Inter', sans-serif;
-  color: #334155;
+  color: var(--color-text-secondary);
 }
 
-.stmt-table tr:hover {
-  background-color: #f8fafc;
+/* No vertical borders — Tufte principle */
+.stmt-table td,
+.stmt-table th {
+  border-left: none;
+  border-right: none;
 }
 
+/* Alternating row shading (Tufte: minimal, subtle) */
+.stmt-table tbody tr:nth-child(even) {
+  background: var(--color-row-alt);
+}
+
+/* Hover — slightly more visible than alt shading */
+.stmt-table tbody tr:hover {
+  background-color: #f1f5f9;
+}
+
+/* Indentation levels */
 .stmt-table .indent-1 td:first-child {
   padding-left: 1.5rem;
 }
@@ -76,35 +123,52 @@ body {
   padding-left: 2.5rem;
 }
 
+.stmt-table .indent-3 td:first-child {
+  padding-left: 3.5rem;
+}
+
+/* Subtotal rows — single rule above and below */
 .stmt-table .subtotal td {
   font-weight: 600;
   border-bottom: 1px solid #cbd5e1;
   border-top: 1px solid #cbd5e1;
 }
 
+/* Total rows — double underline (accounting convention) */
 .stmt-table .total td {
   font-weight: 700;
   border-bottom: 3px double #334155;
   border-top: 2px solid #334155;
 }
 
+/* Grand total — extra emphasis */
+.stmt-table .grand-total td {
+  font-weight: 700;
+  border-bottom: 3px double #0f172a;
+  border-top: 2px solid #0f172a;
+  font-size: 0.8125rem;
+}
+
+/* Section headers within statements */
 .stmt-table .section-header td {
   font-weight: 700;
   padding-top: 1rem;
-  color: #0f172a;
+  color: var(--color-text-primary);
   font-family: 'Inter', sans-serif;
-  font-size: 0.8125rem;
+  font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.03em;
+  border-bottom: none;
 }
 
 /* Margin / percent rows */
 .stmt-table .margin-row td {
   font-style: italic;
-  font-size: 0.75rem;
+  font-size: 0.6875rem;
   border-bottom: none;
-  padding-top: 0.125rem;
-  padding-bottom: 0.375rem;
+  padding-top: 0.0625rem;
+  padding-bottom: 0.3125rem;
+  color: var(--color-text-muted);
 }
 
 .stmt-table .margin-row td:first-child {
@@ -112,13 +176,28 @@ body {
   padding-left: 1.5rem;
 }
 
-/* Negative values in red */
+/* Positive / negative values in financial tables */
 .stmt-table .negative {
-  color: #dc2626;
+  color: var(--color-negative);
 }
 
 .stmt-table .positive {
-  color: #059669;
+  color: var(--color-positive);
+}
+
+/* Empty / placeholder cells */
+.stmt-table .no-data {
+  color: #cbd5e1;
+  font-style: italic;
+}
+
+/* ---- Global Positive / Negative ---- */
+.positive {
+  color: var(--color-positive);
+}
+
+.negative {
+  color: var(--color-negative);
 }
 
 /* ---- KPI Cards ---- */
@@ -133,7 +212,7 @@ body {
 
 /* ---- Sidebar ---- */
 .sidebar-section {
-  border-bottom: 1px solid #e2e8f0;
+  border-bottom: 1px solid var(--color-border);
   padding-bottom: 1rem;
   margin-bottom: 1rem;
 }
@@ -153,25 +232,104 @@ body {
 
 .drop-zone:hover,
 .drop-zone-active {
-  border-color: #3b82f6;
-  background-color: #eff6ff;
+  border-color: var(--color-primary);
+  background-color: #e7f1fd;
 }
 
-/* ---- Tab Navigation ---- */
+/* ---- Tab Navigation (Legacy) ---- */
 .tab-active {
-  color: #2563eb;
-  border-bottom: 2px solid #2563eb;
+  color: var(--color-primary);
+  border-bottom: 2px solid var(--color-primary);
   font-weight: 600;
 }
 
 .tab-inactive {
-  color: #64748b;
+  color: var(--color-text-muted);
   border-bottom: 2px solid transparent;
 }
 
 .tab-inactive:hover {
-  color: #334155;
+  color: var(--color-text-secondary);
   border-bottom-color: #cbd5e1;
+}
+
+/* ---- Main Tab Bar (PR #30) ---- */
+.main-tab-bar {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-bg-card);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.main-tab-bar::-webkit-scrollbar {
+  display: none;
+}
+
+.main-tab {
+  position: relative;
+  padding: 0.625rem 1.25rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.15s ease, border-color 0.15s ease;
+  font-family: 'Inter', sans-serif;
+}
+
+.main-tab:hover {
+  color: var(--color-text-secondary);
+  border-bottom-color: #cbd5e1;
+}
+
+.main-tab.active {
+  color: var(--color-primary);
+  border-bottom-color: var(--color-primary);
+  font-weight: 600;
+}
+
+/* Tab panels — visibility managed by Tailwind 'hidden' class via JS */
+
+/* ---- Company Selector Dropdown ---- */
+.company-dropdown {
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: 0.375rem;
+  padding: 0.375rem 2rem 0.375rem 0.75rem;
+  font-size: 0.8125rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  cursor: pointer;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 5l3 3 3-3'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.625rem center;
+  background-size: 0.75rem;
+  min-width: 10rem;
+}
+
+.company-dropdown:hover {
+  border-color: #94a3b8;
+}
+
+.company-dropdown:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(25, 113, 194, 0.15);
+}
+
+.company-dropdown option {
+  font-family: 'Inter', sans-serif;
+  padding: 0.375rem;
 }
 
 /* ---- Toast Notifications ---- */
@@ -222,8 +380,8 @@ body {
 .spinner {
   width: 1.25rem;
   height: 1.25rem;
-  border: 2px solid #e2e8f0;
-  border-top-color: #3b82f6;
+  border: 2px solid var(--color-border);
+  border-top-color: var(--color-primary);
   border-radius: 50%;
   animation: spin 0.6s linear infinite;
 }
@@ -235,7 +393,7 @@ body {
 /* ---- Streaming Text Animation ---- */
 .streaming-cursor::after {
   content: '\25CA';
-  color: #3b82f6;
+  color: var(--color-primary);
   animation: blink 0.8s step-end infinite;
 }
 
@@ -249,7 +407,7 @@ body {
   justify-content: space-between;
   align-items: baseline;
   padding: 0.5rem 0;
-  border-bottom: 1px solid #f1f5f9;
+  border-bottom: 1px solid var(--color-border-subtle);
 }
 
 .metric-card:last-child {
@@ -258,7 +416,7 @@ body {
 
 .metric-label {
   font-size: 0.8125rem;
-  color: #64748b;
+  color: var(--color-text-muted);
 }
 
 .metric-value {
@@ -266,23 +424,31 @@ body {
   font-variant-numeric: tabular-nums;
   font-weight: 600;
   font-size: 0.875rem;
-  color: #0f172a;
+  color: var(--color-text-primary);
 }
 
 /* ---- Trend Indicators ---- */
-.trend-up { color: #059669; }
-.trend-down { color: #dc2626; }
-.trend-stable { color: #64748b; }
+.trend-up {
+  color: #0CA678;
+}
+
+.trend-down {
+  color: #E03131;
+}
+
+.trend-stable {
+  color: var(--color-neutral);
+}
 
 /* ---- Sentiment Badges ---- */
 .sentiment-positive {
-  background-color: #ecfdf5;
-  color: #047857;
+  background-color: #e6f9f1;
+  color: #0a8a62;
 }
 
 .sentiment-negative {
-  background-color: #fef2f2;
-  color: #b91c1c;
+  background-color: #fde8e8;
+  color: #c92a2a;
 }
 
 .sentiment-neutral {
@@ -314,9 +480,9 @@ body {
 }
 
 .source-tag-upload {
-  background-color: #f0fdf4;
-  border-color: #bbf7d0;
-  color: #15803d;
+  background-color: #e6f9f1;
+  border-color: #96e6c8;
+  color: #0a8a62;
 }
 
 .source-tag-analyst {
@@ -327,13 +493,13 @@ body {
 
 .source-tag-computed {
   background-color: #f8fafc;
-  border-color: #e2e8f0;
+  border-color: var(--color-border);
   color: #475569;
 }
 
 /* ---- Confidence Indicators ---- */
 .confidence-high {
-  color: #059669;
+  color: var(--color-positive);
 }
 
 .confidence-medium {
@@ -341,7 +507,7 @@ body {
 }
 
 .confidence-low {
-  color: #dc2626;
+  color: var(--color-negative);
 }
 
 /* ---- Scrollbar ---- */
@@ -385,13 +551,25 @@ body {
     padding: 1rem !important;
   }
 
+  .stmt-table thead {
+    position: static;
+  }
+
   .stmt-table td, .stmt-table th {
     padding: 0.25rem 0.5rem;
   }
 
   .kpi-card {
     box-shadow: none;
-    border: 1px solid #e2e8f0;
+    border: 1px solid var(--color-border);
+  }
+
+  .main-tab-bar {
+    display: none !important;
+  }
+
+  .tab-panel {
+    display: block !important;
   }
 }
 
@@ -409,5 +587,14 @@ body {
 
   main {
     margin-left: 0 !important;
+  }
+
+  .main-tab-bar {
+    gap: 0;
+  }
+
+  .main-tab {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.75rem;
   }
 }
