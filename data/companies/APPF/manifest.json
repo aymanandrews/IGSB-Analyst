@@ -1,0 +1,15 @@
+{
+  "ticker": "APPF",
+  "name": "AppFolio, Inc.",
+  "sector": "Technology",
+  "industry": "Application Software — Property Management",
+  "filings": [
+    {
+      "type": "10-K",
+      "period": "FY2025",
+      "file": "APPF-10K-FY2025.json",
+      "generated": "2025-02-07"
+    }
+  ],
+  "default_filing": "APPF-10K-FY2025.json"
+}

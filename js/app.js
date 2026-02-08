@@ -79,13 +79,19 @@ function wireTickerSearch() {
 }
 
 /**
- * Try loading a pre-generated analysis from data/ directory
+ * Try loading a pre-generated analysis from data/companies/{TICKER}/ directory.
+ * Reads the manifest to find the default filing, then loads that JSON.
  */
 async function loadCachedAnalysis(ticker) {
+  const t = ticker.toUpperCase();
   try {
-    const res = await fetch(`data/${ticker.toUpperCase()}-analysis.json`);
-    if (!res.ok) return null;
-    return await res.json();
+    const manifestRes = await fetch(`data/companies/${t}/manifest.json`);
+    if (!manifestRes.ok) return null;
+    const manifest = await manifestRes.json();
+    if (!manifest.default_filing) return null;
+    const fileRes = await fetch(`data/companies/${t}/${manifest.default_filing}`);
+    if (!fileRes.ok) return null;
+    return await fileRes.json();
   } catch {
     return null;
   }
