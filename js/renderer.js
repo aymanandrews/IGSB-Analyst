@@ -4,6 +4,8 @@
  * derived metrics, narrative, and source attribution into the DOM.
  */
 
+import { renderMemoTab } from './renderers/memo-renderer.js';
+
 // ============================================================
 // XSS-safe text escaping
 // ============================================================
@@ -1315,6 +1317,7 @@ export function renderAnalysis(analysisJSON) {
   renderDataQuality(analysisJSON.data_quality);
 
   // Render tab-specific content
+  renderMemoTab(analysisJSON);
   renderValuationTab(analysisJSON);
   renderCompetitorsTab(analysisJSON);
   renderManagementTab(analysisJSON);

@@ -681,5 +681,155 @@
       "Developer exchange (DevEx) payout details and creator economy unit economics",
       "Infrastructure cost per DAU and cloud vs. owned data center split"
     ]
+  },
+  "investment_memo": {
+    "company_description": "Roblox is the world's largest user-generated 3D immersive platform, connecting over 85 million daily active users with millions of creator-built experiences, monetized through a virtual currency (Robux) economy and an emerging advertising business.",
+    "recommendation": {
+      "rating": "Hold",
+      "price_target": 68,
+      "conviction": "Medium",
+      "time_horizon": "12-18 months",
+      "position_size": "2-3% of a growth-oriented portfolio; not suitable for income or value mandates",
+      "monitor_metrics": ["Bookings growth rate (leading indicator vs. recognized revenue)", "DAU growth and hours engaged per DAU", "GAAP operating margin trajectory toward breakeven", "SBC as % of revenue (dilution velocity)"]
+    },
+    "executive_summary": "Roblox is executing well on top-line growth (+27.1% YoY) with improving unit economics, but the stock at 11.1x EV/Revenue and 60.4x EV/EBITDA already prices in a sustained high-growth, high-margin future. The platform's network effects and creator ecosystem are genuine moats, yet persistent GAAP losses, heavy SBC dilution (21.7% of revenue), and elevated infrastructure capex requirements create real execution risk on the path to profitability. We rate Hold with a $68 price target, representing ~12% upside, and would become more constructive on a pullback below $50 or clear evidence of SBC moderation.",
+    "thesis_bullets": [
+      "Dominant UGC gaming platform with 85M+ DAUs and powerful network effects — creators attract users, users attract creators — creating a flywheel that is extremely difficult for competitors to replicate",
+      "Revenue growth remains robust at 27% with a long runway for international expansion and demographic aging-up, but the gap between bookings growth and revenue recognition adds forecasting complexity",
+      "Cash economics are compelling ($516M FCF, 14.3% margin) but GAAP profitability remains 2+ years away, and $782M in annual SBC represents a hidden cost to shareholders through persistent dilution"
+    ],
+    "thesis_pillars": [
+      {
+        "title": "Platform Network Effects & Creator Moat",
+        "description": "Roblox's two-sided marketplace of 85M+ DAUs and millions of active creators generates a self-reinforcing flywheel. The platform hosts 40M+ experiences, and top creators earn meaningful income through DevEx, incentivizing continued content investment. This user-generated model means Roblox's content library grows without proportional internal development cost, giving it a structural advantage over traditional game studios that must fund each title. No competitor has achieved comparable scale in user-generated 3D experiences.",
+        "sentiment": "positive",
+        "metric": "85M+",
+        "metric_label": "Daily Active Users"
+      },
+      {
+        "title": "Revenue Growth Durability",
+        "description": "FY 2025 revenue of $3.60B (+27.1%) continues a strong multi-year trajectory. Growth is supported by three vectors: (1) DAU expansion internationally, particularly in Asia and Latin America; (2) aging-up demographics, with 17-24 year-olds as the fastest-growing cohort, increasing ARPU potential; (3) new monetization channels including immersive advertising and avatar commerce. Deferred revenue of $1.20B (+22.6%) provides near-term visibility. However, the bookings-to-revenue lag creates quarterly volatility that can mislead investors.",
+        "sentiment": "positive",
+        "metric": "+27.1%",
+        "metric_label": "YoY Revenue Growth"
+      },
+      {
+        "title": "GAAP Profitability Gap Remains Wide",
+        "description": "Despite meaningful improvement, Roblox posted a -$185M net loss in FY 2025 and -$184M operating loss (-5.1% margin). The primary culprits are R&D at $1.84B (51.1% of revenue) and SBC at $782M (21.7% of revenue). While management targets GAAP operating profitability by FY 2027, this requires either significant SBC moderation (unlikely given talent competition) or revenue scaling faster than cost growth. EBITDA of $664M (18.4% margin) flatters the picture by excluding the very real economic cost of dilution.",
+        "sentiment": "negative",
+        "metric": "-$185M",
+        "metric_label": "FY 2025 Net Loss"
+      },
+      {
+        "title": "Cash Flow Generation Validates Underlying Economics",
+        "description": "Operating cash flow of $1.09B and FCF of $516M demonstrate that Roblox's platform generates real cash despite GAAP losses. The bridge from net loss to OCF is dominated by non-cash items: $848M D&A and $782M SBC. FCF margin expanded to 14.3%, and the Rule of 40 score of 41.4 (27.1% growth + 14.3% FCF margin) puts Roblox in healthy territory for a high-growth platform. The $3.12B in liquid assets against $1.49B in convertible debt provides a $1.0B+ net cash cushion, eliminating near-term solvency risk.",
+        "sentiment": "positive",
+        "metric": "$516M",
+        "metric_label": "Free Cash Flow"
+      },
+      {
+        "title": "Valuation Leaves Limited Margin of Safety",
+        "description": "At 11.1x EV/Revenue and 60.4x EV/EBITDA, Roblox is priced for continued 25%+ revenue growth and significant margin expansion. The FCF yield of just 1.4% means investors are paying a steep premium for future cash flows. To justify the current $38.2B market cap on a DCF basis, Roblox would need to reach $8-9B in revenue and 25%+ FCF margins within 5 years — an aggressive but not impossible scenario. The valuation provides limited downside protection if growth decelerates or the profitability timeline slips.",
+        "sentiment": "negative",
+        "metric": "11.1x",
+        "metric_label": "EV/Revenue"
+      }
+    ],
+    "scenario_analysis": {
+      "bull": {
+        "thesis": "Advertising revenue scales rapidly to $500M+ by FY 2027, DAUs reach 120M, demographic aging-up drives ARPU 30% higher, and SBC moderates below 15% of revenue. GAAP profitability achieved by mid-FY 2026, ahead of guidance. Roblox becomes the dominant metaverse platform with spatial computing tailwinds from AR/VR adoption.",
+        "price_target": 95,
+        "assumptions": [
+          "Revenue reaches $5.5B+ by FY 2027 (30%+ CAGR)",
+          "Advertising contributes $500M+ in high-margin revenue by FY 2027",
+          "FCF margins expand to 22-25% as infrastructure capex intensity moderates",
+          "Multiple re-rates to 13-14x forward EV/Revenue on profitability inflection"
+        ]
+      },
+      "base": {
+        "thesis": "Roblox sustains 22-25% revenue growth through FY 2027, with EBITDA margins expanding to 22-24% and FCF margins reaching 16-18%. GAAP profitability achieved in late FY 2027 per management targets. SBC remains elevated at 18-20% of revenue. Advertising grows steadily but does not become transformational in the near term.",
+        "price_target": 68,
+        "assumptions": [
+          "Revenue reaches $4.5B in FY 2026, $5.5B in FY 2027",
+          "GAAP operating breakeven by Q4 FY 2027",
+          "FCF margins expand to 16-18% by FY 2026",
+          "Multiple compresses slightly to 10x forward EV/Revenue as growth decelerates"
+        ]
+      },
+      "bear": {
+        "thesis": "User growth stagnates as Gen Alpha ages out and competition from Epic (Fortnite), Minecraft, and emerging AI-native platforms intensifies. Regulatory headwinds (COPPA, child safety) increase compliance costs and limit monetization of under-13 users. Advertising rollout disappoints. SBC remains above 20% of revenue, frustrating profitability hopes.",
+        "price_target": 35,
+        "assumptions": [
+          "Revenue growth decelerates to 12-15% by FY 2027",
+          "DAU growth stalls at 90-95M as competitive dynamics shift",
+          "GAAP profitability pushed to FY 2028 or beyond",
+          "Multiple compresses to 6-7x EV/Revenue, reflecting lower-growth reality"
+        ]
+      }
+    },
+    "catalysts": [
+      {
+        "title": "FY 2026 Q1 Earnings & FY 2026 Guidance",
+        "date": "February 2026",
+        "type": "earnings",
+        "description": "First full look at FY 2025 actuals and management's FY 2026 bookings/revenue guidance. Market will focus on DAU trajectory, advertising revenue disclosure, and updated profitability timeline.",
+        "impact": "Positive guidance reaffirming 25%+ bookings growth and margin expansion could re-rate the stock; any downward revision would pressure shares significantly at current multiples."
+      },
+      {
+        "title": "Advertising Revenue Inflection",
+        "date": "Mid 2026",
+        "type": "product",
+        "description": "Roblox's immersive advertising product is scaling with major brand partners. A dedicated advertising revenue breakout or disclosure exceeding $200M annualized run-rate would validate this as a material growth vector.",
+        "impact": "Advertising carries significantly higher margins than platform transactions. Demonstrating scale here could accelerate the profitability narrative and justify a premium multiple."
+      },
+      {
+        "title": "GAAP Operating Profitability Milestone",
+        "date": "Late 2026 - Early 2027",
+        "type": "earnings",
+        "description": "Management has targeted GAAP operating profitability by FY 2027. Hitting a quarterly GAAP operating profit ahead of schedule would be a powerful narrative shift.",
+        "impact": "First GAAP profitable quarter would likely trigger significant institutional reallocation, as many funds cannot hold chronically unprofitable companies."
+      },
+      {
+        "title": "Spatial Computing / AR-VR Platform Expansion",
+        "date": "2026-2027",
+        "type": "product",
+        "description": "As Apple Vision Pro matures and Meta Quest continues expanding, Roblox's positioning as a cross-platform 3D social experience becomes increasingly relevant. Native VR/AR integration could re-categorize Roblox from gaming to metaverse infrastructure.",
+        "impact": "Successful VR/AR adoption would expand Roblox's TAM beyond gaming into social, education, and enterprise collaboration, potentially justifying a significantly higher multiple."
+      },
+      {
+        "title": "Regulatory Developments on Child Safety",
+        "date": "2026",
+        "type": "regulatory",
+        "description": "Multiple jurisdictions (US, EU, UK) are advancing legislation on children's online safety and data privacy. Roblox's large under-13 user base makes it a focal point for regulators.",
+        "impact": "Favorable outcomes or proactive compliance leadership could de-risk the regulatory overhang; adverse rulings could increase compliance costs by $50-100M+ annually and restrict monetization of younger users."
+      }
+    ],
+    "risk_mitigant_pairs": [
+      {
+        "risk": "Stock-based compensation at 21.7% of revenue ($782M) creates persistent dilution, with diluted shares growing ~3% annually, eroding per-share economics for existing holders.",
+        "mitigant": "SBC as a percentage of revenue has declined from 26.6% in FY 2022 to 21.7% in FY 2025, and management has signaled intent to moderate SBC growth below revenue growth. The company's net cash position ($1.0B+) provides optionality for share buybacks if/when FCF generation strengthens further.",
+        "severity": "High"
+      },
+      {
+        "risk": "GAAP profitability remains elusive with -$185M net loss in FY 2025 and no clear catalyst for a near-term inflection, potentially keeping institutional investors sidelined.",
+        "mitigant": "EBITDA is already meaningfully positive at $664M (18.4% margin) and expanding rapidly. FCF of $516M demonstrates the underlying business generates cash. The GAAP loss is narrowing at an accelerating pace (-$617M to -$431M to -$359M to -$185M over four years), suggesting a credible path to breakeven by FY 2027.",
+        "severity": "Medium"
+      },
+      {
+        "risk": "Regulatory risk around child safety (COPPA, KOSA) and data privacy could impose significant compliance costs, restrict monetization of the under-13 demographic, or result in reputational damage.",
+        "mitigant": "Roblox has invested heavily in trust and safety infrastructure, including parental controls, age verification, and content moderation systems. The demographic aging-up trend means the over-13 cohort is growing faster than under-13, naturally reducing regulatory exposure over time. Proactive compliance may also create a moat, as smaller competitors cannot afford equivalent safety investments.",
+        "severity": "High"
+      },
+      {
+        "risk": "Infrastructure capex intensity ($573M, 15.9% of revenue) is required to maintain platform performance for real-time 3D rendering at scale, and may not moderate as quickly as investors expect.",
+        "mitigant": "Capex as a percentage of revenue has actually been relatively stable (14-16% range) while absolute FCF has grown. As Roblox transitions workloads to custom silicon and proprietary infrastructure, unit costs should decline. The company's shift from leased to owned data center capacity creates long-term cost savings even if near-term capex remains elevated.",
+        "severity": "Medium"
+      },
+      {
+        "risk": "Competitive threats from Epic Games (Fortnite/UEFN), Minecraft, and emerging AI-native creation platforms could erode Roblox's creator and user flywheel if a superior creation tool or more engaging platform emerges.",
+        "mitigant": "Roblox's 40M+ experience library and established creator economy represent years of accumulated content that competitors cannot replicate overnight. The company is investing aggressively in generative AI creation tools to maintain its development platform advantage. Network effects create high switching costs — creators go where the users are, and users go where the content is. No competing platform has achieved comparable daily active user scale in user-generated 3D experiences.",
+        "severity": "Medium"
+      }
+    ]
   }
 }

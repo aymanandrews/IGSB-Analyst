@@ -680,5 +680,155 @@
       "Net dollar retention rate and customer count by segment",
       "Cloud-level revenue disaggregation (Commercial Cloud, Clinical Cloud, Regulatory Cloud, Quality Cloud)"
     ]
+  },
+  "investment_memo": {
+    "company_description": "Veeva Systems is the dominant vertical cloud software platform for the global life sciences industry, providing CRM, clinical trial management, regulatory, quality, and data solutions to pharmaceutical and biotech companies.",
+    "recommendation": {
+      "rating": "Buy",
+      "price_target": 265,
+      "conviction": "High",
+      "time_horizon": "12-18 months",
+      "position_size": "3-5% of portfolio; core holding for quality-compounding strategies, suitable for accounts seeking predictable, durable growth with best-in-class capital efficiency",
+      "monitor_metrics": ["Subscription revenue growth (must sustain 15%+)", "Vault CRM migration progress and customer adoption rate", "FCF margin (sustaining 35%+ critical)", "Rule of 40 score maintenance above 50"]
+    },
+    "executive_summary": "Veeva is a rare best-in-class compounder: $2.75B revenue growing 15.7%, 23.2% GAAP operating margins, $1B+ free cash flow (36.5% margin), $5.5B net cash, zero debt, and a Rule of 40 score of 52.2. The Salesforce-to-Vault CRM migration provides a multi-year re-platforming catalyst that should reduce costs, improve product control, and deepen competitive moats. At 58.7x P/E and 12.0x EV/Revenue, the valuation is premium but justified by the quality, predictability, and durability of the business.",
+    "thesis_bullets": [
+      "Undisputed vertical SaaS leader in life sciences with 80%+ market share in pharma CRM and expanding dominance in clinical, regulatory, and quality clouds across the entire drug lifecycle",
+      "Best-in-class financial profile: 36.5% FCF margin, 7.9% SBC-to-revenue ratio (lowest among large SaaS), $5.5B net cash, and Rule of 40 score of 52.2 — a rare combination of growth and profitability",
+      "Vault CRM migration from Salesforce is a multi-year structural catalyst (2025-2030) that reduces platform risk, improves unit economics, and raises switching costs for the $800M+ CRM revenue base"
+    ],
+    "thesis_pillars": [
+      {
+        "title": "Unassailable Life Sciences Vertical Moat",
+        "description": "Veeva holds 80%+ share of pharma CRM and is the standard-of-record for clinical trial management, regulatory submissions, and quality document management across the top 50 pharma companies globally. The depth of domain expertise, validated compliance frameworks, and regulatory know-how create barriers that horizontal competitors (Salesforce, SAP, Oracle) cannot cost-effectively replicate. Customer switching costs are exceptionally high given the validated environments required for GxP compliance.",
+        "sentiment": "positive",
+        "metric": "80%+",
+        "metric_label": "Pharma CRM Market Share"
+      },
+      {
+        "title": "Vault CRM Migration Is a Structural Re-Rating Catalyst",
+        "description": "The multi-year migration of $800M+ in CRM revenue from Salesforce infrastructure to Veeva's proprietary Vault platform (2025-2030) is transformative. It eliminates Salesforce platform fees (estimated 15-20% of CRM revenue), gives Veeva full stack control over product roadmap and data architecture, and raises customer switching costs further by deepening integration across the Vault ecosystem. Early migration cohorts are showing positive feedback, and the migration timeline is tracking to plan.",
+        "sentiment": "positive",
+        "metric": "$800M+",
+        "metric_label": "CRM Revenue Migrating to Vault"
+      },
+      {
+        "title": "Capital Efficiency Sets the Standard for SaaS",
+        "description": "SBC at 7.9% of revenue is dramatically lower than peers (Procore: 18%, ServiceTitan: 21%, industry median: ~15-20%). This reflects founder-CEO Peter Gassner's disciplined culture and Veeva's Public Benefit Corporation status. Combined with 36.5% FCF margins and $310M in annual buybacks, Veeva returns more real economic value to shareholders per dollar of revenue than virtually any SaaS company at scale.",
+        "sentiment": "positive",
+        "metric": "7.9%",
+        "metric_label": "SBC % of Revenue"
+      },
+      {
+        "title": "Growth Deceleration Is the Primary Risk to Multiple",
+        "description": "Revenue growth has decelerated from ~22% in FY 2023 to 15.7% in FY 2025, reflecting the law of large numbers at $2.75B scale. While mid-teens growth is healthy, it places pressure on the 58.7x P/E and 12.0x EV/Revenue multiples. If growth decelerates further to 12-13%, the stock could face multiple compression even with improving margins. The Vault CRM migration must generate incremental revenue uplift (cross-sell, upsell) to sustain 15%+ growth.",
+        "sentiment": "negative",
+        "metric": "15.7%",
+        "metric_label": "Revenue Growth YoY"
+      },
+      {
+        "title": "Financial Fortress Provides Strategic Flexibility",
+        "description": "With $5.5B in cash and investments, zero debt, and $1B+ in annual FCF generation, Veeva has extraordinary financial flexibility. The massive investment portfolio generates $198M in interest income annually, meaningfully boosting EPS. This balance sheet allows Veeva to pursue large-scale M&A if strategic opportunities arise, fund aggressive R&D investment in AI and data products, and return significant capital to shareholders — all simultaneously.",
+        "sentiment": "positive",
+        "metric": "$5.5B",
+        "metric_label": "Net Cash Position"
+      }
+    ],
+    "scenario_analysis": {
+      "bull": {
+        "thesis": "Vault CRM migration drives 17-18% revenue growth as cross-sell and upsell accelerate during the platform transition. Operating margins expand toward 30% as Salesforce platform fees are eliminated. Multiple expands to 65-70x P/E on best-in-class Rule of 40 above 55.",
+        "price_target": 310,
+        "assumptions": [
+          "Revenue growth re-accelerates to 17-18% through FY 2028 to ~$3.8B driven by Vault CRM uplift and new cloud adoption",
+          "GAAP operating margins reach 28-30% by FY 2028 as Salesforce costs are eliminated",
+          "FCF margins sustain above 38%, generating $1.4B+ in annual FCF; buybacks accelerate to $400M+ annually",
+          "EPS of $5.50+ by FY 2028 at 60x P/E yields $330; discount to present at $310"
+        ]
+      },
+      "base": {
+        "thesis": "Revenue growth sustains at 14-16% as the Vault CRM migration proceeds on schedule. Operating margins expand to 26-28% and FCF margins hold above 36%. The stock earns a steady quality premium.",
+        "price_target": 265,
+        "assumptions": [
+          "Revenue growth of 14-16% through FY 2027 to ~$3.5B",
+          "GAAP operating margin reaches 26-27% as platform costs decline and R&D intensity moderates",
+          "FCF reaches $1.2B+ by FY 2027 (36%+ margin); stock trades at 28-30x forward FCF",
+          "EPS of $4.80+ by FY 2027 at 55x P/E yields ~$265"
+        ]
+      },
+      "bear": {
+        "thesis": "Revenue growth decelerates to 10-12% as biotech funding tightens and Vault CRM migration encounters customer resistance or delays. Competitive pressure from IQVIA and Medidata intensifies in clinical cloud. Multiple compresses to 40-45x P/E.",
+        "price_target": 175,
+        "assumptions": [
+          "Revenue growth slows to 10-12% through FY 2027 as large pharma delays Vault CRM migration",
+          "Operating margins stall at 24-25% as competitive R&D spending increases",
+          "EPS of $4.20 by FY 2027 at 42x P/E yields ~$175",
+          "Biotech funding downturn slows new logo acquisition in clinical and regulatory clouds"
+        ]
+      }
+    },
+    "catalysts": [
+      {
+        "title": "FY 2026 Earnings and Guidance",
+        "date": "March 2026",
+        "type": "earnings",
+        "description": "FY 2026 guidance will confirm whether Veeva can sustain 15%+ subscription revenue growth and continue expanding operating margins. Vault CRM migration progress update will be closely watched.",
+        "impact": "Subscription growth guidance above 16% with operating margin expansion to 25%+ would reinforce the quality premium and likely drive a positive re-rating."
+      },
+      {
+        "title": "Vault CRM General Availability Milestone",
+        "date": "Mid 2026",
+        "type": "product",
+        "description": "Vault CRM reaching general availability for the majority of customer segments (after phased rollout) would de-risk the migration timeline and demonstrate Veeva's ability to re-platform its largest revenue stream successfully.",
+        "impact": "Successful GA milestone would remove the largest overhang on the story and likely trigger upgrades from analysts who had discounted migration execution risk."
+      },
+      {
+        "title": "AI-Powered Clinical and Regulatory Products",
+        "date": "H2 2026",
+        "type": "product",
+        "description": "Veeva is investing in AI capabilities for clinical trial optimization, regulatory document generation, and pharmacovigilance automation. These products target the $10B+ spend on clinical operations across pharma.",
+        "impact": "AI-driven clinical products could open a new revenue category and accelerate subscription growth by 2-3 percentage points if adoption reaches critical mass."
+      },
+      {
+        "title": "Large Pharma Vault CRM Migration Wins",
+        "date": "2026-2027",
+        "type": "product",
+        "description": "Announcements of top-20 pharma companies completing Vault CRM migration would validate the platform and create a reference-selling cascade among remaining holdouts.",
+        "impact": "Each large pharma migration completion reduces timeline risk and signals to the market that the $800M+ revenue base is secure on the new platform."
+      },
+      {
+        "title": "Capital Return Acceleration",
+        "date": "2026",
+        "type": "earnings",
+        "description": "With $5.5B in cash and $1B+ annual FCF, Veeva has capacity to meaningfully increase its buyback program from the current ~$310M annual pace. Board authorization of a $1B+ accelerated repurchase program would signal confidence.",
+        "impact": "Accelerated buybacks would reduce share count, boost EPS growth, and demonstrate management conviction in intrinsic value — a strong signal for a company that has historically been conservative on capital returns."
+      }
+    ],
+    "risk_mitigant_pairs": [
+      {
+        "risk": "Revenue growth deceleration to mid-teens at $2.75B scale; further slowing to 12% would pressure the 58.7x P/E premium multiple",
+        "mitigant": "The Vault CRM migration provides a multi-year tailwind through cross-sell and upsell during the transition. New product categories (AI, data, and expanded clinical cloud) add incremental growth vectors. Subscription revenue (82% of total) is growing 17.2%, faster than blended growth.",
+        "severity": "High"
+      },
+      {
+        "risk": "Vault CRM migration execution risk over the 2025-2030 timeline; delays or customer churn during the transition could impair revenue",
+        "mitigant": "Veeva controls both the origin (Salesforce CRM) and destination (Vault CRM) platforms, giving it full control over migration pacing. Early cohorts are migrating successfully. The migration is an upgrade (better integration, lower cost) not a lateral move, which reduces customer resistance. Veeva's 80%+ CRM share means there is no competitive alternative for most pharma companies.",
+        "severity": "High"
+      },
+      {
+        "risk": "Competitive pressure from IQVIA (clinical), Medidata/Dassault Systemes (clinical), and Oracle Health Sciences (regulatory) in non-CRM cloud segments",
+        "mitigant": "Veeva's integrated Vault platform creates cross-cloud synergies that point-solution competitors cannot match. Clinical, regulatory, and quality data flow across a unified data model, creating network effects within the customer organization. Veeva's validated cloud infrastructure and deep pharma domain expertise are difficult to replicate.",
+        "severity": "Medium"
+      },
+      {
+        "risk": "Customer concentration in pharma/biotech means that a biotech funding downturn or pharma M&A wave could slow new logo acquisition and pressure renewals",
+        "mitigant": "Veeva's customer base is anchored by the top 50 global pharma companies, which have stable R&D budgets even during downturns. Biotech exposure is more growth-oriented, but Veeva's mission-critical regulatory and compliance tools are among the last line items to be cut. Net dollar retention above 120% suggests limited churn risk.",
+        "severity": "Medium"
+      },
+      {
+        "risk": "Premium valuation (58.7x P/E, 12.0x EV/Revenue) leaves limited margin for earnings misses or guidance reductions",
+        "mitigant": "The valuation is supported by best-in-class fundamentals: 36.5% FCF margin, 7.9% SBC, Rule of 40 of 52.2, zero debt, and $5.5B net cash. On a P/FCF basis (~38x), the stock is more reasonably valued given the quality and durability of cash flows. The $310M annual buyback provides ongoing EPS support.",
+        "severity": "Medium"
+      }
+    ]
   }
 }

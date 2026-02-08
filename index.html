@@ -406,6 +406,7 @@
         <!-- ======================================== -->
         <div class="main-tab-bar flex items-center border-b border-slate-200 bg-white px-6">
           <button onclick="switchMainTab('overview')" id="main-tab-overview" class="main-tab active">Overview</button>
+          <button onclick="switchMainTab('memo')" id="main-tab-memo" class="main-tab">Memo</button>
           <button onclick="switchMainTab('financials')" id="main-tab-financials" class="main-tab">Financials</button>
           <button onclick="switchMainTab('valuation')" id="main-tab-valuation" class="main-tab">Valuation</button>
           <button onclick="switchMainTab('competitors')" id="main-tab-competitors" class="main-tab">Competitors</button>
@@ -467,6 +468,29 @@
           </section>
 
         </div><!-- /panel-overview -->
+
+
+        <!-- Tab: Investment Memo -->
+        <div id="panel-memo" class="tab-panel hidden">
+          <!-- Memo header bar (rating, price target, conviction) -->
+          <div id="memo-header"></div>
+          <div class="p-6 space-y-6">
+            <!-- Executive snapshot -->
+            <div id="memo-executive"></div>
+            <!-- Thesis pillars -->
+            <div id="memo-thesis"></div>
+            <!-- Financial summary table -->
+            <div id="memo-financials"></div>
+            <!-- Valuation + scenario analysis -->
+            <div id="memo-valuation"></div>
+            <!-- Catalysts timeline -->
+            <div id="memo-catalysts"></div>
+            <!-- Risk-mitigant pairs -->
+            <div id="memo-risks"></div>
+            <!-- Final recommendation -->
+            <div id="memo-recommendation"></div>
+          </div>
+        </div><!-- /panel-memo -->
 
 
         <!-- Tab: Financials -->
@@ -710,7 +734,7 @@
   <!-- ========================================== -->
   <script>
     // ---- Main Tab Navigation ----
-    var mainTabs = ['overview', 'financials', 'valuation', 'competitors', 'management', 'ir'];
+    var mainTabs = ['overview', 'memo', 'financials', 'valuation', 'competitors', 'management', 'ir'];
 
     function switchMainTab(tabName) {
       mainTabs.forEach(function(t) {

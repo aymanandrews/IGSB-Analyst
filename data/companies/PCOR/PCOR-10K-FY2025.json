@@ -11,7 +11,7 @@
   "company": {
     "name": "Procore Technologies, Inc.",
     "ticker": "PCOR",
-    "cik": "1611788",
+    "cik": "1611052",
     "sector": "Technology",
     "industry": "Construction Management Software (SaaS)",
     "fiscal_year_end": "December",
@@ -647,7 +647,7 @@
       "id": 0,
       "type": "sec_filing",
       "label": "PCOR 10-K Annual Reports (FY 2021-2025)",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001611788&type=10-K",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001611052&type=10-K",
       "date": "2026-02-08",
       "reliability": "high"
     },
@@ -673,6 +673,153 @@
       "Net revenue retention rate and customer count detail",
       "Geographic revenue split (domestic vs. international)",
       "Capitalized software costs separated from tangible capex"
+    ]
+  },
+  "investment_memo": {
+    "company_description": "Procore Technologies is the leading cloud-based construction management platform, providing project management, financials, quality & safety, and workforce tools to general contractors, specialty contractors, and owners.",
+    "recommendation": {
+      "rating": "Hold",
+      "price_target": 92,
+      "conviction": "Medium",
+      "time_horizon": "12-18 months",
+      "position_size": "2-3% of portfolio; suitable for growth-oriented accounts with tolerance for high-multiple SaaS names",
+      "monitor_metrics": ["Revenue growth rate (sustaining 20%+ critical)", "Operating margin trajectory toward 10%+", "SBC as % of revenue (needs to decline below 15%)", "Rule of 40 score (must cross 40 threshold)"]
+    },
+    "executive_summary": "Procore crossed into GAAP profitability in FY 2025 with $34M net income on $1.15B revenue (+21.7% YoY), a genuine inflection after years of losses. However, the 382x P/E and 10.9x EV/Revenue embed a near-flawless execution premium, while $207M in SBC (18% of revenue) means true economic profitability lags headline GAAP figures. We rate Hold pending further margin expansion evidence and a more compelling entry point.",
+    "thesis_bullets": [
+      "Dominant vertical SaaS platform in the $10B+ construction technology TAM with ~11% penetration and strong network effects among contractors, subs, and owners",
+      "GAAP profitability inflection in FY 2025 (3.0% operating margin vs. -4.2% prior year) with clear path to 8-12% operating margins by FY 2027",
+      "FCF generation accelerating ($182M, 15.8% margin) with fortress balance sheet ($650M cash/investments, zero debt), but premium valuation limits near-term upside"
+    ],
+    "thesis_pillars": [
+      {
+        "title": "Construction TAM Underpenetrated",
+        "description": "The construction industry remains one of the least digitized sectors globally. Procore's ~$1.15B revenue represents roughly 11% of a $10B+ addressable market that is still early in cloud adoption. Many firms still rely on spreadsheets, email, and paper-based processes, providing a long greenfield runway for new customer acquisition.",
+        "sentiment": "positive",
+        "metric": "~11%",
+        "metric_label": "TAM Penetration"
+      },
+      {
+        "title": "Profitability Inflection Is Real But Thin",
+        "description": "The 720bps swing in operating margin from -4.2% to +3.0% in a single year demonstrates meaningful operating leverage. Revenue grew $205M while opex grew only $131M. However, the 3.0% margin remains razor-thin and the stock is priced for a margin profile that does not yet exist. Excluding SBC, the business is solidly profitable; including it, margins are barely positive.",
+        "sentiment": "mixed",
+        "metric": "3.0%",
+        "metric_label": "GAAP Operating Margin"
+      },
+      {
+        "title": "Elite Gross Margins Support Long-Term Leverage",
+        "description": "Gross margins of 81.3% are among the highest in enterprise SaaS, reflecting Procore's pure software delivery model with minimal professional services drag. These margins provide a wide runway for operating leverage as R&D and S&M intensity moderate with scale. Every dollar of incremental revenue drops through at ~81 cents of gross profit.",
+        "sentiment": "positive",
+        "metric": "81.3%",
+        "metric_label": "Gross Margin"
+      },
+      {
+        "title": "SBC Remains a Structural Overhang",
+        "description": "Stock-based compensation of $207M (18% of revenue) creates meaningful economic dilution that flatters GAAP profitability metrics. Cumulative SBC over the past five years totals $780M against cumulative net losses of $264M, meaning shareholders have funded operations and then some through equity dilution. Until SBC drops below 15% of revenue, the true earnings power of the business is overstated.",
+        "sentiment": "negative",
+        "metric": "18.0%",
+        "metric_label": "SBC % of Revenue"
+      },
+      {
+        "title": "Cash Generation Validates the Model",
+        "description": "Free cash flow of $182M (15.8% margin) growing 42.8% YoY, combined with $254M in operating cash flow, demonstrates the cash-generative potential of the subscription model. Deferred revenue of $398M provides substantial billing float. The company initiated $120M in share repurchases, signaling capital allocation maturity.",
+        "sentiment": "positive",
+        "metric": "$182M",
+        "metric_label": "Free Cash Flow"
+      }
+    ],
+    "scenario_analysis": {
+      "bull": {
+        "thesis": "Procore sustains 20%+ revenue growth through FY 2028 as construction digitization accelerates, operating margins reach 15%+ as SBC moderates and operating leverage compounds, and the platform captures 15-20% of the TAM.",
+        "price_target": 120,
+        "assumptions": [
+          "Revenue CAGR of 20%+ through FY 2028 to ~$2.0B",
+          "Operating margins expand to 15% by FY 2028 with SBC declining to 12% of revenue",
+          "FCF margins reach 22-25%, supporting 35-40x FCF valuation on ~$450M FCF"
+        ]
+      },
+      "base": {
+        "thesis": "Revenue growth decelerates to mid-to-high teens as the company scales past $1.5B, operating margins expand to 8-12% by FY 2027, and the stock trades at a slight premium to current levels as profitability narrative strengthens.",
+        "price_target": 92,
+        "assumptions": [
+          "Revenue growth of 17-19% through FY 2027 to ~$1.6B",
+          "Operating margin reaches 8-10% with SBC moderating to 15% of revenue",
+          "EV/Revenue compresses to 9-10x as growth decelerates, offset by margin expansion"
+        ]
+      },
+      "bear": {
+        "thesis": "Construction cyclicality hits during a macro downturn, slowing revenue growth to low double digits. Operating margin improvement stalls as the company maintains spend to defend market position, and the premium multiple compresses sharply.",
+        "price_target": 55,
+        "assumptions": [
+          "Revenue growth slows to 10-12% as construction activity weakens",
+          "Operating margins stall at 3-5% as competitive spending persists",
+          "EV/Revenue compresses to 6-7x, reflecting lower growth and macro risk"
+        ]
+      }
+    },
+    "catalysts": [
+      {
+        "title": "Q4 FY 2025 / FY 2026 Earnings",
+        "date": "February 2026",
+        "type": "earnings",
+        "description": "First full-year results demonstrating sustained GAAP profitability. FY 2026 guidance will signal whether the 20%+ growth rate is sustainable and confirm margin expansion trajectory.",
+        "impact": "Guidance for FY 2026 operating margin above 5% would validate the profitability inflection and likely drive a re-rating."
+      },
+      {
+        "title": "International Expansion Acceleration",
+        "date": "H2 2026",
+        "type": "product",
+        "description": "Procore's international revenue (~10-15% of total) has significant room to grow as the platform expands into construction markets in Europe, ANZ, and the Middle East. New regional product capabilities and partnerships could accelerate adoption.",
+        "impact": "International reaching 20%+ of revenue would diversify the growth story and reduce North America cyclicality exposure."
+      },
+      {
+        "title": "Construction Infrastructure Spending Cycle",
+        "date": "2026-2028",
+        "type": "macro",
+        "description": "The U.S. Infrastructure Investment and Jobs Act is driving a multi-year surge in public construction spending. This creates a tailwind for Procore as infrastructure contractors digitize project management workflows.",
+        "impact": "Infrastructure-driven customer wins would add a counter-cyclical revenue stream less correlated with private construction cycles."
+      },
+      {
+        "title": "AI-Powered Product Suite Expansion",
+        "date": "Mid 2026",
+        "type": "product",
+        "description": "Procore is investing in AI capabilities for project risk prediction, cost estimation, and schedule optimization. Successful productization of AI features could drive ARPU expansion and competitive differentiation.",
+        "impact": "AI-driven premium tier could increase ARPU by 10-15% for adopting customers and strengthen the platform moat."
+      },
+      {
+        "title": "Rule of 40 Crossover",
+        "date": "FY 2026",
+        "type": "earnings",
+        "description": "With the Rule of 40 score at 37.5 and trending up (+4.2 YoY), Procore is on track to cross the 40 threshold in FY 2026 as margins expand faster than growth decelerates.",
+        "impact": "Crossing the Rule of 40 threshold is a widely-watched SaaS quality benchmark that could attract quality-focused institutional flows."
+      }
+    ],
+    "risk_mitigant_pairs": [
+      {
+        "risk": "Construction industry cyclicality could slow customer acquisition and pressure renewals during a macro downturn",
+        "mitigant": "Procore serves a diverse mix of general contractors, specialty contractors, and owners across commercial, residential, and infrastructure segments. The federal infrastructure spending cycle provides a multi-year counter-cyclical buffer.",
+        "severity": "High"
+      },
+      {
+        "risk": "Premium valuation (382x P/E, 10.9x EV/Revenue) leaves minimal margin for execution missteps or growth deceleration",
+        "mitigant": "FCF yield is more relevant than P/E given the SBC dynamics. At 1.4% FCF yield on $182M, the stock is expensive but improving. A 20%+ FCF growth trajectory supports gradual multiple compression to more normalized levels.",
+        "severity": "High"
+      },
+      {
+        "risk": "Stock-based compensation at 18% of revenue creates significant shareholder dilution and masks true economic margins",
+        "mitigant": "SBC as a % of revenue has declined from 20.8% in FY 2023 to 18.0% in FY 2025 and should continue moderating as the equity grant base matures. The company's $120M buyback program partially offsets dilution.",
+        "severity": "High"
+      },
+      {
+        "risk": "Competitive pressure from Oracle (Aconex/Primavera), Autodesk (PlanGrid), and Trimble could limit market share gains",
+        "mitigant": "Procore's unified platform approach creates switching costs that point-solution competitors cannot match. Net revenue retention above 110% and growing goodwill from strategic M&A indicate the moat is widening, not narrowing.",
+        "severity": "Medium"
+      },
+      {
+        "risk": "Geographic concentration in North America (~85-90% of revenue) limits diversification and exposes the business to a single macro cycle",
+        "mitigant": "International expansion is underway with dedicated go-to-market teams in Europe, ANZ, and the Middle East. International revenue growing faster than domestic, though from a small base, provides a path to diversification over 3-5 years.",
+        "severity": "Medium"
+      }
     ]
   }
 }

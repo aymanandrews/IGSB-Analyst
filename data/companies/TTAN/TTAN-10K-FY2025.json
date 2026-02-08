@@ -11,7 +11,7 @@
   "company": {
     "name": "ServiceTitan, Inc.",
     "ticker": "TTAN",
-    "cik": "1645460",
+    "cik": "1638826",
     "sector": "Technology",
     "industry": "Field Service Management Software (SaaS)",
     "fiscal_year_end": "January",
@@ -648,7 +648,7 @@
       "id": 0,
       "type": "sec_filing",
       "label": "TTAN 10-K Annual Report (FY 2025) and S-1 Registration Statement (FY 2021-2024 historicals)",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001645460&type=10-K",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001638826&type=10-K",
       "date": "2026-02-08",
       "reliability": "high"
     },
@@ -675,6 +675,154 @@
       "Customer count and detailed unit economics (ARPU, logo churn, NDR by cohort)",
       "Non-GAAP reconciliation detail (adjusted EBITDA components)",
       "International revenue contribution (currently minimal)"
+    ]
+  },
+  "investment_memo": {
+    "company_description": "ServiceTitan is the leading vertical SaaS platform for the trades, providing end-to-end business management software to HVAC, plumbing, electrical, and adjacent field service contractors.",
+    "recommendation": {
+      "rating": "Hold",
+      "price_target": 130,
+      "conviction": "Medium",
+      "time_horizon": "12-18 months",
+      "position_size": "1-2% of portfolio; high-risk/high-reward position suitable for growth-tolerant accounts willing to absorb near-term losses for long-term category dominance",
+      "monitor_metrics": ["Revenue growth rate (sustaining 25%+ critical for valuation)", "GAAP operating margin improvement toward breakeven", "SBC normalization from the 21% IPO spike", "Free cash flow inflection to sustainably positive"]
+    },
+    "executive_summary": "ServiceTitan is the clear category leader in field service management SaaS, having completed a successful IPO in December 2024 and posting $772M in FY 2025 revenue (+28.9% YoY). The company is approaching FCF breakeven (-$8M) and has a $498M net cash position post-IPO. However, GAAP losses of -$130M, SBC at 21% of revenue (inflated by IPO vesting), 63.4% gross margins below pure-SaaS peers, and a 12.3x EV/Revenue multiple demand patience and careful monitoring of the path to profitability.",
+    "thesis_bullets": [
+      "Category-defining vertical SaaS platform with 11,800+ contractor customers, 110%+ net dollar retention, and deep workflow integration creating high switching costs in a $2T+ home/commercial services market",
+      "Revenue growth of 28.9% YoY at $772M scale with consistent high-20s growth trajectory over five years, supported by new vertical expansion and embedded fintech adoption",
+      "Newly public with $698M cash post-IPO, but GAAP unprofitable (-16.8% operating margin), elevated SBC (21%), and 12.3x EV/Revenue make this a show-me story requiring margin inflection to justify the multiple"
+    ],
+    "thesis_pillars": [
+      {
+        "title": "Category Leader in a Massive Underpenetrated Market",
+        "description": "ServiceTitan dominates the field service management vertical with 11,800+ contractor businesses on its platform. The $2T+ home and commercial services market is still overwhelmingly managed with pen-and-paper or basic tools. Penetration is likely sub-5%, providing decades of greenfield growth. The platform's breadth (dispatching, scheduling, invoicing, payments, marketing, inventory) creates a moat that point-solution competitors cannot replicate.",
+        "sentiment": "positive",
+        "metric": "11,800+",
+        "metric_label": "Contractor Customers"
+      },
+      {
+        "title": "Consistent High-Growth Revenue Trajectory",
+        "description": "ServiceTitan has maintained a ~29.6% revenue CAGR from FY 2021 to FY 2025, growing from $274M to $772M. Growth is driven by new logo acquisition, ARPU expansion through product upsells and payments adoption, and expansion into adjacent verticals (roofing, pest control, landscaping). Net revenue retention above 110% demonstrates strong land-and-expand economics within the existing customer base.",
+        "sentiment": "positive",
+        "metric": "28.9%",
+        "metric_label": "YoY Revenue Growth"
+      },
+      {
+        "title": "Lower Gross Margins Reflect Blended Model Risk",
+        "description": "At 63.4%, ServiceTitan's gross margins are materially below pure-play SaaS peers (typically 75-85%). This reflects the company's growing payments/fintech revenue mix, which processes transactions at lower margins than subscription software. While the fintech layer increases ARPU and stickiness, a continued mix shift could cap gross margin expansion and compress long-term operating margins below what the SaaS label implies.",
+        "sentiment": "negative",
+        "metric": "63.4%",
+        "metric_label": "Gross Margin"
+      },
+      {
+        "title": "Post-IPO SBC Spike Creates Earnings Distortion",
+        "description": "SBC surged to $162M (21.0% of revenue) in FY 2025, nearly doubling from $74M (12.4%) in FY 2024, driven by RSU vesting acceleration and new equity grants tied to the December 2024 IPO. This spike is expected to be partially one-time, but normalization timeline is uncertain. Excluding SBC, operating income would be approximately +$32M (4.2% margin), suggesting the underlying business is nearing profitability. The key question is how quickly SBC normalizes to 12-14% of revenue.",
+        "sentiment": "negative",
+        "metric": "21.0%",
+        "metric_label": "SBC % of Revenue"
+      },
+      {
+        "title": "Embedded Fintech Is a Powerful ARPU Driver",
+        "description": "ServiceTitan Payments, financing products, and payroll processing add a transaction-based revenue layer that increases customer ARPU and deepens platform stickiness. The fintech strategy mirrors the Shopify playbook of monetizing the merchant ecosystem beyond core SaaS. While this pressures blended gross margins, it expands the total revenue opportunity per customer by 2-3x and creates a usage-based revenue component that grows with contractor business volumes.",
+        "sentiment": "positive",
+        "metric": "2-3x",
+        "metric_label": "ARPU Expansion Potential"
+      }
+    ],
+    "scenario_analysis": {
+      "bull": {
+        "thesis": "ServiceTitan sustains 25%+ revenue growth through FY 2028 as the platform expands into new verticals and international markets. Operating leverage accelerates as SBC normalizes and the cost structure scales sublinearly. The company achieves GAAP profitability by FY 2027.",
+        "price_target": 200,
+        "assumptions": [
+          "Revenue CAGR of 25%+ through FY 2028 to ~$1.5B",
+          "Gross margins stabilize at 65%+ as subscription mix holds alongside payments growth",
+          "GAAP operating margin reaches 5-8% by FY 2028 with SBC normalizing to 12% of revenue",
+          "Market awards 15x forward revenue on profitable high-growth trajectory"
+        ]
+      },
+      "base": {
+        "thesis": "Revenue growth moderates to low-20s as the company scales past $1B. Margin improvement is gradual, with GAAP breakeven achieved by late FY 2027. The stock trades sideways as the market waits for profitability proof points.",
+        "price_target": 130,
+        "assumptions": [
+          "Revenue growth of 20-23% through FY 2027 to ~$1.1B",
+          "Operating margin improves to -5% to 0% by FY 2027 as SBC moderates to 14% of revenue",
+          "FCF turns positive in FY 2026 at $20-40M; market values at 10-11x forward revenue"
+        ]
+      },
+      "bear": {
+        "thesis": "Home services spending weakens in a housing downturn, slowing revenue growth to mid-teens. Lock-up expiration creates selling pressure. The company struggles to reach profitability and burns through IPO cash reserves.",
+        "price_target": 70,
+        "assumptions": [
+          "Revenue growth slows to 13-16% as housing market weakens and contractor spending pulls back",
+          "Operating losses persist at -10% to -15% as the company maintains competitive spending",
+          "Cash burn of $80-120M annually depletes the IPO cash cushion; EV/Revenue compresses to 6-7x"
+        ]
+      }
+    },
+    "catalysts": [
+      {
+        "title": "First Full-Year Earnings as Public Company",
+        "date": "March 2026",
+        "type": "earnings",
+        "description": "FY 2026 guidance will be the first complete forward outlook as a public company. Revenue trajectory and margin improvement guidance will set expectations for the profitability timeline.",
+        "impact": "FY 2026 guidance showing 20%+ revenue growth with operating margin improvement to -10% or better would confirm the operating leverage thesis."
+      },
+      {
+        "title": "Lock-Up Expiration",
+        "date": "June 2026",
+        "type": "regulatory",
+        "description": "The 180-day post-IPO lock-up expires in approximately June 2026, allowing insiders and pre-IPO investors to sell shares. This could create significant selling pressure given the large pre-IPO investor base.",
+        "impact": "Lock-up selling could create a 15-25% drawdown, providing a more attractive entry point for long-term investors if fundamentals remain intact."
+      },
+      {
+        "title": "New Vertical Launches",
+        "date": "H2 2026",
+        "type": "product",
+        "description": "ServiceTitan is expanding beyond core HVAC/plumbing/electrical into adjacent verticals including roofing, pest control, landscaping, and commercial services. Each new vertical adds a greenfield customer pool.",
+        "impact": "Successful new vertical launches would extend the TAM and demonstrate platform scalability beyond the core trades, supporting 25%+ growth for longer."
+      },
+      {
+        "title": "Payments Penetration Milestone",
+        "date": "H1 2026",
+        "type": "product",
+        "description": "ServiceTitan Payments adoption among the customer base is a key ARPU growth driver. Crossing 50% payments penetration would validate the embedded fintech thesis and demonstrate the Shopify-like monetization flywheel.",
+        "impact": "Higher payments penetration would increase revenue per customer and improve revenue visibility through transaction-based economics."
+      },
+      {
+        "title": "Potential Index Inclusion",
+        "date": "2027",
+        "type": "regulatory",
+        "description": "As ServiceTitan seasons as a public company and market cap stabilizes, it becomes eligible for S&P MidCap 400 or Russell 1000 inclusion, which drives passive index fund buying.",
+        "impact": "Index inclusion would create structural demand for shares and reduce volatility, typically driving a 5-10% lift around announcement."
+      }
+    ],
+    "risk_mitigant_pairs": [
+      {
+        "risk": "GAAP unprofitability with -$130M net loss and -$747M accumulated deficit; path to profitability depends on SBC normalization and operating leverage that is not yet proven at scale",
+        "mitigant": "Excluding SBC, operating income was approximately +$32M, demonstrating the underlying business is near breakeven. Operating cash flow turned positive at $74M in FY 2025. The $698M cash position provides 5+ years of runway even at current loss rates.",
+        "severity": "High"
+      },
+      {
+        "risk": "Post-IPO SBC spike to 21% of revenue creates severe shareholder dilution; share count jumped from 58.3M to 71M in a single year",
+        "mitigant": "The SBC spike is largely one-time driven by IPO-related RSU vesting acceleration. Pre-IPO run-rate was 12.4% of revenue, and normalization to 13-15% over FY 2026-2027 is expected. Management has incentive to demonstrate SBC discipline to public market investors.",
+        "severity": "High"
+      },
+      {
+        "risk": "Lower gross margins (63.4%) versus pure SaaS peers reflect payments/fintech revenue mix that may structurally cap profitability",
+        "mitigant": "Gross margins have expanded steadily from 57.8% to 63.4% over five years even as fintech revenue grew, suggesting the subscription business is scaling faster. Subscription-only gross margins are likely 75-80%, competitive with peers. The fintech layer adds revenue per customer that more than compensates for the blended margin impact.",
+        "severity": "Medium"
+      },
+      {
+        "risk": "Cyclicality exposure to U.S. housing and home services spending could slow growth if residential construction activity weakens",
+        "mitigant": "ServiceTitan primarily serves the repair and maintenance segment (not new construction), which is more resilient to housing cycles. HVAC systems, plumbing, and electrical work are non-discretionary services. Additionally, the platform helps contractors operate more efficiently, making it valuable even in downturns.",
+        "severity": "Medium"
+      },
+      {
+        "risk": "Lock-up expiration in mid-2026 could trigger significant insider selling and depress the stock price",
+        "mitigant": "Lock-up-driven selling is typically a temporary technical event. If fundamentals continue improving (revenue growth, margin expansion), any lock-up-related dip would likely be absorbed by institutional buyers looking for an entry point. The $498M net cash position provides fundamental floor support.",
+        "severity": "Medium"
+      }
     ]
   }
 }

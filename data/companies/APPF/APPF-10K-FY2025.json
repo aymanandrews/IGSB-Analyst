@@ -665,5 +665,156 @@
       "Customer count and unit economics (ARPU, churn, NDR)",
       "R&D capitalization detail"
     ]
+  },
+  "investment_memo": {
+    "company_description": "AppFolio is a leading provider of cloud-based property management software serving residential, commercial, and community association property managers across the United States.",
+    "recommendation": {
+      "rating": "Buy",
+      "price_target": 300.00,
+      "conviction": "High",
+      "time_horizon": "12-18 months",
+      "position_size": "2-3% of AUM for growth-focused portfolios",
+      "monitor_metrics": ["Revenue growth rate", "FCF margin", "Net dollar retention", "Rule of 40 score", "Gross margin trajectory"]
+    },
+    "executive_summary": "AppFolio is a high-quality SaaS compounder trading at a reasonable valuation relative to its durable growth profile and expanding profitability. With a Rule of 40 score of 44.1, zero long-term debt, and $305M in cash and investments, the company offers an attractive risk/reward at ~9.6x EV/Revenue with a clear path to margin expansion and mid-to-high teens revenue growth.",
+    "thesis_bullets": [
+      "Dominant vertical SaaS platform in property management with high switching costs, recurring revenue, and net dollar retention likely exceeding 110%",
+      "Profitability inflection is durable: operating margins expanded from -15.3% to +16.1% in three years, with further expansion runway toward 20%+",
+      "Fortress balance sheet (zero debt, $305M cash) funds organic investment and opportunistic M&A without dilution risk",
+      "Secular digitization tailwind: only ~50% of U.S. property managers use modern cloud-based software, providing a multi-year greenfield opportunity"
+    ],
+    "thesis_pillars": [
+      {
+        "title": "Durable Revenue Growth Engine",
+        "description": "AppFolio has compounded revenue at a 25% CAGR over five years, growing from $359M to $951M. Even as the law of large numbers takes effect, mid-to-high teens growth is sustainable given low market penetration, expansion into adjacent verticals (commercial, community associations), and value-added services layering (AI-powered screening, payments, insurance). The SaaS model with per-unit pricing means revenue scales with customer growth and units under management.",
+        "sentiment": "positive",
+        "metric": "25.1%",
+        "metric_label": "5-Year Revenue CAGR"
+      },
+      {
+        "title": "Profitability Inflection and Margin Expansion",
+        "description": "AppFolio has undergone a dramatic profitability transformation, swinging from a -$72M operating loss in FY 2022 to $153M operating income in FY 2025. Gross margins of 63.7% are expanding as the revenue mix shifts toward higher-margin value-added services. Operating leverage is evident across all cost lines, and we see a realistic path to 20%+ operating margins by FY 2027 as growth investments moderate and scale benefits compound.",
+        "sentiment": "positive",
+        "metric": "16.1%",
+        "metric_label": "Operating Margin"
+      },
+      {
+        "title": "Superior Free Cash Flow Generation",
+        "description": "Free cash flow of $232M (24.4% margin) significantly exceeds net income of $141M, reflecting the asset-light SaaS model and minimal capex requirements (~$10M/year). FCF has grown at a 67% CAGR over the past three years. The combination of 19.7% revenue growth and 24.4% FCF margin yields a Rule of 40 score of 44.1, placing AppFolio in the top quartile of public SaaS companies. This cash flow profile funds the company's accelerating buyback program ($176M in FY 2025) without impairing growth investment.",
+        "sentiment": "positive",
+        "metric": "24.4%",
+        "metric_label": "FCF Margin"
+      },
+      {
+        "title": "Fortress Balance Sheet Provides Strategic Optionality",
+        "description": "With zero long-term debt, $305M in cash and short-term investments, and a current ratio of 3.3x, AppFolio has one of the cleanest balance sheets in SaaS. This financial strength provides optionality for bolt-on acquisitions (as demonstrated by the $115M acquisition in FY 2024), aggressive share repurchases, and the ability to invest counter-cyclically through any real estate downturn. The company is a net cash business with negative net debt of -$107M.",
+        "sentiment": "positive",
+        "metric": "$305M",
+        "metric_label": "Cash & Investments"
+      },
+      {
+        "title": "Growth Deceleration Bears Watching",
+        "description": "Revenue growth decelerated from 28.0% in FY 2024 to 19.7% in FY 2025, and the trajectory suggests further moderation toward the mid-teens. While this is partially a function of scale ($951M base), investors paying 65x earnings need to see growth stabilize. If growth decelerates below 15%, the valuation multiple will compress meaningfully. The FY 2024-to-FY 2025 step-down of 830 basis points is the largest single-year deceleration in the company's public history.",
+        "sentiment": "mixed",
+        "metric": "-830bps",
+        "metric_label": "YoY Growth Deceleration"
+      }
+    ],
+    "scenario_analysis": {
+      "bull": {
+        "thesis": "Revenue growth reaccelerates to 22-25% as AI-powered products drive ARPU expansion and new vertical penetration accelerates. Operating margins expand toward 22%+ as the growth investment cycle moderates, driving EPS toward $6.50+ and justifying a premium multiple.",
+        "price_target": 380,
+        "assumptions": [
+          "Revenue growth reaccelerates to 22-25% driven by AI feature monetization and new verticals",
+          "Operating margins expand to 22%+ by FY 2027",
+          "Net dollar retention improves to 115%+ on value-added service adoption",
+          "Valuation re-rates to 14-15x forward EV/Revenue on improved growth visibility"
+        ]
+      },
+      "base": {
+        "thesis": "Revenue growth moderates to 17-19% as the company matures at scale, while operating margins gradually expand toward 19-20%. Consistent FCF generation funds steady buybacks, and the stock appreciates in line with earnings growth plus modest multiple expansion.",
+        "price_target": 300,
+        "assumptions": [
+          "Revenue growth stabilizes at 17-19% through FY 2027",
+          "Operating margins expand to 19-20% on continued operating leverage",
+          "FCF margin sustains at 25%+, funding $150-200M annual buybacks",
+          "Valuation holds at ~12-13x forward EV/Revenue"
+        ]
+      },
+      "bear": {
+        "thesis": "Revenue growth decelerates below 15% as real estate market softness reduces customer growth and pricing power, while competition from Yardi and RealPage intensifies. The premium P/E multiple compresses as the company is re-rated from 'high-growth SaaS' to 'mature vertical software.'",
+        "price_target": 170,
+        "assumptions": [
+          "Revenue growth decelerates to 12-14% amid real estate market headwinds",
+          "Operating margins plateau at 16-17% as competitive pricing pressure offsets scale benefits",
+          "Customer churn increases as smaller property managers consolidate or exit",
+          "P/E multiple compresses from 65x to 35-40x as growth premium erodes"
+        ]
+      }
+    },
+    "catalysts": [
+      {
+        "title": "Q1 2026 Earnings Report",
+        "date": "May 2026",
+        "type": "earnings",
+        "description": "First quarterly report of FY 2026, providing initial read on whether revenue growth stabilizes in the high teens or continues to decelerate. Management guidance for FY 2026 will be a critical sentiment driver.",
+        "impact": "High. Growth stabilization above 18% would validate the base case and likely drive the stock toward $280-300."
+      },
+      {
+        "title": "AI Product Monetization Announcements",
+        "date": "H1 2026",
+        "type": "product",
+        "description": "AppFolio has been investing heavily in AI-powered features (automated screening, maintenance triage, rent optimization). Formal pricing and packaging of these features as premium add-ons could meaningfully expand ARPU.",
+        "impact": "Medium-High. Successful AI monetization could add 2-3pp to revenue growth and improve gross margins, potentially re-rating the stock."
+      },
+      {
+        "title": "Annual Customer Conference (AppFolio LIVE)",
+        "date": "Q3 2026",
+        "type": "event",
+        "description": "The company's flagship user conference typically previews the product roadmap, announces new partnerships, and provides qualitative signals on customer expansion. Key metrics to watch: new product announcements, customer testimonials on ROI, and hints at TAM expansion.",
+        "impact": "Medium. Provides qualitative validation of the growth thesis and forward product direction."
+      },
+      {
+        "title": "Potential Acquisition Announcement",
+        "date": "2026",
+        "type": "strategic",
+        "description": "With $305M in cash, zero debt, and demonstrated acquisition capability ($115M deal in FY 2024), AppFolio is well-positioned for additional bolt-on acquisitions to expand into adjacent verticals or add technology capabilities.",
+        "impact": "Medium. Accretive acquisitions could reaccelerate growth; dilutive or overpaid deals would be a negative signal."
+      },
+      {
+        "title": "U.S. Housing Market Inflection",
+        "date": "H2 2026",
+        "type": "macro",
+        "description": "If interest rates decline and housing transaction volumes recover, property managers will add more units under management, directly benefiting AppFolio's per-unit revenue model. Conversely, a sustained housing freeze could cap growth.",
+        "impact": "Medium-High. A constructive housing backdrop is not required for the thesis but would provide a meaningful tailwind to customer growth and unit expansion."
+      }
+    ],
+    "risk_mitigant_pairs": [
+      {
+        "risk": "Revenue growth decelerating from 28% to 20%, with potential further slowdown to mid-teens",
+        "mitigant": "Still growing 2x the broader vertical software industry; low market penetration (~50% of property managers on legacy systems) provides a long growth runway; AI product layering and new verticals offer incremental growth vectors",
+        "severity": "Medium"
+      },
+      {
+        "risk": "Elevated valuation at 65x P/E and 9.6x EV/Revenue leaves limited margin for error",
+        "mitigant": "FCF-based valuation is more reasonable at ~40x FCF; rapid earnings growth (operating income doubled in two years) compresses forward multiples quickly; comparable high-quality SaaS peers trade at 10-15x revenue",
+        "severity": "Medium-High"
+      },
+      {
+        "risk": "Customer concentration in residential property management exposes the business to real estate cyclicality",
+        "mitigant": "Property management is relatively cycle-resistant (renters still need housing in downturns); revenue is subscription-based and tied to units under management rather than transaction volumes; expansion into commercial and community associations diversifies vertical exposure",
+        "severity": "Medium"
+      },
+      {
+        "risk": "Competitive threats from established incumbents (Yardi, RealPage) and emerging proptech startups",
+        "mitigant": "High switching costs in property management software (tenant data migration, workflow retraining); AppFolio's modern cloud-native architecture is a structural advantage over legacy on-premise competitors; net dollar retention likely exceeds 110%, indicating strong customer retention and expansion",
+        "severity": "Low-Medium"
+      },
+      {
+        "risk": "Aggressive share repurchases ($176M in FY 2025) could deplete cash reserves and limit strategic flexibility",
+        "mitigant": "Even after $176M in buybacks, the company ended FY 2025 with $305M in cash and investments; annual FCF of $232M fully self-funds the buyback program; zero debt means the company has untapped borrowing capacity if needed for a large acquisition",
+        "severity": "Low"
+      }
+    ]
   }
 }
