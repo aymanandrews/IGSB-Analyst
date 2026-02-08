@@ -7,6 +7,7 @@ import { initUpload, uploadedDocuments, getParsedData } from './upload.js';
 import { fetchCompanyInfo, fetchFinancials, getCompanyInfo, getFinancialStatements } from './edgar.js';
 import { runAnalysis, cancelAnalysis, getCurrentAnalysis } from './analysis.js';
 import { renderAnalysis } from './renderer.js';
+import { initExport, saveSession, restoreSession, exportJSON, exportPDF, exportCSV } from './export.js';
 
 // App state
 const state = {
@@ -21,9 +22,28 @@ const state = {
  */
 function init() {
   initUpload();
+  initExport();
   wireTickerSearch();
   wireAnalysisButton();
   wireExportButton();
+
+  // Restore previous session if available
+  const saved = restoreSession();
+  if (saved && saved.analysisResult) {
+    state.ticker = saved.ticker;
+    state.edgarData = saved.edgarData;
+    state.analysisResult = saved.analysisResult;
+    renderAnalysis(saved.analysisResult);
+    showAnalysisContent();
+
+    // Restore ticker input
+    const tickerInput = document.getElementById('ticker-input');
+    if (tickerInput && saved.ticker) tickerInput.value = saved.ticker;
+    const edgarTicker = document.getElementById('edgar-ticker');
+    if (edgarTicker && saved.ticker) edgarTicker.value = saved.ticker;
+
+    showToast('Previous session restored', 'info');
+  }
 
   console.log('[IGSB-Analyst] Initialized');
 }
@@ -145,6 +165,7 @@ async function handleRunAnalysis() {
       const streamEl = document.getElementById('analysis-stream');
       if (streamEl) streamEl.classList.add('hidden');
       renderAnalysis(result);
+      saveSession(state);
       showToast('Analysis complete', 'success');
     },
     // onError
@@ -160,9 +181,10 @@ async function handleRunAnalysis() {
 }
 
 /**
- * Wire up export button — will be fully implemented in PR #8
+ * Wire up export buttons
  */
 function wireExportButton() {
+  // Header export button — defaults to JSON
   const btn = document.getElementById('export-btn');
   if (btn) {
     btn.addEventListener('click', () => {
@@ -170,7 +192,21 @@ function wireExportButton() {
         showToast('Run an analysis first before exporting', 'warning');
         return;
       }
-      // TODO: PR #8 — call export.js
+      exportJSON(state.analysisResult, state.ticker || 'analysis');
+      showToast('JSON report downloaded', 'success');
+    });
+  }
+
+  // Sidebar export button — show dropdown or default to JSON
+  const sidebarBtn = document.getElementById('export-report-btn');
+  if (sidebarBtn) {
+    sidebarBtn.addEventListener('click', () => {
+      if (!state.analysisResult) {
+        showToast('Run an analysis first before exporting', 'warning');
+        return;
+      }
+      exportJSON(state.analysisResult, state.ticker || 'analysis');
+      showToast('JSON report downloaded', 'success');
     });
   }
 }
