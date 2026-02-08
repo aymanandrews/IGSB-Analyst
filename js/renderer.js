@@ -699,6 +699,32 @@ function renderSources(sources) {
       sourceList.appendChild(item);
     }
   }
+
+  // Populate the source manifest panel (main content area)
+  const manifestList = document.getElementById('source-manifest-list');
+  if (manifestList) {
+    manifestList.innerHTML = '';
+    for (const src of sources) {
+      const typeLabels = { sec_filing: 'SEC Filing', uploaded_document: 'Upload', analyst_input: 'Analyst', computed: 'Computed' };
+      const typeTagClass = { sec_filing: 'source-tag-sec', uploaded_document: 'source-tag-upload', analyst_input: 'source-tag-analyst', computed: 'source-tag-computed' };
+      const reliabilityDots = { high: 'bg-emerald-500', medium: 'bg-amber-500', low: 'bg-red-500' };
+
+      const el = document.createElement('div');
+      el.className = 'flex items-center gap-3 p-3 bg-slate-50 rounded-lg text-sm';
+      el.innerHTML = `
+        <span class="source-tag ${typeTagClass[src.type] || 'source-tag-computed'}">${escapeHTML(typeLabels[src.type] || src.type)}</span>
+        <div class="flex-1 min-w-0">
+          <div class="font-medium text-slate-800 truncate">${escapeHTML(src.label || src.filename || 'Unknown')}</div>
+          ${src.date ? `<div class="text-xs text-slate-400 mt-0.5">${escapeHTML(src.date)}</div>` : ''}
+        </div>
+        <div class="flex items-center gap-1.5">
+          <span class="w-1.5 h-1.5 rounded-full ${reliabilityDots[src.reliability] || 'bg-slate-300'}"></span>
+          <span class="text-xs text-slate-500">${escapeHTML((src.reliability || 'medium').charAt(0).toUpperCase() + (src.reliability || 'medium').slice(1))}</span>
+        </div>
+      `;
+      manifestList.appendChild(el);
+    }
+  }
 }
 
 /**
@@ -725,6 +751,40 @@ function renderDataQuality(dataQuality) {
     <span class="w-1.5 h-1.5 rounded-full ${dotColor}"></span>
     Data quality: ${escapeHTML(label)}
   `;
+
+  // Populate the data quality detail panel
+  const detailPanel = document.getElementById('data-quality-detail');
+  if (detailPanel) {
+    const completeness = dataQuality.completeness != null ? Math.round(dataQuality.completeness * 100) : null;
+    const warnings = dataQuality.warnings || [];
+    const missing = dataQuality.missing_data || [];
+
+    detailPanel.innerHTML = `
+      <div class="flex items-center gap-3 p-3 rounded-lg ${confidence === 'high' ? 'bg-emerald-50' : confidence === 'low' ? 'bg-red-50' : 'bg-amber-50'}">
+        <span class="w-2.5 h-2.5 rounded-full ${dotColor}"></span>
+        <div>
+          <div class="text-sm font-semibold ${confidence === 'high' ? 'text-emerald-800' : confidence === 'low' ? 'text-red-800' : 'text-amber-800'}">${escapeHTML(label)} Confidence</div>
+          ${completeness != null ? `<div class="text-xs text-slate-500 mt-0.5">${completeness}% data completeness</div>` : ''}
+        </div>
+      </div>
+      ${warnings.length > 0 ? `
+        <div>
+          <div class="text-xs font-semibold text-amber-700 mb-1.5">Warnings</div>
+          <ul class="space-y-1">
+            ${warnings.map(w => `<li class="text-xs text-slate-600 flex gap-2"><span class="text-amber-500 mt-0.5">&#9888;</span>${escapeHTML(w)}</li>`).join('')}
+          </ul>
+        </div>
+      ` : ''}
+      ${missing.length > 0 ? `
+        <div>
+          <div class="text-xs font-semibold text-slate-500 mb-1.5">Missing Data</div>
+          <ul class="space-y-1">
+            ${missing.map(m => `<li class="text-xs text-slate-500 flex gap-2"><span class="text-slate-400">&#8212;</span>${escapeHTML(m)}</li>`).join('')}
+          </ul>
+        </div>
+      ` : ''}
+    `;
+  }
 }
 
 // ============================================================

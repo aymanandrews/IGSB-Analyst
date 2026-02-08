@@ -751,7 +751,8 @@
               </div>
             </div>
 
-            <div class="p-5 space-y-4">
+            <div id="narrative-content" class="p-5 space-y-4">
+              <pre id="analysis-stream" class="hidden bg-slate-900 text-green-400 text-xs font-mono p-4 rounded-lg overflow-auto max-h-96 whitespace-pre-wrap"></pre>
               <div class="prose prose-sm max-w-none">
                 <p class="text-sm text-slate-700 leading-relaxed">
                   <strong>Executive Summary:</strong> Apple Inc. demonstrates continued resilience in FY2024, with total revenue growing
@@ -937,6 +938,33 @@
                 </div>
               </div>
 
+            </div>
+          </div>
+        </section>
+
+        <!-- Source Manifest & Data Quality -->
+        <section id="source-manifest-panel" class="px-6 pb-6">
+          <div class="bg-white rounded-lg border border-slate-200 shadow-sm">
+            <div class="px-6 py-4 border-b border-slate-100">
+              <h3 class="text-sm font-semibold text-slate-900">Source Manifest &amp; Data Quality</h3>
+            </div>
+            <div class="p-6">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Sources -->
+                <div>
+                  <h4 class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-3">Data Sources</h4>
+                  <div id="source-manifest-list" class="space-y-2">
+                    <p class="text-sm text-slate-400 italic">Sources will appear after analysis</p>
+                  </div>
+                </div>
+                <!-- Data Quality -->
+                <div>
+                  <h4 class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-3">Data Quality Assessment</h4>
+                  <div id="data-quality-detail" class="space-y-3">
+                    <p class="text-sm text-slate-400 italic">Quality assessment will appear after analysis</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
