@@ -460,6 +460,226 @@ function buildNarrative(data) {
   return content;
 }
 
+function buildInvestmentMemo(data) {
+  const memo = data.investment_memo;
+  if (!memo) return [];
+
+  const rec = memo.recommendation || {};
+  const company = data.company || {};
+  const price = company.stock_price;
+  const target = rec.price_target;
+  const upside = (price && target) ? ((target - price) / price) : null;
+
+  const content = [
+    { text: 'Investment Memo', style: 'sectionHeader', pageBreak: 'before' },
+  ];
+
+  // -- Recommendation header row --
+  const ratingColor = (rec.rating === 'Buy' || rec.rating === 'Strong Buy') ? COLORS.positive
+    : (rec.rating === 'Sell' || rec.rating === 'Strong Sell') ? COLORS.negative
+    : '#d97706';
+
+  content.push({
+    table: {
+      headerRows: 0,
+      widths: ['*', '*', '*', '*', '*'],
+      body: [[
+        { text: [{ text: 'Rating\n', fontSize: 7, color: COLORS.textMuted }, { text: rec.rating || '—', fontSize: 13, bold: true, color: ratingColor }], alignment: 'center', margin: [4, 6, 4, 6] },
+        { text: [{ text: 'Target Price\n', fontSize: 7, color: COLORS.textMuted }, { text: target != null ? `$${target}` : '—', fontSize: 13, bold: true, color: COLORS.primary }], alignment: 'center', margin: [4, 6, 4, 6] },
+        { text: [{ text: 'Upside\n', fontSize: 7, color: COLORS.textMuted }, { text: upside != null ? `${(upside * 100).toFixed(1)}%` : '—', fontSize: 13, bold: true, color: upside >= 0 ? COLORS.positive : COLORS.negative }], alignment: 'center', margin: [4, 6, 4, 6] },
+        { text: [{ text: 'Conviction\n', fontSize: 7, color: COLORS.textMuted }, { text: rec.conviction || '—', fontSize: 13, bold: true, color: COLORS.textPrimary }], alignment: 'center', margin: [4, 6, 4, 6] },
+        { text: [{ text: 'Horizon\n', fontSize: 7, color: COLORS.textMuted }, { text: rec.time_horizon || '12 months', fontSize: 11, bold: true, color: COLORS.textPrimary }], alignment: 'center', margin: [4, 6, 4, 6] },
+      ]],
+    },
+    layout: {
+      hLineWidth: () => 0.5, vLineWidth: () => 0.5,
+      hLineColor: () => COLORS.border, vLineColor: () => COLORS.border,
+      paddingLeft: () => 4, paddingRight: () => 4, paddingTop: () => 4, paddingBottom: () => 4,
+    },
+    margin: [0, 0, 0, 12],
+  });
+
+  // -- Executive Summary --
+  if (memo.executive_summary) {
+    content.push(
+      { text: 'Executive Summary', style: 'subsectionHeader' },
+      { text: memo.executive_summary, fontSize: 9, color: COLORS.textSecondary, lineHeight: 1.5, margin: [0, 0, 0, 8] },
+    );
+  }
+
+  // -- Thesis Bullets --
+  if (memo.thesis_bullets?.length) {
+    content.push({
+      ol: memo.thesis_bullets.map(b => ({ text: b, fontSize: 9, color: COLORS.textSecondary, margin: [0, 2, 0, 2] })),
+      margin: [8, 0, 0, 12],
+    });
+  }
+
+  // -- Thesis Pillars --
+  if (memo.thesis_pillars?.length) {
+    content.push({ text: 'Thesis Pillars', style: 'subsectionHeader' });
+    for (const p of memo.thesis_pillars) {
+      const sentColor = p.sentiment === 'positive' ? COLORS.positive : p.sentiment === 'negative' ? COLORS.negative : '#d97706';
+      content.push(
+        {
+          columns: [
+            { text: p.title, fontSize: 10, bold: true, color: COLORS.textPrimary, width: '*' },
+            p.metric != null ? { text: `${p.metric_label || ''}: ${p.metric}`, fontSize: 9, bold: true, color: COLORS.primary, alignment: 'right', width: 'auto' } : { text: '', width: 0 },
+          ],
+          margin: [0, 6, 0, 2],
+        },
+        {
+          canvas: [{ type: 'rect', x: 0, y: 0, w: 3, h: 0.1, color: sentColor }],
+        },
+        { text: p.description, fontSize: 8.5, color: COLORS.textSecondary, lineHeight: 1.4, margin: [0, 0, 0, 6] },
+      );
+    }
+  }
+
+  // -- Scenario Analysis --
+  if (memo.scenario_analysis) {
+    content.push({ text: 'Scenario Analysis', style: 'subsectionHeader', pageBreak: 'before' });
+    const scenarios = memo.scenario_analysis;
+    const scenarioOrder = [
+      { key: 'bull', label: 'Bull Case', color: COLORS.positive },
+      { key: 'base', label: 'Base Case', color: COLORS.primary },
+      { key: 'bear', label: 'Bear Case', color: COLORS.negative },
+    ];
+
+    const scenarioRows = [
+      [
+        { text: 'Scenario', style: 'tableHeaderCell', alignment: 'left' },
+        { text: 'Price Target', style: 'tableHeaderCell', alignment: 'right' },
+        { text: 'vs Current', style: 'tableHeaderCell', alignment: 'right' },
+        { text: 'Thesis', style: 'tableHeaderCell', alignment: 'left' },
+      ],
+    ];
+
+    for (const s of scenarioOrder) {
+      const sc = scenarios[s.key];
+      if (!sc) continue;
+      const scUpside = (price && sc.price_target) ? ((sc.price_target - price) / price) : null;
+      scenarioRows.push([
+        { text: s.label, fontSize: 9, bold: true, color: s.color },
+        { text: sc.price_target != null ? `$${sc.price_target}` : '—', fontSize: 9, bold: true, color: s.color, alignment: 'right' },
+        { text: scUpside != null ? `${(scUpside * 100).toFixed(0)}%` : '—', fontSize: 9, color: s.color, alignment: 'right' },
+        { text: sc.thesis || '', fontSize: 8, color: COLORS.textSecondary },
+      ]);
+    }
+
+    content.push({
+      table: {
+        headerRows: 1,
+        widths: [70, 65, 55, '*'],
+        body: scenarioRows,
+        dontBreakRows: true,
+      },
+      layout: {
+        hLineWidth: (i) => i === 0 ? 0 : i === 1 ? 1 : 0.25,
+        vLineWidth: () => 0,
+        hLineColor: (i) => i === 1 ? COLORS.textSecondary : COLORS.borderSubtle,
+        paddingLeft: () => 4, paddingRight: () => 4, paddingTop: () => 4, paddingBottom: () => 4,
+        fillColor: (i) => i === 0 ? null : i % 2 === 0 ? '#fafbfc' : null,
+      },
+      margin: [0, 0, 0, 12],
+    });
+
+    // Assumptions for each scenario
+    for (const s of scenarioOrder) {
+      const sc = scenarios[s.key];
+      if (!sc?.assumptions?.length) continue;
+      content.push(
+        { text: `${s.label} Assumptions`, fontSize: 8, bold: true, color: s.color, margin: [0, 2, 0, 2] },
+        { ul: sc.assumptions.map(a => ({ text: a, fontSize: 8, color: COLORS.textSecondary, margin: [0, 1, 0, 1] })), margin: [8, 0, 0, 8] },
+      );
+    }
+  }
+
+  // -- Catalysts --
+  if (memo.catalysts?.length) {
+    content.push({ text: 'Catalysts & Upcoming Events', style: 'subsectionHeader' });
+    for (const c of memo.catalysts) {
+      content.push(
+        {
+          columns: [
+            { text: c.date || '', fontSize: 8, bold: true, color: COLORS.primary, width: 80 },
+            {
+              stack: [
+                { text: c.title || c.event || '', fontSize: 9, bold: true, color: COLORS.textPrimary },
+                c.description ? { text: c.description, fontSize: 8, color: COLORS.textSecondary, margin: [0, 1, 0, 0] } : null,
+                c.impact ? { text: `Impact: ${c.impact}`, fontSize: 7.5, color: COLORS.primary, italics: true, margin: [0, 1, 0, 0] } : null,
+              ].filter(Boolean),
+              width: '*',
+            },
+          ],
+          margin: [0, 3, 0, 3],
+        },
+      );
+    }
+    content.push({ text: '\n' });
+  }
+
+  // -- Risk-Mitigant Pairs --
+  if (memo.risk_mitigant_pairs?.length) {
+    content.push({ text: 'Risk-Mitigant Analysis', style: 'subsectionHeader', pageBreak: 'before' });
+
+    const riskRows = [
+      [
+        { text: 'Sev.', style: 'tableHeaderCell', alignment: 'center' },
+        { text: 'Risk', style: 'tableHeaderCell', alignment: 'left' },
+        { text: 'Mitigant', style: 'tableHeaderCell', alignment: 'left' },
+      ],
+    ];
+
+    for (const p of memo.risk_mitigant_pairs) {
+      const sevColor = p.severity === 'High' ? COLORS.negative : p.severity === 'Medium' ? '#d97706' : COLORS.textMuted;
+      riskRows.push([
+        { text: p.severity || 'Med', fontSize: 8, bold: true, color: sevColor, alignment: 'center' },
+        { text: p.risk || '', fontSize: 8, color: COLORS.textPrimary },
+        { text: p.mitigant || '', fontSize: 8, color: COLORS.textSecondary },
+      ]);
+    }
+
+    content.push({
+      table: {
+        headerRows: 1,
+        widths: [35, '*', '*'],
+        body: riskRows,
+        dontBreakRows: true,
+      },
+      layout: {
+        hLineWidth: (i) => i === 0 ? 0 : i === 1 ? 1 : 0.25,
+        vLineWidth: () => 0,
+        hLineColor: (i) => i === 1 ? COLORS.textSecondary : COLORS.borderSubtle,
+        paddingLeft: () => 4, paddingRight: () => 4, paddingTop: () => 3, paddingBottom: () => 3,
+        fillColor: (i) => i === 0 ? null : i % 2 === 0 ? '#fafbfc' : null,
+      },
+      margin: [0, 0, 0, 12],
+    });
+  }
+
+  // -- Position sizing --
+  if (rec.position_size) {
+    content.push({
+      text: [
+        { text: 'Position Sizing: ', fontSize: 9, bold: true, color: COLORS.textPrimary },
+        { text: rec.position_size, fontSize: 9, color: COLORS.textSecondary },
+      ],
+      margin: [0, 0, 0, 8],
+    });
+  }
+
+  // -- Monitor Metrics --
+  if (rec.monitor_metrics?.length) {
+    content.push(
+      { text: 'Key Metrics to Monitor', fontSize: 9, bold: true, color: COLORS.textPrimary, margin: [0, 4, 0, 4] },
+      { ul: rec.monitor_metrics.map(m => ({ text: m, fontSize: 8, color: COLORS.textSecondary, margin: [0, 1, 0, 1] })), margin: [8, 0, 0, 12] },
+    );
+  }
+
+  return content;
+}
+
 function buildSourcesAndDisclaimer(data) {
   const sources = data.sources || [];
   const dq = data.data_quality || {};
@@ -581,6 +801,7 @@ export function generatePDF(analysisResult, ticker = 'analysis') {
 
     content: [
       ...buildCoverPage(analysisResult),
+      ...buildInvestmentMemo(analysisResult),
       ...buildKPISection(analysisResult),
       ...buildStatementTable('Income Statement', stmts.income_statement),
       ...buildStatementTable('Balance Sheet', stmts.balance_sheet),
